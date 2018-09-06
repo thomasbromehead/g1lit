@@ -2,5 +2,10 @@
 
 > We are building the future by giving back the people the power to create money.
 > Monetary creation is the key to a fair society. By uniting blockchain and web-of-trust, we are one step closer to achieving
-> the spontaneous order of economic value, called ### catallaxy.
->
+> the spontaneous order of economic value, called catallaxy.
+
+### Here are the four principles of economic freedom as put forward by Stéphane Laborde in his brilliant "Relative Theory of Money". 
+1. sqd
+2. qsdq
+3. qsd
+4. qds
