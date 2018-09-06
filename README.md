@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+#LOG1, a housing platform for the world's first libre money, the [g1](https://monnaie-libre.fr/).
