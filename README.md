@@ -7,10 +7,13 @@
 The ğ1 exists thanks to a blockchain protocol [Duniter](https://duniter.org/fr/g1-go).
 
 ### Here are the four principles of economic freedom as put forward by Stéphane Laborde in his brilliant ["Relative Theory of Money"](https://en.trm.creationmonetaire.info/). 
-1. sqd
-2. qsdq
-3. qsd
-4. qds
+1. Freedom to access resources
+> Any citizen is free to access resources.
+2. Freedom of production
+> Any citizen is free to produce value.
+3. Freedom to exchange “in the money”
+> Any citizen is free to exchange with others “in the currency”
+
 
 #### For more information feel free to read the RTM and/or articles on these resources in English:
 1. [duniter.org](https://duniter.org/en/)
