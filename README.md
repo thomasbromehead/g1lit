@@ -15,7 +15,7 @@ The ğ1 exists thanks to a blockchain protocol called [Duniter](https://duniter.
 > Any citizen is free to exchange with others “in the currency”
 
 
-#### For more information feel free to read the RTM and/or articles on these resources in English:
+#### For more information feel free to read the RTM and/or articles with these resources in English:
 1. [duniter.org](https://duniter.org/en/)
 2. [On Medium.org](https://medium.com/@thomasbromehead)
 
