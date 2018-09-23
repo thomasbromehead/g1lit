@@ -10,10 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_185434) do
+ActiveRecord::Schema.define(version: 2018_09_23_175109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "flat_id"
+    t.integer "price"
+    t.integer "nb_nights"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_bookings_on_flat_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "flat_reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "flat_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_flat_reviews_on_flat_id"
+    t.index ["user_id"], name: "index_flat_reviews_on_user_id"
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.integer "nb_rooms"
+    t.bigint "user_id"
+    t.boolean "animals"
+    t.integer "price_per_night"
+    t.boolean "smoking"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_flats_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.float "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +73,10 @@ ActiveRecord::Schema.define(version: 2018_09_19_185434) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "flats"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "flat_reviews", "flats"
+  add_foreign_key "flat_reviews", "users"
+  add_foreign_key "flats", "users"
+  add_foreign_key "user_reviews", "users"
 end
