@@ -1,0 +1,2 @@
+class FlatReviewsController < ApplicationController
+end

@@ -1,11 +1,14 @@
 import swal from 'sweetalert';
 
 const sweetAlertOnClick = () => {
-  const button = document.getElementById();
+  console.log("hello from sweet alert");
+  const button = document.getElementById("hello");
   if (button){
     button.addEventListener('click', () => {
+      console.log("yo")
       swal({
-        // pass in the sweet alert options
+        // pass in the sweet alert option
+        title:"You are dumb!"
       })
     })
   }

@@ -11,4 +11,4 @@ function initUpdateNavbarOnScroll() {
   }
 }
 
-export { initUpdateNavbarOnScroll };
+export default initUpdateNavbarOnScroll;
