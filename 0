@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20180927171315_add_number_of_reviews_to_flats.rb
