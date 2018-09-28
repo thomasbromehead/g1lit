@@ -1,5 +1,5 @@
 class Flat < ApplicationRecord
-  belongs_to :user
+  belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :flat_reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
 
