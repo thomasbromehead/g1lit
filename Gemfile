@@ -16,6 +16,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
+gem 'aws-sdk'
+gem 'mini_magick'
+
 
 
 group :development do
