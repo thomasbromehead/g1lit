@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: 'pages#home'
 
   resources :flats do 
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
       get 'top', to: "flats#top"
     end
     member do 
-      get "proprio", to: "flats#proprio"
+      get "hote", to: "flats#proprio"
     end
   end
 
@@ -26,9 +27,6 @@ Rails.application.routes.draw do
     resources :flats, only: [:index]
   end
 
-  namespace :tableau_de_bord do 
-    resources :messages
-  end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
