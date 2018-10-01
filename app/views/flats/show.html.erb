@@ -4,4 +4,9 @@
 <% if @flat.photo.attached? %>
  <%= image_tag(@flat.photo.variant(resize: "300x300")) %>
 <% end %>
+<% if @flat.photos.attached? %>
+  <% @flat.photos.each do |photo| %>
+    <%= image_tag photo.variant(resize:"400x400") %>
+  <% end %>
+<% end %>
 
