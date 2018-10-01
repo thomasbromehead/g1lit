@@ -819,6 +819,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   aws-sdk
+  aws-sdk-s3
   bootsnap
   bootstrap-sass (~> 3.3)
   devise

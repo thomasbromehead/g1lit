@@ -18,6 +18,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
+gem "aws-sdk-s3", require: false
 
 
 

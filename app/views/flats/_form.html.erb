@@ -6,7 +6,7 @@
 
     <%= f.input :nb_of_bathrooms, label: "Nombre de salles de bain", input_html: {class: 'form-control btn-lg'}, collection:1..5 %>
     <%= f.file_field :photo, class:"form-control" %>
-    <%= f.file_field :photos, multiple: true, class:"form-control" %>
+    <%= f.file_field :photos, multiple: true, class:"form-control", direct_upload: true %>
 
     <%= f.button :submit, value: "Je crée mon logement" %>
   <% end %>
