@@ -2,7 +2,6 @@
 <%= @flat.title %> <br>
 <%= @flat.description %> <br>
 <% if @flat.photo.attached? %>
-  <%= image_tag(@flat.photo) %>
+ <%= image_tag(@flat.photo.variant(resize: "300x300")) %>
 <% end %>
-<%= @flat.photo %>
 
