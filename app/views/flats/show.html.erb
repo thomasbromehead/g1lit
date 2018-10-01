@@ -1,3 +1,8 @@
 <h2>Flat Show</h2>
 <%= @flat.title %> <br>
-<%= @flat.description %>
+<%= @flat.description %> <br>
+<% if @flat.photo.attached? %>
+  <%= image_tag(@flat.photo) %>
+<% end %>
+<%= @flat.photo %>
+

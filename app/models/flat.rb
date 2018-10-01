@@ -7,7 +7,8 @@ class Flat < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
-  has_many_attached :files
+  has_many_attached :photos
+  has_one_attached :photo
 
   scope :available, -> {where(booked:false)}
   scope :booked, -> {where(booked:true)}
