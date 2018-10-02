@@ -1,6 +1,5 @@
 import "bootstrap";
-import "path to application.css"
-;
+
 
 import { greet } from '../components/greet';
 console.log(greet("Thoms"));
