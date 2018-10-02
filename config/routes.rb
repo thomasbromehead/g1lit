@@ -1,3 +1,50 @@
+# == Route Map
+#
+#                    Prefix Verb   URI Pattern                                                                              Controller#Action
+#          new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
+#              user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
+#      destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
+#         new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
+#        edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
+#             user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
+#                           PUT    /users/password(.:format)                                                                devise/passwords#update
+#                           POST   /users/password(.:format)                                                                devise/passwords#create
+#  cancel_user_registration GET    /users/cancel(.:format)                                                                  devise/registrations#cancel
+#     new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
+#    edit_user_registration GET    /users/edit(.:format)                                                                    devise/registrations#edit
+#         user_registration PATCH  /users(.:format)                                                                         devise/registrations#update
+#                           PUT    /users(.:format)                                                                         devise/registrations#update
+#                           DELETE /users(.:format)                                                                         devise/registrations#destroy
+#                           POST   /users(.:format)                                                                         devise/registrations#create
+#                      root GET    /                                                                                        pages#home
+#              flat_reviews GET    /flats/:flat_id/reviews(.:format)                                                        reviews#index
+#                           POST   /flats/:flat_id/reviews(.:format)                                                        reviews#create
+#           new_flat_review GET    /flats/:flat_id/reviews/new(.:format)                                                    reviews#new
+#                 top_flats GET    /flats/top(.:format)                                                                     flats#top
+#                 hote_flat GET    /flats/:id/hote(.:format)                                                                flats#proprio
+#                     flats GET    /flats(.:format)                                                                         flats#index
+#                           POST   /flats(.:format)                                                                         flats#create
+#                  new_flat GET    /flats/new(.:format)                                                                     flats#new
+#                 edit_flat GET    /flats/:id/edit(.:format)                                                                flats#edit
+#                      flat GET    /flats/:id(.:format)                                                                     flats#show
+#                           PATCH  /flats/:id(.:format)                                                                     flats#update
+#                           PUT    /flats/:id(.:format)                                                                     flats#update
+#                           DELETE /flats/:id(.:format)                                                                     flats#destroy
+#               edit_review GET    /reviews/:id/edit(.:format)                                                              reviews#edit
+#                    review PATCH  /reviews/:id(.:format)                                                                   reviews#update
+#                           PUT    /reviews/:id(.:format)                                                                   reviews#update
+#                           DELETE /reviews/:id(.:format)                                                                   reviews#destroy
+#          booking_payments POST   /bookings/:booking_id/payments(.:format)                                                 payments#create
+#                  bookings GET    /bookings(.:format)                                                                      bookings#index
+#                   booking GET    /bookings/:id(.:format)                                                                  bookings#show
+#                           DELETE /bookings/:id(.:format)                                                                  bookings#destroy
+#             proprio_flats GET    /proprio/flats(.:format)                                                                 proprio/flats#index
+#        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+# rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+#        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+# update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+#      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
+
 Rails.application.routes.draw do
   devise_for :users
 
