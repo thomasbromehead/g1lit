@@ -6,15 +6,21 @@
 #  animals         :boolean
 #  booked          :boolean          default(FALSE), not null
 #  category        :string
+#  city            :string
+#  country         :string
 #  description     :text
 #  image_data      :text
+#  lattitude       :float
+#  longitude       :float
 #  nb_of_bathrooms :integer
 #  nb_of_bookings  :integer          default(0), not null
 #  nb_of_reviews   :integer          default(0), not null
 #  nb_rooms        :integer
 #  price_per_night :integer
 #  smoking         :boolean
+#  street          :string
 #  title           :string
+#  zip_code        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_id         :bigint(8)

@@ -4,6 +4,7 @@ const GoogleDrive = require('@uppy/google-drive')
 const Dropbox = require('@uppy/dropbox')
 const Tus = require('@uppy/tus')
 
+
 const uppy = Uppy({
   debug: true,
   autoProceed: false,

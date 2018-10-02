@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
      <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <body class="app">
     <%= render 'shared/navbar' %>
     <%= render "shared/flash" %>
 
@@ -18,6 +18,8 @@
 
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js" %>
     <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'map' %>
   </body>
 </html>

@@ -2,7 +2,14 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.all
+    @flats = Flat.where.not(lattitude: nil, longitude: nil)
+
+    @markers = @flats.map do |flat|
+      {
+        lat: flat.lattitude,
+        long: flat.longitude
+      }
+    end
   end
 
   def show

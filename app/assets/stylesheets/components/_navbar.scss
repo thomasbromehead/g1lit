@@ -4,12 +4,12 @@
   height: 70px;
   padding: 0px 30px;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
   transition: 0.5s background-color ease;
-  position:sticky;
-  z-index:2;
+  // z-index:2;
   top:0px;
   width:100%;
 
@@ -21,7 +21,7 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 150px;
 }
 
 /* User Avatar */

@@ -1,0 +1,42 @@
+#results-container{
+  height: 90vh;
+  max-width: 90%;
+  border: 2px solid blue;
+  display: flex;
+  margin:0 auto;
+  h2{
+    font-size:20px;
+  }
+  h3{
+    font-size:16px;
+  }
+}
+
+#results{
+  flex: 1 1 55%;
+  border: 2px dotted green;
+  overflow:scroll;
+}
+
+#map{
+  flex: 2 2 45%;
+  position:sticky;
+  top: 0 !important;
+  border: 2px dashed red;
+  height:100%;
+}
+
+.app{
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+margin: auto;
+}
+
+.main {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+}
