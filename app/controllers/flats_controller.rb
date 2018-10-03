@@ -7,7 +7,9 @@ class FlatsController < ApplicationController
     @markers = @flats.map do |flat|
       {
         lat: flat.lattitude,
-        long: flat.longitude
+        long: flat.longitude,
+        price_per_night: flat.price_per_night,
+        id: flat.id
       }
     end
   end

@@ -1,28 +1,44 @@
 #results-container{
   height: 90vh;
-  max-width: 90%;
-  border: 2px solid blue;
+  max-width: 98%;
   display: flex;
   margin:0 auto;
   h2{
-    font-size:20px;
+    font-size:16px;
+    margin:0;
   }
   h3{
-    font-size:16px;
+    font-size:14px;
+    margin-top:1em;
   }
 }
 
 #results{
   flex: 1 1 55%;
-  border: 2px dotted green;
   overflow:scroll;
+  margin-right:1em;
+}
+
+#flat-card{
+  border: 1px solid #F2F2F2;
+  display:flex;
+}
+
+#flat-slider{
+  flex:1 1 50%;
+}
+
+#flat-description{
+  flex: 2 2 50%;
+  display:flex;
+  flex-direction: column;
+  padding-left:0.5em;
 }
 
 #map{
   flex: 2 2 45%;
   position:sticky;
   top: 0 !important;
-  border: 2px dashed red;
   height:100%;
 }
 
@@ -39,4 +55,38 @@ margin: auto;
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
+}
+
+.flat-info{
+  border:1px solid lightcoral;
+  padding:0.5em;
+  margin: 0.2em 0.5em;
+  border-radius: 5px;
+  font-size:0.7em;
+
+}
+
+#flat-tags{
+  display:flex;
+  font-size:0.7em;
+  text-align:center;
+}
+
+hr.hr { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+@media screen and (max-width:700px) and (orientation:portrait){
+  #map{
+    display:none;
+  }
+
+  #results{
+    width:95%;
+  }
 }

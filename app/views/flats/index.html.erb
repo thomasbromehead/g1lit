@@ -2,20 +2,31 @@
   <h1>Les logements disponibles</h1>
   <div id="results-container">
     <div id="results">
-      <% @flats.each do |flat| %>
-        <h2><%= flat.title %></h2>
-        <h3><%= flat.description %></h3>
-        <hr>
-      <% end %>
-    </div>
+        <% @flats.each do |flat| %>
+           <div id="flat-card">
+            <div id="flat-slider">
+              <p>Some pics here</p>
+              <hr class="hr">
+            </div>
+            <div id="flat-description">
+              <h2><%= flat.title %></h2>
+              <h3><%= flat.description.truncate(100) %></h3>
+              <div id="flat-tags">
+                <span class="flat-info"><%= flat.price_per_night %> DU/nuit</span>
+                <span class="flat-info"><%= flat.category%></span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <div id="map" data-markers="<%= @markers.to_json %>">
+    <!-- Map goes in here -->
     </div>
   </div>
+
   <div class="container">
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, maxime praesentium molestias deserunt ducimus expedita impedit quo nisi ex officia laborum fuga perspiciatis nihil vitae? Ipsum at sapiente cumque consequuntur.
     Eius quis, vero blanditiis reprehenderit iusto debitis sed necessitatibus ab recusandae modi similique quisquam tenetur excepturi nostrum rem at numquam aliquam, laboriosam accusamus? Veritatis ipsum, voluptatum optio perferendis fugiat velit?
-    Possimus, corrupti reiciendis excepturi incidunt placeat dolorem ipsum dolor ab molestiae quasi deserunt illo pariatur illum beatae optio, porro ducimus sunt ullam sapiente suscipit rem quas sequi! Fuga, id natus.
-    Temporibus alias deserunt veritatis minima fugiat explicabo, possimus impedit quibusdam enim, doloribus nam dolorem debitis, beatae delectus! Sint quisquam aut, necessitatibus ducimus dolor, officia, omnis voluptate inventore saepe sequi delectus.
   </div>
 
 
