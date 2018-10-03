@@ -9,7 +9,11 @@ class FlatsController < ApplicationController
         lat: flat.lattitude,
         long: flat.longitude,
         price_per_night: flat.price_per_night,
-        id: flat.id
+        id: flat.id,
+        address: flat.street,
+        postalCode:flat.zip_code,
+        country:flat.country,
+        city:flat.city
       }
     end
   end
