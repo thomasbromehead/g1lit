@@ -6,6 +6,7 @@ const results = JSON.parse(mapContainer.dataset.markers);
 // const georesults = results.forEach(result => {
 //   console.log(Object.value(result.lat))
 // })
+console.log(results)
 
 // Recursively build a geojson object from our results array
 const d = []
@@ -34,6 +35,8 @@ results.forEach(flat => {
       }]
   })
 })
+
+console.log(d);
 
 const flats = Object.assign({}, ...d)
 console.log(flats)
@@ -136,6 +139,15 @@ map.on('click', function(e) {
     listing.classList.add('active');
   }
 });
+
+map.addControl(new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  placeholder: "Chercher un lieu"
+}));
+
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+map.addControl(new mapboxgl.NavigationControl());
 
 
 

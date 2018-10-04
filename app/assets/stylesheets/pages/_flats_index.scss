@@ -20,8 +20,11 @@
 }
 
 .flat-card{
-  border: 1px solid #F2F2F2;
+  border: 1px solid rgba(121, 121, 121, 0.2);
+  border-radius:2px;
   display:flex;
+  margin-bottom:0.4em;
+  padding:0.3em 0;
 }
 
 .flat-card.active{
@@ -144,3 +147,13 @@ hr.hr {
 .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
   border-bottom-color: #91c949;
 }
+
+.geocoder {
+  position:absolute;
+  z-index:1;
+  width:50%;
+  left:50%;
+  margin-left:-25%;
+  top:20px;
+}
+.mapboxgl-ctrl-geocoder { min-width:100%; }

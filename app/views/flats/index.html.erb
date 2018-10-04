@@ -1,3 +1,7 @@
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+
+
 <div class="main">
   <h1>Les logements disponibles</h1>
   <div id="results-container">
@@ -23,6 +27,8 @@
     <div id="map" data-markers="<%= @markers.to_json %>">
     <!-- Map goes in here -->
     </div>
+    <div id='geocoder' class='geocoder'></div>
+
   </div>
 
   <div class="container">

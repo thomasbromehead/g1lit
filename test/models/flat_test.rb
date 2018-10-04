@@ -10,7 +10,7 @@
 #  country         :string
 #  description     :text
 #  image_data      :text
-#  lattitude       :float
+#  latitude        :float
 #  longitude       :float
 #  nb_of_bathrooms :integer
 #  nb_of_bookings  :integer          default(0), not null
