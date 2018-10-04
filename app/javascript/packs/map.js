@@ -9,13 +9,10 @@ const results = JSON.parse(mapContainer.dataset.markers);
 console.log(results)
 
 // Recursively build a geojson object from our results array
-const d = []
+const feat = []
 
 results.forEach(flat => {
-  d.push({
-    type:"FeatureCollection",
-    features: [
-      {
+  feat.push({
         type:"Feature",
         geometry: {
           type:"Point",
@@ -32,16 +29,14 @@ results.forEach(flat => {
           postalCode : flat.postalCode,
           pricePerNight: flat.price_per_night
         }
-      }]
+      })
   })
-})
 
-console.log(d);
+console.log(feat);
+const flats = Object.assign({type:"FeatureCollection",
+features:feat})
 
-const flats = Object.assign({}, ...d)
 console.log(flats)
-const geoflats = JSON.stringify(flats);
-
  
 mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
 var map = new mapboxgl.Map({
@@ -87,23 +82,24 @@ function createPopUp(currentFeature) {
     .addTo(map);
 }
 
-const flatCard = document.querySelector('.flat-card');
+const flatCard = document.querySelectorAll('.flat-card');
 console.log(flatCard);
-
-flatCard.addEventListener('click', function(e){
-  const clickedId = this.id;
-  console.log(clickedId);
-  const clickedListing = flats.features[clickedId]
-  console.log(clickedListing);
-  flyToStore(clickedListing);
-  createPopUp(clickedListing);
-  const activeItem = document.getElementsByClassName('active');
-  console.log(activeItem);
-  if (activeItem[0]) {
-    activeItem[0].classList.remove('active');
-  }
-  this.classList.add('active');
-})
+for(flat of flatCard){
+  flat.addEventListener('click', function(e){
+    const clickedId = this.id;
+    console.log(clickedId);
+    const clickedListing = flats.features[clickedId]
+    console.log(clickedListing);
+    flyToStore(clickedListing);
+    createPopUp(clickedListing);
+    const activeItem = document.getElementsByClassName('active');
+    console.log(activeItem);
+    if (activeItem[0]) {
+      activeItem[0].classList.remove('active');
+    }
+    this.classList.add('active');
+  })
+}
 
 // Add an event listener for when a user clicks on the map
 map.on('click', function(e) {
@@ -142,12 +138,14 @@ map.on('click', function(e) {
 
 map.addControl(new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
-  placeholder: "Chercher un lieu"
+  placeholder: "Chercher un lieu",
+  zoom:17
 }));
 
-document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+// document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
 map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.FullscreenControl());
 
 
 
