@@ -45,7 +45,7 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/streets-v9',
 center: [2.3488, 48.8534],
-zoom:12
+zoom:4
 });
 
 
@@ -84,7 +84,7 @@ function createPopUp(currentFeature) {
     .addTo(map);
 }
 
-const flatCard = document.querySelector('.flat-description');
+const flatCard = document.querySelector('.flat-card');
 console.log(flatCard);
 
 flatCard.addEventListener('click', function(e){
@@ -95,10 +95,11 @@ flatCard.addEventListener('click', function(e){
   flyToStore(clickedListing);
   createPopUp(clickedListing);
   const activeItem = document.getElementsByClassName('active');
+  console.log(activeItem);
   if (activeItem[0]) {
     activeItem[0].classList.remove('active');
   }
-  this.parentNode.classList.add('active');
+  this.classList.add('active');
 })
 
 // Add an event listener for when a user clicks on the map
@@ -111,21 +112,27 @@ map.on('click', function(e) {
     flyToStore(clickedPoint);
     // 2. Close all other popups and display popup for clicked store
     createPopUp(clickedPoint);
+    console.log(clickedPoint);
     // 3. Highlight listing in sidebar (and remove highlight for all other listings)
     var activeItem = document.getElementsByClassName('active');
+    console.log(activeItem);
     if (activeItem[0]) {
       activeItem[0].classList.remove('active');
     }
     // Find the index of the store.features that corresponds to the clickedPoint that fired the event listener
     var selectedFeature = clickedPoint.properties.address;
+    console.log(selectedFeature);
 
-    for (var i = 0; i < stores.features.length; i++) {
-      if (stores.features[i].properties.address === selectedFeature) {
+    for (var i = 0; i < flats.features.length; i++) {
+      if (flats.features[i].properties.address === selectedFeature) {
+        console.log(flats.features[i].properties.address);
         selectedFeatureIndex = i;
+        console.log(selectedFeatureIndex);
       }
     }
     // Select the correct list item using the found index and add the active class
-    var listing = document.getElementById('listing-' + selectedFeatureIndex);
+    var listing = document.getElementById(`${selectedFeatureIndex}`);
+    console.log(listing);
     listing.classList.add('active');
   }
 });

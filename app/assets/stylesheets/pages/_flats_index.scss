@@ -19,9 +19,13 @@
   margin-right:1em;
 }
 
-#flat-card{
+.flat-card{
   border: 1px solid #F2F2F2;
   display:flex;
+}
+
+.flat-card.active{
+  background-color:rgba(252, 232, 237,0.4);
 }
 
 #flat-slider{
