@@ -1,3 +1,27 @@
-<div class="container-fluid" style="background-image:url('<%= image_path "home/home1"%>'), linear-gradient(-225deg, rgba(0,101,168,0.6) 10%, rgba(0,36,61,0.6)80%); width: 100%; height:97vh;background-repeat:no-repeat;background-size:cover; background-position:bottom;">
+<div style="background-image:linear-gradient(-029deg, rgba(100,100,100,0.2) 0%, rgba(0,36,61,0.4) 40%), url('<%= image_path "home/home1"%>'); width: 100%; height:90vh;background-repeat:no-repeat;background-size:cover; background-position:bottom;display:flex;flex-direction:column;justify-content:scenter;align-items:center;" id="home-banner">
 
+  <%= image_tag "logo", width:400, height:400, id:"home-logo"%>
+
+
+  <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
+  <form action="/flats" id="home-form">
+    <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
+    <input type="text" class="home-inputs" placeholder="dates" id="home-date-search">
+    <input type="submit", value="Chercher!", class="home-inputs" id="home-search-btn">
+  </form>
+
+<!--
+  <%= form_with(url: flats_path, method: "get", local: true, id: :"home-form") do |f| %>
+    <%= f.text_field:city, id: :"hello" %>
+    <%= f.submit("Search") %>
+  <% end %>
+  -->
 </div>
+
+  
+
+
+
+
+
+

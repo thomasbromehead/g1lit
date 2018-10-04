@@ -49,20 +49,20 @@
   height:100%;
 }
 
-.app{
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-margin: auto;
-}
+// .app{
+// height: 100vh;
+// display: flex;
+// flex-direction: column;
+// justify-content: space-between;
+// margin: auto;
+// }
 
-.main {
-  display: block;
-  flex-grow: 1;
-  flex-shrink: 1;
-  overflow: auto;
-}
+// .main {
+//   display: block;
+//   flex-grow: 1;
+//   flex-shrink: 1;
+//   overflow: auto;
+// }
 
 .flat-info{
   border:1px solid lightcoral;
