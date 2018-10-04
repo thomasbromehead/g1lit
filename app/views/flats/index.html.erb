@@ -1,14 +1,15 @@
 <div class="main">
   <h1>Les logements disponibles</h1>
   <div id="results-container">
+
     <div id="results">
-        <% @flats.each do |flat| %>
+        <% @flats.each_with_index do |flat, index| %>
            <div id="flat-card">
             <div id="flat-slider">
               <p>Some pics here</p>
               <hr class="hr">
             </div>
-            <div id="flat-description">
+            <div class="flat-description" id="<%= index %>">
               <h2><%= flat.title %></h2>
               <h3><%= flat.description.truncate(100) %></h3>
               <div id="flat-tags">

@@ -11,9 +11,10 @@ class FlatsController < ApplicationController
         price_per_night: flat.price_per_night,
         id: flat.id,
         address: flat.street,
-        postalCode:flat.zip_code,
-        country:flat.country,
-        city:flat.city
+        postalCode: flat.zip_code,
+        country: flat.country,
+        city: flat.city,
+        street: flat.street
       }
     end
   end
