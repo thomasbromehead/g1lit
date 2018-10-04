@@ -18,3 +18,38 @@ UserReview.destroy_all
 puts "Deleting User Reviews of Customers"
 User.destroy_all
 puts "Deleting users"
+
+flats = [
+  {title: "Charmante maison auvergnate traditionelle"
+  ,description:"A 10 min de Clermont-Ferrand, maison en pierre volcanique, faîtou, 4 chambres, table de ping-pong, piscine etc"
+  ,category:"maison",
+  price_per_night:"3",
+  street:"",
+  city:,
+  country:,
+  zip_code:},
+  {title:
+  ,description:
+  ,category:,
+  price_per_night:,
+  street:,
+  city:,
+  country:,
+  zip_code:}, 
+  {title:
+  ,description:
+  ,category:,
+  price_per_night:,
+  street:,
+  city:,
+  country:,
+  zip_code:},
+  {title:
+  ,description:
+  ,category:,
+  price_per_night:,
+  street:,
+  city:,
+  country:,
+  zip_code:},
+]

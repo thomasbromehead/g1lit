@@ -42,6 +42,9 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    annotate (2.7.4)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 13.0)
     arel (9.0.0)
     autoprefixer-rails (9.1.4)
       execjs
@@ -647,6 +650,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
+    bullet (5.7.6)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11.0)
     byebug (10.0.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -667,8 +673,10 @@ GEM
     ffi (1.9.25)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hodel_3000_compliant_logger (0.1.1)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -696,6 +704,9 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    oink (0.10.1)
+      activerecord
+      hodel_3000_compliant_logger
     orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.11.3)
@@ -797,6 +808,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.11.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -816,17 +828,22 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   autoprefixer-rails
   awesome_print
   aws-sdk
+  aws-sdk-s3
   bootsnap
   bootstrap-sass (~> 3.3)
+  bullet
   devise
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
+  geocoder
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   mini_magick
+  oink
   pg (~> 0.21)
   pry-byebug
   pry-rails

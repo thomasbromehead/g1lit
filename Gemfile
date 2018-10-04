@@ -18,11 +18,16 @@ gem 'webpacker'
 gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
+gem "aws-sdk-s3", require: false
+gem 'geocoder'
 
 
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'annotate'
+  gem 'bullet'
+  gem 'oink'
 end
 
 group :development, :test do
