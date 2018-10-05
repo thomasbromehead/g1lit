@@ -8,14 +8,44 @@
     <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
     <form action="/flats" id="home-form">
       <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
-      <input type="text" class="home-inputs date" placeholder="arrivée" ">
-      <input type="text" class="home-inputs date" placeholder="départ">
+      <input type="text" class="home-inputs" id="dates" placeholder="Vos dates de séjour" ">
       <input type="submit", value="Chercher!", class="home-inputs slideUp" id="home-search-btn">
     </form>
 
   </div>
 
 </div>
+
+<div class="container-fluid libre" style="background-image:url('<%= image_path 'Patterns/pattern'%>')">
+  <div class="container">
+    <h2>Se loger en monnaie libre</h2>
+  </div>
+  <div id="card-container">
+    <div class="card">
+      <div class="card-header">
+        <card-body>
+         Some Data
+        </card-body>
+      </div>
+    </div>
+    <div class="card" id="middle">
+      <div class="card-header">
+        <card-body>
+        Some Other Data
+        </card-body>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <card-body>
+        More data still
+        </card-body>
+      </div>
+    </div>
+  </div>
+  <div><input type="text" class="dates"></div>
+</div>
+
 
   
 

@@ -1,3 +1,4 @@
+
 const searchButton = document.getElementById('home-search-btn');
 const classes = searchButton.getAttribute('class');
 const classesArray = classes.split(" ");
@@ -9,7 +10,6 @@ document.onreadystatechange = () => {
    setInterval(()=>{
     if(classPresent){
       searchButton.classList.remove('slideUp');
-      console.log('removed it');
       setTimeout(()=>{
         searchButton.classList.add('slideUp');
       },1200);

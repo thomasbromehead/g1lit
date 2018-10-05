@@ -1,17 +1,16 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 const mapContainer = document.getElementById('map');
-console.log(mapContainer);
-const results = JSON.parse(mapContainer.dataset.markers);
+
 // const georesults = results.forEach(result => {
 //   console.log(Object.value(result.lat))
 // })
-console.log(results)
 
 // Recursively build a geojson object from our results array
 const feat = []
-
-results.forEach(flat => {
+if(mapContainer){
+  const results = JSON.parse(mapContainer.dataset.markers);
+  results.forEach(flat => {
   feat.push({
         type:"Feature",
         geometry: {
@@ -31,13 +30,10 @@ results.forEach(flat => {
         }
       })
   })
+}
 
-console.log(feat);
 const flats = Object.assign({type:"FeatureCollection",
 features:feat})
-
-console.log(flats)
- 
 mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
 var map = new mapboxgl.Map({
 container: 'map',
