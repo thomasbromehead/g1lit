@@ -1,21 +1,16 @@
-import flatpickr from "flatpickr";
-import 'flatpickr/dist/flatpickr.css';
-import 'flatpickr/dist/themes/airbnb.css'
+import TinyPicker from 'tiny-picker';
 
-function datepickr() {
-  const date = document.querySelector('.dates');
-  if (date) {
-    console.log("building");
-    flatpickr(date,  
-      {
-        minDate: "today",
-        enableTime: true,
-        mode: "range",
-        minTime: "09:00",
-        showAlways: false,
-        theme: "light"
-      });
+function pickadate(){
+  const startDate = document.getElementById('start');
+  const endDate = document.getElementById('end');
+  console.log(startDate);
+  if(startDate && endDate){
+    new TinyPicker({
+      firstBox:startDate,
+      lastBox:endDate,
+      local: 'fr-FR'
+    }).init();
   }
 }
 
-export { datepickr };
+export { pickadate };

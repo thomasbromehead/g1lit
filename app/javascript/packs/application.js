@@ -10,12 +10,12 @@ initUpdateNavbarOnScroll();
 // import uploader from '../components/uppy';
 // uploader();
 
-import { datepickr } from '../components/pickadate';
-datepickr();
 
 import { hello } from "../components/hello";
 hello();
 
+import { pickadate } from '../components/pickadate';
+pickadate();
 
 
 

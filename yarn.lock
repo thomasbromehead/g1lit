@@ -4349,6 +4349,13 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lightpick@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/lightpick/-/lightpick-1.2.5.tgz#d6add28f7aa394a4673a48d2d074acf96e826ad2"
+  integrity sha512-/swWdj92qlyGSpkYWefZEEfIGCq2toVdEMEJ5PJwKmBwBRWvUtSW+uca0u7+uj69hOqLOvd1KcYXGmmWayAd8Q==
+  dependencies:
+    moment "^2.22.2"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "http://registry.npmjs.org/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -4806,6 +4813,11 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+  integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -7507,6 +7519,11 @@ timers-browserify@^2.0.4:
   integrity sha512-YvC1SV1XdOUaL6gx5CoGroT3Gu49pK9+TZ38ErPldOWW4j49GI1HKs9DV+KGq/w6y+LZ72W1c8cKz2vzY+qpzg==
   dependencies:
     setimmediate "^1.0.4"
+
+tiny-picker@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/tiny-picker/-/tiny-picker-4.1.2.tgz#5f85be1a3be3724e629e9e78b73efb7bb700e5a5"
+  integrity sha512-LmaKkN+9Pb6Tdo78JB5lzEqwJHEjMXZf1oMdVvecqTKoX21KMkZKe1Aj5oU8Z/b0qj8VgG8KolzQOvFMoEr0+g==
 
 tinyqueue@^1.1.0:
   version "1.2.3"

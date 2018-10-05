@@ -8,7 +8,8 @@
     <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
     <form action="/flats" id="home-form">
       <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
-      <input type="text" class="home-inputs" id="dates" placeholder="Vos dates de séjour" ">
+      <input type="text" class="home-inputs" id="start" placeholder="Vos dates de séjour" name="start-date">
+      <input type="text" class="home-inputs" id="end" placeholder="Vos dates de séjour" name="end-date">
       <input type="submit", value="Chercher!", class="home-inputs slideUp" id="home-search-btn">
     </form>
 
@@ -16,7 +17,7 @@
 
 </div>
 
-<div class="container-fluid libre" style="background-image:url('<%= image_path 'Patterns/pattern'%>')">
+<div class="container-fluid libre" style="background-image:url('<%= image_path 'Patterns/pattern4.svg'%>')">
   <div class="container">
     <h2>Se loger en monnaie libre</h2>
   </div>
@@ -43,7 +44,6 @@
       </div>
     </div>
   </div>
-  <div><input type="text" class="dates"></div>
 </div>
 
 
