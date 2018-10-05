@@ -1,5 +1,7 @@
 import "bootstrap";
 
+import "components/aguilar";
+
 
 import { greet } from '../components/greet';
 console.log(greet("Thoms"));

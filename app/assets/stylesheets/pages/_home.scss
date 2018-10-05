@@ -1,13 +1,16 @@
 // Specific CSS for your home-page
-#home-logo{
-
-}
 
 #home-banner{
+  width:100%;
+  height:90vh;
+  background-position: bottom;
+  background-size:cover;
+  position: relative;
   display:flex;
-  flex-direction: column;
   justify-content: center;
+
 }
+
 
 .home-inputs{
   padding:0.3em;
@@ -18,28 +21,49 @@
   width:50%;
 }
 
-#home-date-search{
-  margin-left:0.3em;
-  width:30%;
+
+#home-form{
+  width:100%;
+  display:flex;
+  margin-top:50px;
+  text-align: center;
 }
 
-.home-search{
-  width:80%;
+#home-search-btn{
+  margin-left:0.3em;
+  background: rgb(6, 179, 228);
+  color:white;
+  padding: 0 15px;
+  box-shadow: rgba(46, 61, 73, 0.15) 8px 10px 20px 0px;
+  border:none;
+  &:hover{
+    box-shadow: rgba(46, 61, 73, 0.3) 8px 10px 20px 0px;
+  } 
+
+}
+
+.date{
+  width:15%;
+  margin-left:0.3em;
+}
+
+#banner-content{
   display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top:200px;
+  width:80%;
 }
 
 #home-h1{
   color:white;
   font-size:2em;
   margin:0;
-  margin-top:-100px;
-  margin-bottom:50px;
+  text-align:center;
 }
 
-#home-search-btn{
-  margin-left:0.3em;
-
-}
 
 #g1{
   -webkit-text-stroke: 1px black;
@@ -51,8 +75,4 @@
      -1px 1px 0 #000,
       1px 1px 0 #000;
   font-size:2em;
-}
-#home-form{
-  display:flex;
-
 }
