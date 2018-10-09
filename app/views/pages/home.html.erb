@@ -1,22 +1,51 @@
-<div style="background-image:linear-gradient(-029deg, rgba(100,100,100,0.2) 0%, rgba(0,36,61,0.4) 40%), url('<%= image_path "home/home1"%>'); width: 100%; height:90vh;background-repeat:no-repeat;background-size:cover; background-position:bottom;display:flex;flex-direction:column;justify-content:scenter;align-items:center;" id="home-banner">
+<div style="background-image:linear-gradient(-029deg, rgba(100,100,100,0.2) 0%, rgba(0,36,61,0.5) 70%), url('<%= image_path "home/home1"%>')"; id="home-banner">
 
-  <%= image_tag "logo", width:400, height:400, id:"home-logo"%>
+  <div id="banner-content">
+
+    <%= image_tag("Logo/logo2", size:"270x150", id:"home-logo")%>
 
 
-  <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
-  <form action="/flats" id="home-form">
-    <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
-    <input type="text" class="home-inputs" placeholder="dates" id="home-date-search">
-    <input type="submit", value="Chercher!", class="home-inputs" id="home-search-btn">
-  </form>
+    <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
+    <form action="/flats" id="home-form">
+      <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
+      <input type="text" class="home-inputs" id="start" placeholder="Vos dates de séjour" name="start-date">
+      <input type="text" class="home-inputs" id="end" placeholder="Vos dates de séjour" name="end-date">
+      <input type="submit", value="Chercher!", class="home-inputs slideUp" id="home-search-btn">
+    </form>
 
-<!--
-  <%= form_with(url: flats_path, method: "get", local: true, id: :"home-form") do |f| %>
-    <%= f.text_field:city, id: :"hello" %>
-    <%= f.submit("Search") %>
-  <% end %>
-  -->
+  </div>
+
 </div>
+
+<div class="container-fluid libre" style="background-image:url('<%= image_path 'Patterns/pattern4.svg'%>')">
+  <div class="container">
+    <h2>Se loger en monnaie libre</h2>
+  </div>
+  <div id="card-container">
+    <div class="card">
+      <div class="card-header">
+        <card-body>
+         Some Data
+        </card-body>
+      </div>
+    </div>
+    <div class="card" id="middle">
+      <div class="card-header">
+        <card-body>
+        Some Other Data
+        </card-body>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <card-body>
+        More data still
+        </card-body>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   
 

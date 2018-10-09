@@ -1,17 +1,25 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 const mapContainer = document.getElementById('map');
-console.log(mapContainer);
-const results = JSON.parse(mapContainer.dataset.markers);
+
+
+window.mapContainer = mapContainer ;
+
+
+mapContainer.addEventListener('hover', function(){
+  console.log(this.map.getZoom());
+  console.log('hovering');
+})
+
 // const georesults = results.forEach(result => {
 //   console.log(Object.value(result.lat))
 // })
-console.log(results)
 
 // Recursively build a geojson object from our results array
 const feat = []
-
-results.forEach(flat => {
+if(mapContainer){
+  const results = JSON.parse(mapContainer.dataset.markers);
+  results.forEach(flat => {
   feat.push({
         type:"Feature",
         geometry: {
@@ -27,38 +35,42 @@ results.forEach(flat => {
           country: flat.country,
           street: flat.street,
           postalCode : flat.postalCode,
-          pricePerNight: flat.price_per_night
+          pricePerNight: flat.price_per_night,
+          category: flat.category
         }
       })
   })
+}
 
-console.log(feat);
 const flats = Object.assign({type:"FeatureCollection",
 features:feat})
-
-console.log(flats)
- 
 mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
-var map = new mapboxgl.Map({
+
+
+const map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/mapbox/streets-v9',
+style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
 center: [2.3488, 48.8534],
 zoom:4
+
 });
+
+window.map = map;
 
 
 map.on('load', function(e){
+  map.addSource("places",{
+      type:'geojson',
+      data: flats
+  });
   map.addLayer({
     id: 'locations',
     type: 'symbol',
+    // Add a GeoJSON source containing place coordinates and information.
     source: {
-      type:'geojson',
+      type: 'geojson',
       data: flats
     },
-    layout: {
-      'icon-image': 'restaurant-15',
-      'icon-allow-overlap': true, 
-    }
   });
 });
 
@@ -83,7 +95,18 @@ function createPopUp(currentFeature) {
 }
 
 const flatCard = document.querySelectorAll('.flat-card');
-console.log(flatCard);
+
+
+  // console.log(element[i].properties.category);  
+  // const backgroundImage = el.style.backgroundImage;
+  // switch(backgroundImage){
+  //   case 
+  // }
+  // Add markers to the map at all points
+
+
+
+
 for(flat of flatCard){
   flat.addEventListener('click', function(e){
     const clickedId = this.id;
@@ -101,40 +124,76 @@ for(flat of flatCard){
   })
 }
 
-// Add an event listener for when a user clicks on the map
-map.on('click', function(e) {
-  // Query all the rendered points in the view
-  var features = map.queryRenderedFeatures(e.point, { layers: ['locations'] });
-  if (features.length) {
-    var clickedPoint = features[0];
-    // 1. Fly to the point
-    flyToStore(clickedPoint);
-    // 2. Close all other popups and display popup for clicked store
-    createPopUp(clickedPoint);
-    console.log(clickedPoint);
-    // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+flats.features.forEach(function(marker, i) {
+  // Create an img element for the marker
+  const el = document.createElement('div');
+  el.id = "marker-" + i;
+  el.className = 'marker';;
+  el.style.backgroundSize = "cover";
+  el.style.backgroundRepeat = "none";
+  el.style.height = "60px";
+  el.style.width = "60px";
+  const category = marker.properties.category;
+  console.log(map.transform.tileZoom);
+  switch(category){
+    case "maison":
+    el.style.backgroundImage = "url('/assets/markers/marker-maison.png')";
+    break;
+    case "appartement":
+    el.style.backgroundImage = "url('/assets/markers/marker-appart.png')";
+    break;
+    case "terrain":
+    el.style.backgroundImage = "url('/assets/markers/marker-terrain.png')";
+    break;
+    case "caravane":
+    el.style.backgroundImage = "url('/assets/markers/marker-caravane.png')";
+    break;
+    case "camping-car":
+    el.style.backgroundImage = "url('/assets/markers/marker-camper.png')";
+    break;
+
+
+  }
+  new mapboxgl.Marker(el, {offset: [0, -23]})
+      .setLngLat(marker.geometry.coordinates)
+      .addTo(map);
+      // console.log(marker.geometry.coordinates)
+  el.addEventListener('click', function(e) {
     var activeItem = document.getElementsByClassName('active');
-    console.log(activeItem);
+    // 1. Fly to the point
+    flyToStore(marker);
+    // 2. Close all other popups and display popup for clicked store
+    createPopUp(marker);
+    // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+    e.stopPropagation();
     if (activeItem[0]) {
       activeItem[0].classList.remove('active');
     }
-    // Find the index of the store.features that corresponds to the clickedPoint that fired the event listener
-    var selectedFeature = clickedPoint.properties.address;
-    console.log(selectedFeature);
-
-    for (var i = 0; i < flats.features.length; i++) {
-      if (flats.features[i].properties.address === selectedFeature) {
-        console.log(flats.features[i].properties.address);
-        selectedFeatureIndex = i;
-        console.log(selectedFeatureIndex);
-      }
-    }
-    // Select the correct list item using the found index and add the active class
-    var listing = document.getElementById(`${selectedFeatureIndex}`);
+    var listing = document.getElementById(i);
     console.log(listing);
     listing.classList.add('active');
-  }
+  });   
 });
+
+map.on('zoom', () => {
+  const markers = document.querySelectorAll('.marker');
+  console.log(map.getZoom());
+  markers.forEach( marker => {
+     console.log(marker.style)
+     if(map.getZoom() > 5 && map.getZoom() < 8  ){
+       marker.style.height = "100px";
+       marker.style.width= "100px";
+      } else if(map.getZoom() > 8) {
+        marker.style.height = "150px";
+        marker.style.width= "150px";
+      } else {
+        marker.style.height = "60px";
+        marker.style.width= "60px";
+      }
+    });
+});
+
+
 
 map.addControl(new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,

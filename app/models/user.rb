@@ -35,6 +35,7 @@ class User < ApplicationRecord
   has_many :owner_bookings, through: :flats, source: :bookings, dependent: :destroy
   has_one_attached :avatar
 
+
   # Because we have a "paid" scope on payments, we can retrieve User's paid booking through a merge:User.joins(:bookings).merge(Payment.paid)
          
 end

@@ -18,6 +18,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
+gem 'faker', '~> 1.6', '>= 1.6.6'
 gem "aws-sdk-s3", require: false
 gem 'geocoder'
 
