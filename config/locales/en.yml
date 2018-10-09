@@ -31,3 +31,31 @@
 
 en:
   hello: "Hello world"
+  will_paginate: 
+    models: 
+      flat:
+        zero: "logement"
+        one: "logement"
+        other: "logements"      
+    previous_label: "&#8592; Précédent"
+    next_label: "Prochain &#8594;"
+    page_entries_info:
+      single_page:
+          zero:  "Aucun %{model} trouvé"
+          one:   "1 seul %{model} disponible"
+          other: "Voici les %{count} %{model} disponibles"
+      single_page_html:
+          zero:  "Aucun %{model} trouvé"
+          one:   "<b>1</b> seul %{model} trouvé"
+          other: "Voici les <b>all&nbsp;%{count}</b> %{model} trouvés"
+
+      multi_page: "%{model} %{from} - %{to} of %{count} in total"
+      multi_page_html: "Voici les %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> sur <b>%{count}</b> logements au total"
+    activerecord:
+      models:
+        flat:
+          zero: "logement"
+          one: "logement"
+          few: "logements"
+          other: "logements"
+
