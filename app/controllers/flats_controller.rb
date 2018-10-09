@@ -14,7 +14,8 @@ class FlatsController < ApplicationController
         postalCode: flat.zip_code,
         country: flat.country,
         city: flat.city,
-        street: flat.street
+        street: flat.street,
+        category: flat.category
       }
     end
   end

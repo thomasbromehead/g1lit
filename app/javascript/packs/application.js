@@ -7,8 +7,8 @@ import "components/aguilar";
 import initUpdateNavbarOnScroll from '../components/navbar';
 initUpdateNavbarOnScroll();
 
-// import uploader from '../components/uppy';
-// uploader();
+import Uploader from '../components/uppy';
+Uploader();
 
 
 import { hello } from "../components/hello";

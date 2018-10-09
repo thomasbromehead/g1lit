@@ -8,7 +8,8 @@ function pickadate(){
     new TinyPicker({
       firstBox:startDate,
       lastBox:endDate,
-      local: 'fr-FR'
+      local: 'fr-FR',
+      days:['Di','Lu','Ma','Me','Je','Ve','Sa']
     }).init();
   }
 }
