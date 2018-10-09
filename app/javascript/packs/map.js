@@ -51,7 +51,7 @@ const map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
 center: [2.3488, 48.8534],
-zoom:4
+zoom:4.5
 
 });
 
@@ -198,7 +198,7 @@ map.on('zoom', () => {
 map.addControl(new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   placeholder: "Chercher un lieu",
-  zoom:17
+  zoom:10,
 }));
 
 // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));

@@ -23,6 +23,16 @@
             </div>
           </div>
         <% end %>
+
+        <div class="flickr_pagination">
+           <div class="page_info">
+            <%= page_entries_info @flats %>
+            <br>
+            <br>
+          </div>
+          <%= will_paginate @flats, :container => false %>
+        </div>
+
       </div>
 
     <div id="map" data-markers="<%= @markers.to_json %>">

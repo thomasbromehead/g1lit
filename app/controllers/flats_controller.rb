@@ -1,9 +1,13 @@
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @flats = Flat.where.not(latitude: nil, longitude: nil)
+  def self.per_page
+    5
+  end
 
+  def index
+     @flats = Flat.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil)
+    # @flats = Flat.paginate(page: params[:page], per_page:5)
     @markers = @flats.map do |flat|
       {
         lat: flat.latitude,
