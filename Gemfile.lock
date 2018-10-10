@@ -757,6 +757,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    roda (3.12.0)
+      rack
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.1)
@@ -811,6 +813,9 @@ GEM
     uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     uniform_notifier (1.11.0)
+    uppy-s3_multipart (0.1.0)
+      aws-sdk-s3 (~> 1.0)
+      roda (>= 2.27, < 4)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -860,6 +865,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
+  uppy-s3_multipart
   web-console (>= 3.3.0)
   webpacker
   will_paginate (~> 3.1.0)

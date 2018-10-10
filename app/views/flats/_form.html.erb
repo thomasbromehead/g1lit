@@ -1,16 +1,15 @@
-<div class="container">
-  <%= simple_form_for flat do |f| %>
-    <%= f.input :title %>
-    <%= f.input :category%>
-    <%= f.input :description, as: :text %>
-
-    <%= f.input :nb_of_bathrooms, label: "Nombre de salles de bain", input_html: {class: 'form-control btn-lg'}, collection:1..5 %>
-    <%= f.file_field :photo, class:"form-control" %>
-    <%= f.file_field :photos, multiple: true, class:"form-control", direct_upload: true %>
-    <%= f.button :submit, value: "Je crée mon logement" %>
-
-  <% end %>
-</div>
-<div class="container">
-  <div class="DashboardContainer"></div>
+<div id="new_flat_form_container">
+    <div id="new_flat_form">
+      <%= simple_form_for flat do |f| %>
+        <%= f.input :title, label: "Titre", hint:"Quelques mots pour décrire votre logement" %>
+        <%= f.input :category, label: "Catégorie", collection: ["maison", "appartement", "terrain", "caravane", "camping-car"]%>
+        <%= f.input :description, as: :text %>
+        <%= f.input :nb_of_bathrooms, label: "Nombre de salles de bain", input_html: {class: 'form-control btn-lg col-sm-6'}, collection:1..5 %>
+        <%= f.input :photos, as: :file, multiple: true,direct_upload: true %>
+        <%= f.input :price_per_night, label: "Prix par nuit, en DU", hint:"A exprimer en DU pour nous habituer à compter ainsi"%>
+        <div class="row">
+        <%= f.button :submit, value: "Je crée mon logement", class:"btn btn-success col-sm-6 col-sm-offset-3" %>
+        </div>
+      <% end %>
+    </div>
 </div>

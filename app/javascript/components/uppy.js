@@ -1,13 +1,12 @@
+import Uppy from '@uppy/core';
+import Dashboard from '@uppy/dashboard';
+import GoogleDrive from '@uppy/google-drive';
+import Dropbox from '@uppy/dropbox';
+import Tus from '@uppy/tus';
 
-import '../src/uppy.css'
 
-const Uppy = require('@uppy/core')
-const Dashboard = require('@uppy/dashboard')
-const GoogleDrive = require('@uppy/google-drive')
-const Dropbox = require('@uppy/dropbox')
-const Tus = require('@uppy/tus')
 
-const container = document.querySelector('DashboardContainer')
+const container = document.querySelector('.dashboard-container')
 
 const uploader = () => {
  if(container){
@@ -24,21 +23,24 @@ const uploader = () => {
     .use(Dashboard, {
       trigger: '.UppyModalOpenerBtn',
       inline: true,
-      target: '.DashboardContainer',
+      target: container,
       replaceTargetContent: true,
       showProgressDetails: true,
-      note: 'Images and video only, 2–3 files, up to 1 MB',
+      note: "Pas de limites de taille, c'est pas beau ça?",
+      showLinkToFileUploadResult: true,
       height: 470,
       metaFields: [
-        { id: 'name', name: 'Name', placeholder: 'file name' },
-        { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
+        { id: 'name', name: 'Nom', placeholder: 'file name' },
+        { id: 'caption', name: 'Description', placeholder: 'Ceci est une image de ?' }
       ],
-      browserBackButtonClose: true
+      browserBackButtonClose: true,
+      locale: {
+        browse: "Choisir",
+        edit: "modifier"
+      }
     })
     .use(GoogleDrive, { target: Dashboard, serverUrl: 'https://companion.uppy.io' })
     .use(Dropbox, { target: Dashboard, serverUrl: 'https://companion.uppy.io' })
-    .use(Instagram, { target: Dashboard, serverUrl: 'https://companion.uppy.io' })
-    .use(Webcam, { target: Dashboard })
     .use(Tus, { endpoint: 'https://master.tus.io/files/' })
 
     uppy.on('complete', result => {

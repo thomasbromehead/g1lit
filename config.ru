@@ -2,4 +2,8 @@
 
 require_relative 'config/environment'
 
+map "/s3" do
+  run UPPY_S3_MULTIPART_APP
+end
+
 run Rails.application
