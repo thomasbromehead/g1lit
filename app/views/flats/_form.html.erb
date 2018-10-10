@@ -1,6 +1,6 @@
 <div id="new_flat_form_container">
     <div id="new_flat_form">
-        <%= form_with(model:@flat, local: true) do |f| %>
+        <%= form_with(model:@flat, local:true) do |f| %>
           <% if @flat.errors.any? %>
             <div id="error-explanation">
               <ul>
@@ -24,16 +24,13 @@
             <%= f.text_field :description, class:"form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :photos %>
-            <%= f.file_field :photos, multiple: true, class:"form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :photo%>
-            <%= f.file_field :photo, class:"dashboard-container" %>
-          </div>
+            <%= f.label :image %>
+            <%= f.hidden_field :image, class:"hidden-upload", value: @flat.cached_image_data%>
+            <%= f.file_field :image, class:"form-control upload-file" %>
           <div class="form-group">
             <%= f.submit class: "btn btn-primary" %>
           </div>
+
         <% end %>
       </div>
     </div>

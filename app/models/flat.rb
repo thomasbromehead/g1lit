@@ -38,6 +38,8 @@ class Flat < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   
+  include ImageUploader::Attachment.new(:image)
+
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :flat_reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
@@ -46,8 +48,8 @@ class Flat < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
-  has_many_attached :photos
-  has_one_attached :photo
+  # has_many_attached :photos
+  # has_one_attached :photo
 
   scope :available, -> {where(booked:false)}
   scope :booked, -> {where(booked:true)}

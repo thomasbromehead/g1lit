@@ -19,7 +19,8 @@ gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
 gem 'faker', '~> 1.6', '>= 1.6.6'
-gem "aws-sdk-s3", require: false
+gem "shrine", "~> 2.11"
+gem "aws-sdk-s3", "~> 1.2", require: false
 gem 'geocoder'
 gem 'will_paginate', '~> 3.1.0'
 gem "uppy-s3_multipart"
