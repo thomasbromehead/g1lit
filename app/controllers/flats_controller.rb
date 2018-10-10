@@ -31,10 +31,10 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @user_id = current_user.id
+    @user = current_user.id
     @flat = Flat.new(flat_params)
-    @flat.user_id = @user_id
-
+    @flat.user_id = @user
+    
     if @flat.save
       redirect_to flat_path(@flat), notice: 'flat was successfully created.'
     else
@@ -62,6 +62,6 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:title, :category, :description, :price_per_night, :nb_of_bathrooms, photos:[])
+    params.require(:flat).permit(:title, :category, :description, :price_per_night, :nb_of_bathrooms, :photo, photos:[])
   end
 end

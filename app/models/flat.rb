@@ -47,9 +47,12 @@ class Flat < ApplicationRecord
   validates :category, presence: true
 
   has_many_attached :photos
+  has_one_attached :photo
 
   scope :available, -> {where(booked:false)}
   scope :booked, -> {where(booked:true)}
+
+
 
   def address
     [street, zip_code, city, country].compact.join(", ")
