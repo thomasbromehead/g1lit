@@ -78,7 +78,8 @@ Rails.application.routes.draw do
     require 'ostruct'
     presign_endpoint = Shrine.presign_endpoint(:cache, lambda do |id, _opts, req|
       OpenStruct.new(url: "#{req.base_url}/attachments", key: "cache/#{id}")
-    end)
+    end
+    )
     mount presign_endpoint => '/presign'
     mount AttachmentUploader.upload_endpoint(:cache) => '/attachments'
   else
