@@ -38,6 +38,8 @@ class Flat < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   
+  include ImageUploader::Attachment.new(:image)
+
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :flat_reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
@@ -46,10 +48,13 @@ class Flat < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
-  has_many_attached :photos
+  # has_many_attached :photos
+  # has_one_attached :photo
 
   scope :available, -> {where(booked:false)}
   scope :booked, -> {where(booked:true)}
+
+
 
   def address
     [street, zip_code, city, country].compact.join(", ")
@@ -57,6 +62,19 @@ class Flat < ApplicationRecord
 
   def address_changed?
     street_changed? || city_changed? || zip_code_changed? || country_changed?
+  end
+
+  def file_remote_url=(url)
+    return if url.blank?
+    @file_remote_url = url
+    file_attacher(cache: :cache_url)
+    self.file = JSON.dump(
+      id: url,
+      storage: :cache_url,
+      metadata: { filename: File.basename(URI(url).path) }
+    )
+  rescue URI::InvalidURIError, Down::Error
+    file_attacher.errors << "invalid URL"
   end
 
 end

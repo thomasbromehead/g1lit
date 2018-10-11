@@ -74,7 +74,24 @@ Rails.application.routes.draw do
     resources :flats, only: [:index]
   end
 
+  if Rails.env.development? || Rails.env.test?
+    require 'ostruct'
+    presign_endpoint = Shrine.presign_endpoint(:cache, lambda do |id, _opts, req|
+      OpenStruct.new(url: "#{req.base_url}/attachments", key: "cache/#{id}")
+    end)
+    mount presign_endpoint => '/presign'
+    mount AttachmentUploader.upload_endpoint(:cache) => '/attachments'
+  else
+    mount Shrine.presign_endpoint(:cache) => '/presign'
+  end
 
+  require "sidekiq/web"
+    authenticate :user, lambda { |u| u.admin } do
+      mount Sidekiq::Web => '/sidekiq'
+  end
 
+  
+    # ...
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+

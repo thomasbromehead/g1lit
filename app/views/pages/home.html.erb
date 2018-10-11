@@ -2,14 +2,14 @@
 
   <div id="banner-content">
 
-    <%= image_tag("Logo/logo2", size:"270x150", id:"home-logo")%>
+    <%= image_tag("Logo/logo2", size:"230x190", id:"home-logo")%>
 
 
     <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
     <form action="/flats" id="home-form">
       <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
-      <input type="text" class="home-inputs" id="start" placeholder="Vos dates de séjour" name="start-date">
-      <input type="text" class="home-inputs" id="end" placeholder="Vos dates de séjour" name="end-date">
+      <input type="text" class="home-inputs dates" id="start" placeholder="Arrivée" name="start-date">
+      <input type="text" class="home-inputs dates" id="end" placeholder="Départ" name="end-date">
       <input type="submit", value="Chercher!", class="home-inputs slideUp" id="home-search-btn">
     </form>
 
@@ -17,31 +17,27 @@
 
 </div>
 
-<div class="container-fluid libre" style="background-image:url('<%= image_path 'Patterns/pattern4.svg'%>')">
-  <div class="container">
-    <h2>Se loger en monnaie libre</h2>
+<div id="libre">
+    <h2 id="loger" class="home-h2s">Se loger en monnaie libre, ça veut dire quoi? 🧐</h2>
+</div>
+
+<div id="explication">
+  <div id="un">
+    <div class="left">
+    </div>
+    <div class="right">
+    </div>
   </div>
-  <div id="card-container">
-    <div class="card">
-      <div class="card-header">
-        <card-body>
-         Some Data
-        </card-body>
-      </div>
+  <div id="deux">
+    <div class="left">
     </div>
-    <div class="card" id="middle">
-      <div class="card-header">
-        <card-body>
-        Some Other Data
-        </card-body>
-      </div>
+    <div class="right">
     </div>
-    <div class="card">
-      <div class="card-header">
-        <card-body>
-        More data still
-        </card-body>
-      </div>
+  </div>
+  <div id="trois">
+    <div class="left">
+    </div>
+    <div class="right">
     </div>
   </div>
 </div>

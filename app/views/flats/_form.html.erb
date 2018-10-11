@@ -1,16 +1,38 @@
-<div class="container">
-  <%= simple_form_for flat do |f| %>
-    <%= f.input :title %>
-    <%= f.input :category%>
-    <%= f.input :description, as: :text %>
+<div id="new_flat_form_container">
+    <div id="new_flat_form">
+        <%= form_with(model:@flat, local:true) do |f| %>
+          <% if @flat.errors.any? %>
+            <div id="error-explanation">
+              <ul>
+               <% @flat.errors.each do |key, value| %>
+                <li id="<%=key%>"><%= key %> <%= value %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-    <%= f.input :nb_of_bathrooms, label: "Nombre de salles de bain", input_html: {class: 'form-control btn-lg'}, collection:1..5 %>
-    <%= f.file_field :photo, class:"form-control" %>
-    <%= f.file_field :photos, multiple: true, class:"form-control", direct_upload: true %>
-    <%= f.button :submit, value: "Je crée mon logement" %>
+          <div class="form-group">
+            <%= f.label :titre %>
+            <%= f.text_field :title, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :catégorie %>
+            <%= f.select :category, ["maison","appartement","terrain","caravane","camping-car"], class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_field :description, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image, class:"form-control upload-file" %>
+          <div class="form-group">
+            <%= f.submit class: "btn btn-primary" %>
+          </div>
 
-  <% end %>
+        <% end %>
+      </div>
+    </div>
 </div>
-<div class="container">
-  <div class="DashboardContainer"></div>
-</div>
+
+

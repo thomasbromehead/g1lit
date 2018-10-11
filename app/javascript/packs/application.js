@@ -1,5 +1,4 @@
 import "bootstrap";
-
 import "components/aguilar";
 
 
@@ -7,12 +6,17 @@ import "components/aguilar";
 import initUpdateNavbarOnScroll from '../components/navbar';
 initUpdateNavbarOnScroll();
 
-import Uploader from '../components/uppy';
-Uploader();
+// import {Uploader} from '../components/uppy';
+// Uploader();
+
+import uploader from "../components/uppy";
+uploader();
 
 
 import { hello } from "../components/hello";
 hello();
+
+
 
 import { pickadate } from '../components/pickadate';
 pickadate();
