@@ -16,8 +16,10 @@ uploader();
 import { hello } from "../components/hello";
 hello();
 
-// import { pickadate } from '../components/pickadate';
-// pickadate();
+
+
+import { pickadate } from '../components/pickadate';
+pickadate();
 
 
 

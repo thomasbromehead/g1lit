@@ -64,5 +64,18 @@ class Flat < ApplicationRecord
     street_changed? || city_changed? || zip_code_changed? || country_changed?
   end
 
+  def file_remote_url=(url)
+    return if url.blank?
+    @file_remote_url = url
+    file_attacher(cache: :cache_url)
+    self.file = JSON.dump(
+      id: url,
+      storage: :cache_url,
+      metadata: { filename: File.basename(URI(url).path) }
+    )
+  rescue URI::InvalidURIError, Down::Error
+    file_attacher.errors << "invalid URL"
+  end
+
 end
   

@@ -658,6 +658,7 @@ GEM
     byebug (10.0.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     devise (4.5.0)
       bcrypt (~> 3.0)
@@ -666,6 +667,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.5.0)
     dotenv-rails (2.5.0)
       dotenv (= 2.5.0)
@@ -683,6 +686,15 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hodel_3000_compliant_logger (0.1.1)
+    http (3.3.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.1.1)
+    http_parser.rb (0.6.0)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -726,6 +738,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
+    rack-protection (2.0.4)
+      rack
     rack-proxy (0.6.4)
       rack
     rack-test (1.1.0)
@@ -797,6 +811,18 @@ GEM
       sass (>= 3.3.0)
     shrine (2.12.0)
       down (~> 4.1)
+    shrine-memory (0.3.0)
+      shrine (~> 2.2)
+    shrine-url (2.1.0)
+      down (~> 4.4)
+      http (~> 3.2)
+      shrine (>= 2.0)
+    sidekiq (5.2.2)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -819,6 +845,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     uniform_notifier (1.11.0)
     uppy-s3_multipart (0.1.0)
       aws-sdk-s3 (~> 1.0)
@@ -869,6 +898,10 @@ DEPENDENCIES
   rspec-rails (~> 3.8)
   sass-rails
   shrine (~> 2.11)
+  shrine-memory
+  shrine-url
+  sidekiq
+  sidekiq-failures (~> 1.0)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

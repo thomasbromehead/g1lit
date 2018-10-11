@@ -27,6 +27,7 @@
   }
 }
 
+
 #new_flat_form{
   background-color:white;
   padding: 1em 2em;
@@ -39,3 +40,16 @@
   flex-direction: column;
   height:fit-content;
 }
+
+input.form-control::placeholder{
+    font-size:0.8em;
+    color:black;
+    opacity: 0.8;
+    letter-spacing: 0.1em;
+}
+
+input.form-control{
+    border-radius:10px;
+}
+
+

@@ -1,13 +1,15 @@
 #card-container{
   display:flex;
   justify-content: center;
+  margin-top: 100px;
 }
 
 .card{
-  height:200px;
+  height:300px;
   background: white;
   width:30%;
   border:1px solid black;
+  border-radius: 3px;
 }
 
 #middle{
