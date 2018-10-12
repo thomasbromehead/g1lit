@@ -1,12 +1,16 @@
 <div class="container">
-  <%= simple_form_for flat do |f| %>
-    <%= f.input :title %>
-    <%= f.input :category%>
-    <%= f.input :description, as: :text %>
 
-    <%= f.input :nb_of_bathrooms, label: "Nombre de salles de bain", input_html: {class: 'form-control btn-lg'}, collection:1..5 %>
+  <%= form_with(model: flat, local: true) do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_field :category%>
+    <%= f.text_field :description, as: :text %>
+
+    <%= f.select :nb_of_bathrooms, {class: 'form-control btn-lg'}%>
+    <!-- Active Storage Way
     <%= f.file_field :photo, class:"form-control" %>
     <%= f.file_field :photos, multiple: true, class:"form-control", direct_upload: true %>
+    -->
+    <%= f.file_field :image, label: "Vos photos" %>
     <%= f.button :submit, value: "Je crée mon logement" %>
 
   <% end %>
