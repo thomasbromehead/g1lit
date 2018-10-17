@@ -10,6 +10,9 @@ Rails.application.configure do
     end  # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.
+  # Make javascript_pack_tag load assets from webpack-dev-server.
+  config.x.webpacker[:dev_server_host] = 'http://localhost:8080'
+
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -19,8 +22,13 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'localhost',
+    port:                 1025,
+    domain:               'localhost'
+  }
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -40,7 +48,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :cloudinary
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

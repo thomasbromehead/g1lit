@@ -18,6 +18,10 @@
   margin-right:0.3em;
 }
 
+.dates{
+  width:15%;
+}
+
 #home-city-search{
   flex: 1 1 50%;
 }
@@ -58,11 +62,14 @@
 #home-h1{
   color:white;
   font-size:2em;
-  margin:0;
-  text-align:center;
 }
 
-
+.home-h2s{
+  text-align:center;
+  color:white;
+  height:10%;
+  margin: 50px auto;
+}
 #g1{
   -webkit-text-stroke: 1px black;
   color: white;
@@ -75,10 +82,62 @@
   font-size:2em;
 }
 
-.libre{
+#libre{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
   height:400px;
-  text-align:center;
-  background-position:fixed;
+  background: linear-gradient(270deg, #8bd2c0, #1b7fa2, #1337b8, #462f95, #6e2ea5, #824d9c, #c261cf);
+  background-size: 1400% 1400%;
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  -o-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+  
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @-o-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @keyframes AnimationName { 
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+}
+
+#explication{
+  height:fit-content;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color:white;
+  background-image:
+  radial-gradient(rgb(194, 194, 230) 9px, transparent 10px),        
+  repeating-radial-gradient(rgb(194, 194, 230) 0, rgb(194, 194, 230) 4px, transparent 5px, transparent 20px, rgb(194, 194, 230) 21px, rgb(194, 194, 230) 25px, transparent 26px, transparent 50px);    
+  background-size: 30px 30px, 90px 90px; 
+  background-position: 0 0;
+
+}
+
+#un, #deux, #trois{
+  width:60%;
+  height:400px;
+  margin: 20px auto;
+  border: 2px solid grey;
+  background-color: white;
+  border-radius:5px;
 }
 
 @media screen and (max-width:700px){
@@ -110,4 +169,6 @@
   }
 
 }
+
+
 

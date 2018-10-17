@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require "attachinary/orm/active_record" # active_record or mongoid
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,6 +18,15 @@ module Log1
     config.load_defaults 5.2
 
     config.autoload_paths << "#{Rails.root}/app/uploaders"
+
+    #Don't generate helpers when creating controllers
+    config.generators.helper = false
+
+    #Set up email service in development mode
+
+    config.action_mailer.default_url_options = {
+      host: 'http://g1lit.fr'
+    }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

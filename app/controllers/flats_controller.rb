@@ -38,9 +38,9 @@ class FlatsController < ApplicationController
     @user_id = current_user.id
     @flat = Flat.new(flat_params)
     @flat.user_id = @user_id
-
+    
     if @flat.save
-      redirect_to flat_path(@flat), notice: 'flat was successfully created.'
+      redirect_to flat_path(@flat), notice: 'Votre logement a bien été crée, bravo! 👏'
     else
       render :new
     end
@@ -48,7 +48,7 @@ class FlatsController < ApplicationController
 
   def update
     if @flat.update(flat_params)
-      redirect_to @flat, notice: 'flat was successfully updated.'
+      redirect_to @flat, notice: 'Votre logement a bien été modifié. ✌🏼'
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat.destroy
-    redirect_to flats_url, notice: 'flat was successfully destroyed.'
+    redirect_to flats_url, notice: 'Votre logement a bien été supprimé 😞.'
   end
 
   private
@@ -66,6 +66,6 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:title, :category, :description, :price_per_night,:photo, :nb_of_bathrooms, photos:[])
+    params.require(:flat).permit(:title, :category, :description, :price_per_night, :nb_of_bathrooms, :nb_rooms, photos: [])
   end
 end

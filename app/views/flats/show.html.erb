@@ -1,12 +1,11 @@
-<h2>Flat Show</h2>
-<%= @flat.title %> <br>
-<%= @flat.description %> <br>
-<% if @flat.photo.attached? %>
- <%= image_tag(@flat.photo.variant(resize: "300x300")) %>
-<% end %>
-<% if @flat.photos.attached? %>
-  <% @flat.photos.each do |photo| %>
-    <%= image_tag photo.variant(resize:"400x400") %>
+<div class="container">
+  <h1><%= @flat.title %></h1>
+  <%= @flat.title%> <br>
+  <%= @flat.description%> <br>
+  <%= @flat.nb_rooms %>
+  <%= @flat.price_per_night %>
+  <%= @flat.photos %>
+  <%  @flat.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, height: 500, width:400,crop: :fit %>
   <% end %>
-<% end %>
-
+</div>
