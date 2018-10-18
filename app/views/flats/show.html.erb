@@ -1,11 +1,7 @@
 <div class="container">
   <h1><%= @flat.title %></h1>
-  <%= @flat.title%> <br>
-  <%= @flat.description%> <br>
-  <%= @flat.nb_rooms %>
-  <%= @flat.price_per_night %>
-  <%= @flat.photos %>
-  <%  @flat.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, height: 500, width:400,crop: :fit %>
-  <% end %>
-</div>
+<% @flat_pics.each do |photo| %>
+  <%= cl_image_tag photo.lstrip, width:200, height:200, crop: :fit %>
+<% end %>
+
+

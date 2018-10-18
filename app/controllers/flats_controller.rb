@@ -25,6 +25,7 @@ class FlatsController < ApplicationController
   end
 
   def show
+     @flat_pics = @flat.image_data.split(',')
   end
 
   def new
