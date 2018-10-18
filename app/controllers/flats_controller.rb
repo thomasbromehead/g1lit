@@ -21,9 +21,9 @@ class FlatsController < ApplicationController
   end
 
   def show
-     @flat_pics = @flat.image_data.split(',')
-    @flat = Flat.find(params[:id])
+    @flat_pics = @flat.image_data.split(',')
     @user = current_user
+
   end
 
   def new
@@ -39,9 +39,6 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user_id = @user_id
     
-    if @flat.save
-      redirect_to flat_path(@flat), notice: 'Votre logement a bien été crée, bravo! 👏'
-    @flat.user_id = @user
 
     if @flat.save
       redirect_to flat_path(@flat), notice: 'Votre logement a été ajouté. Bravo! 👏'
@@ -73,3 +70,4 @@ class FlatsController < ApplicationController
     params.require(:flat).permit(:title, :category, :description, :price_per_night, :nb_of_bathrooms, :nb_rooms, photos: [])
   end
 end
+
