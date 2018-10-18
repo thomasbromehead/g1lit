@@ -16,6 +16,8 @@ initUpdateNavbarOnScroll();
 // import { hello } from "../components/hello";
 // hello();
 
+
+
 import { pickadate } from '../components/pickadate';
 pickadate();
 

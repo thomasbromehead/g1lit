@@ -1,6 +1,7 @@
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
+@import "config/simple_form";
 @import "keyframes/aguilar";
 @import "config/bootstrap_variables";
 
@@ -18,6 +19,11 @@
 
 body{
   background-color:#FFF;
+  position: relative;
+}
+
+h1, h2, h3, h4{
+  margin:0;
 }
 
 

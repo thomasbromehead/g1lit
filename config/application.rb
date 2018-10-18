@@ -17,16 +17,17 @@ module Log1
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    config.autoload_paths << "#{Rails.root}/app/uploaders"
-
     #Don't generate helpers when creating controllers
     config.generators.helper = false
 
-    #Set up email service in development mode
-
+    #Set up email service for development mode
     config.action_mailer.default_url_options = {
       host: 'http://g1lit.fr'
     }
+    #Provide queue adapter for background jobs with sidekiq
+    config.active_job.queue_adapter = :sidekiq
+
+    config.autoload_paths << "#{Rails.root}/app/uploaders"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

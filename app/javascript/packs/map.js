@@ -2,19 +2,22 @@ var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 const mapContainer = document.getElementById('map');
 
+
+window.mapContainer = mapContainer ;
+
 if(mapContainer){
-  window.mapContainer = mapContainer ;
-  
   mapContainer.addEventListener('hover', function(){
     console.log(this.map.getZoom());
     console.log('hovering');
   })
-  
-  // const georesults = results.forEach(result => {
-  //   console.log(Object.value(result.lat))
-  // })
-  
-  // Recursively build a geojson object from our results array
+
+
+// const georesults = results.forEach(result => {
+//   console.log(Object.value(result.lat))
+// })
+
+// Recursively build a geojson object from our results array
+
   const feat = []
   if(mapContainer){
     const results = JSON.parse(mapContainer.dataset.markers);
@@ -40,23 +43,22 @@ if(mapContainer){
         })
     })
   }
-  
+
   const flats = Object.assign({type:"FeatureCollection",
   features:feat})
   mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
-  
-  
+
+
   const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
   center: [2.3488, 48.8534],
   zoom:4.5
-  
   });
-  
+
   window.map = map;
-  
-  
+
+
   map.on('load', function(e){
     map.addSource("places",{
         type:'geojson',
@@ -72,19 +74,20 @@ if(mapContainer){
       },
     });
   });
-  
+
   function flyToStore(currentFeature) {
     map.flyTo({
       center: currentFeature.geometry.coordinates,
       zoom: 15
     });
   }
-  
+
   function createPopUp(currentFeature) {
     var popUps = document.getElementsByClassName('mapboxgl-popup');
     // Check if there is already a popup on the map and if so, remove it
     if (popUps[0]) popUps[0].remove();
-  
+
+
     var popup = new mapboxgl.Popup({ closeOnClick: false })
       .setLngLat(currentFeature.geometry.coordinates)
       .setHTML(`<h3>${currentFeature.properties.city}</h3><br/>
@@ -92,20 +95,18 @@ if(mapContainer){
         <h4>${currentFeature.properties.price_per_night}</h4>`)
       .addTo(map);
   }
-  
+
+
   const flatCard = document.querySelectorAll('.flat-card');
-  
-  
+
+
     // console.log(element[i].properties.category);  
     // const backgroundImage = el.style.backgroundImage;
     // switch(backgroundImage){
     //   case 
     // }
     // Add markers to the map at all points
-  
-  
-  
-  
+
   for(flat of flatCard){
     flat.addEventListener('click', function(e){
       const clickedId = this.id;
@@ -122,7 +123,7 @@ if(mapContainer){
       this.classList.add('active');
     })
   }
-  
+
   flats.features.forEach(function(marker, i) {
     // Create an img element for the marker
     const el = document.createElement('div');
@@ -150,8 +151,6 @@ if(mapContainer){
       case "camping-car":
       el.style.backgroundImage = "url('/assets/markers/marker-camper.png')";
       break;
-  
-  
     }
     new mapboxgl.Marker(el, {offset: [0, -23]})
         .setLngLat(marker.geometry.coordinates)
@@ -173,15 +172,15 @@ if(mapContainer){
       listing.classList.add('active');
     });   
   });
-  
+
   map.on('zoom', () => {
     const markers = document.querySelectorAll('.marker');
     console.log(map.getZoom());
     markers.forEach( marker => {
-       console.log(marker.style)
-       if(map.getZoom() > 5 && map.getZoom() < 8  ){
-         marker.style.height = "100px";
-         marker.style.width= "100px";
+      console.log(marker.style)
+      if(map.getZoom() > 5 && map.getZoom() < 8  ){
+        marker.style.height = "100px";
+        marker.style.width= "100px";
         } else if(map.getZoom() > 8) {
           marker.style.height = "150px";
           marker.style.width= "150px";
@@ -191,22 +190,19 @@ if(mapContainer){
         }
       });
   });
-  
-  
-  
+
   map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     placeholder: "Chercher un lieu",
     zoom:10,
   }));
-  
+
   // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-  
+
   map.addControl(new mapboxgl.NavigationControl());
   map.addControl(new mapboxgl.FullscreenControl());
 
-}  
-
+}
 
 // const results = [{
 //   address: "3 avenue longue",

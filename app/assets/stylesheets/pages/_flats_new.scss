@@ -1,0 +1,55 @@
+
+#new_flat_form_container{
+  display:flex;
+  justify-content: center;
+  height:90vh;
+  background: linear-gradient(238deg, #17e3af, #2e6f5f, #223732);
+  background-size: 600% 600%;
+  
+  -webkit-animation: AnimationName 8s ease infinite;
+  -moz-animation: AnimationName 8s ease infinite;
+  animation: AnimationName 8s ease infinite;
+  
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 18%}
+      50%{background-position:100% 83%}
+      100%{background-position:0% 18%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 18%}
+      50%{background-position:100% 83%}
+      100%{background-position:0% 18%}
+  }
+  @keyframes AnimationName { 
+      0%{background-position:0% 18%}
+      50%{background-position:100% 83%}
+      100%{background-position:0% 18%}
+  }
+}
+
+
+#new_flat_form{
+  background-color:white;
+  padding: 1em 2em;
+  margin-top: 2em;
+  margin-bottom:200px;
+  border: 1px solid rgba(150,150,150,0.2);
+  border-radius:5px;
+  width:60%;
+  display:flex;
+  flex-direction: column;
+  height:fit-content;
+}
+
+input.form-control::placeholder{
+    font-size:0.8em;
+    color:black;
+    opacity: 0.8;
+    letter-spacing: 0.1em;
+}
+
+input.form-control{
+    border-radius:10px;
+}
+
+

@@ -20,7 +20,9 @@ gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
 gem 'faker', '~> 1.6', '>= 1.6.6'
-gem "aws-sdk-s3", require: false
+gem "shrine", "~> 2.11"
+gem 'shrine-url'
+gem "aws-sdk-s3", "~> 1.2", require: false
 gem 'geocoder'
 gem 'will_paginate', '~> 3.1.0'
 gem 'cloudinary'
@@ -30,12 +32,15 @@ gem "coffee-rails"
 
 
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'annotate'
   gem 'bullet'
   gem 'oink'
+end
+
+group :test do 
+  gem 'shrine-memory'
 end
 
 group :development, :test do

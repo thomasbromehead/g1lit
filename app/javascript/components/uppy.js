@@ -1,3 +1,8 @@
+import Uppy from '@uppy/core';
+import Dashboard from '@uppy/dashboard';
+import GoogleDrive from '@uppy/google-drive';
+import Dropbox from '@uppy/dropbox';
+import Tus from '@uppy/tus';
 
 // import '../src/uppy.css'
 // import Uppy from 'uppy/core'
