@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @flat.title %></h1>
 <% @flat_pics.each do |photo| %>
-  <%= cl_image_tag photo.lstrip, width:200, height:200, crop: :fit %>
+  <%= cl_image_tag photo.strip, width:300, height:300, crop: :fit %>
 <% end %>
 
 

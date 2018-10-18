@@ -27,8 +27,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
          
   has_many :flats, dependent: :destroy
   has_many :user_reviews, dependent: :destroy
@@ -38,13 +36,6 @@ class User < ApplicationRecord
   has_many :owner_bookings, through: :flats, source: :bookings, dependent: :destroy
   has_attachment :avatar, accept: [:jpg, :png, :jpeg]
 
-
-  private
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up,        keys: [:avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
-  end
   # Because we have a "paid" scope on payments, we can retrieve User's paid booking through a merge:User.joins(:bookings).merge(Payment.paid)
          
 end

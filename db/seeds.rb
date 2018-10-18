@@ -51,7 +51,7 @@ flats = [
   {title: "Appartement de caractère dans monument historique",
   description: "Joli appartement dans un village Mayennais de charme avec canapé-lit et possibilité d'avoir ma chambresi je ne suis pas présente.",
   category:"appartement",
-  price_per_night:"7",
+  price_per_night:"7",x
   street:"31 rue du Pavé",
   city:"Craon",
   country:"France",
@@ -68,10 +68,7 @@ flats = [
   country:"France",
   zip_code:"42500",
   user_id: 3,
-  image_data: ["https://res.cloudinary.com/dsmlpg8oe/image/upload/v1539421635/francesca.jpg", "https://res.cloudinary.com/dsmlpg8oe/image/upload/v1539421635/garden.jpg","https://res.cloudinary.com/dsmlpg8oe/image/upload/v1539421630/bedroom2.jpg", 
-  "https://res.cloudinary.com/dsmlpg8oe/image/upload/v1539421630/bedroom4.jpg
-  ", 
-  "https://res.cloudinary.com/dsmlpg8oe/image/upload/v1539421627/bedroom6.jpg"]
+  image_data: "francesca.jpg, garden.jpg, bedroom2.jpg,bedroom4.jpg, bedroom6.jpg"
   },
   {title:"Camping-Car sur mon terrain dans le Morbihan",
   description:"Camping-car Peugeot de 2000, m'en sers de temps en temps et est donc en bon état",
