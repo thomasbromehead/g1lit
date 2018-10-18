@@ -15,6 +15,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'foreman'
 gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
@@ -24,11 +25,10 @@ gem 'shrine-url'
 gem "aws-sdk-s3", "~> 1.2", require: false
 gem 'geocoder'
 gem 'will_paginate', '~> 3.1.0'
-gem "uppy-s3_multipart"
-gem 'sidekiq'
-gem 'sidekiq-failures', '~> 1.0'
-
-
+gem 'cloudinary'
+gem 'attachinary'
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 
 
@@ -44,7 +44,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry-byebug'
+  gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

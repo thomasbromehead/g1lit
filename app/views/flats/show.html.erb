@@ -1,8 +1,86 @@
-<h2>Flat Show</h2>
-<img src="<%= @flat.image_url %>" width=500>
-<%= @flat.title %> <br>
-<%= @flat.description %> <br>
-<%= @flat.image_data %>
+
+<div class="container">
+  <h1><%= @flat.title %></h1>
+</div>
+
+<div class="container-fluid text-center">
+<!--
+<% @flat_pics.each do |photo| %>
+  <%= cl_image_tag photo.strip, width:700, height:700, crop: :fit %>
+<% end %>
+-->
+ <%= cl_image_tag @flat_pics.first, width:900, height:900, crop: :fit %>
+ </div>
+
+
+  <div class="container">
+       <div class="caracteristics">
+        <div class="caracteristics__card">
+          <div class="caracteristics__header">
+            <p class="card__header">Prix/nuit, en DU</p>
+          </div>
+          <div class="card__body">
+            <p><%= @flat.price_per_night%></p>
+          </div>
+        </div>
+
+        <% if @flat.animals? %>
+          <div class="caracteristics__card">
+            <div class="caracteristics__header">
+              <p class="card__header">Animaux</p>
+            </div>
+            <div class="card__body">
+              <p>Oui</p>
+              <p class="dog">🐶</p>
+            </div>
+          </div>
+          <% else %>
+          <div class="caracteristic__header">
+          <p class="card__header">Animaux</p>
+          </div>
+          <div class="card__body">
+            <p>Désolé, pas d'animaux chez moi.</p>
+          </div>
+        <% end %>
+
+        <div class="caracteristics__card">
+          <div class="caracteristics__header">
+            <p class="card__header">Chambres</p>
+          </div>
+            <div class="card__body">
+              <p><%= @flat.nb_rooms %></p>
+            </div>
+        </div>
+
+        <div class="caracteristics__card">
+          <div class="caracteristics__header">
+          <p class="card__header">Salles de bain</p>
+          </div>
+          <div class="card__body text-center">
+            <p><%= @flat.nb_of_bathrooms %></p>
+          </div>
+        </div>
+
+        <div class="caracteristics__card">
+          <div class="caracteristics__header">
+          <p class="card__header">Lits</p>
+          </div>
+          <div class="card__body text-center">
+            <% unless @flat.nb_beds > 4 %>
+              <% @flat.nb_beds.times do %>
+                <span id="bed"> 🛌 </span>
+              <% end %>
+            <% else %>
+                <p><%= @flat.nb_beds %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="container-fluid g1bg">
+ 
+</div>
 
 
 

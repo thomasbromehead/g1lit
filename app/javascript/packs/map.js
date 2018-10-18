@@ -17,6 +17,7 @@ if(mapContainer){
 // })
 
 // Recursively build a geojson object from our results array
+
   const feat = []
   if(mapContainer){
     const results = JSON.parse(mapContainer.dataset.markers);
@@ -53,7 +54,6 @@ if(mapContainer){
   style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
   center: [2.3488, 48.8534],
   zoom:4.5
-
   });
 
   window.map = map;
@@ -87,6 +87,7 @@ if(mapContainer){
     // Check if there is already a popup on the map and if so, remove it
     if (popUps[0]) popUps[0].remove();
 
+
     var popup = new mapboxgl.Popup({ closeOnClick: false })
       .setLngLat(currentFeature.geometry.coordinates)
       .setHTML(`<h3>${currentFeature.properties.city}</h3><br/>
@@ -94,6 +95,7 @@ if(mapContainer){
         <h4>${currentFeature.properties.price_per_night}</h4>`)
       .addTo(map);
   }
+
 
   const flatCard = document.querySelectorAll('.flat-card');
 
@@ -104,9 +106,6 @@ if(mapContainer){
     //   case 
     // }
     // Add markers to the map at all points
-
-
-
 
   for(flat of flatCard){
     flat.addEventListener('click', function(e){
@@ -152,8 +151,6 @@ if(mapContainer){
       case "camping-car":
       el.style.backgroundImage = "url('/assets/markers/marker-camper.png')";
       break;
-
-
     }
     new mapboxgl.Marker(el, {offset: [0, -23]})
         .setLngLat(marker.geometry.coordinates)
@@ -193,8 +190,6 @@ if(mapContainer){
         }
       });
   });
-
-
 
   map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,

@@ -48,7 +48,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
+
   root to: 'pages#home'
+
 
   resources :flats do 
     resources :reviews, only: [:new, :create, :index]
@@ -59,6 +61,8 @@ Rails.application.routes.draw do
       get "hote", to: "flats#proprio"
     end
   end
+
+  mount Attachinary::Engine => "/attachinary"
 
 
   resources :reviews, only: [:destroy, :edit, :update]

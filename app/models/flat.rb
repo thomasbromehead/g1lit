@@ -12,6 +12,7 @@
 #  image_data      :text
 #  latitude        :float
 #  longitude       :float
+#  nb_beds         :integer
 #  nb_of_bathrooms :integer
 #  nb_of_bookings  :integer          default(0), not null
 #  nb_of_reviews   :integer          default(0), not null
@@ -37,6 +38,7 @@
 class Flat < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
   
   include ImageUploader::Attachment.new(:image)
 
@@ -48,9 +50,8 @@ class Flat < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
-  # has_many_attached :photos
-  # has_one_attached :photo
-
+  has_attachments :photos, maximum: 10, accept: [:jpg, :png, :jpeg, :gif]
+  
   scope :available, -> {where(booked:false)}
   scope :booked, -> {where(booked:true)}
 
