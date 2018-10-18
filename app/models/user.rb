@@ -9,6 +9,7 @@
 #  nb_of_messages         :integer          default(0), not null
 #  nb_of_reviews          :integer          default(0), not null
 #  pseudo_g1              :string
+#  pubkey                 :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container text-center flat-title">
   <h1><%= @flat.title %></h1>
 </div>
 
@@ -78,9 +78,46 @@
       </div>
 </div>
 
-<div class="container-fluid g1bg">
- 
+<div class="container-fluid g1bg text-center">
+<!-- start of left-portion-->
+  <div class="row">
+    <div class="col-xs-12 col-md-8 text-center">
+      <div class="flat-description">
+        <h2 class="flat-h2">Description</h2>
+        <p><%= @flat.description %></p>
+      </div>
+      <div class="flat-description">
+        <h2 class="flat-h2">Equipements</h2>
+        <ul class="list-inline">
+          <li>wifi</li>
+          <li>chauffage</li>
+          <li>petit-dej</li>
+          <li>table de ping-pong</li>
+        </ul>
+      </div>
+      <div class="flat-description">
+        <h2 class="flat-h2">Localisation</h2>
+        <p>Map here</p>
+      </div>
+      <div class="flat-description">
+        <h2 class="flat-h2">Commentaires</h2>
+        <p>Comments here</p>
+      </div>
+    </div>
+  <div class="col-xs-12 col-md-4"> 
+    <div class="datepickr">
+      <h3>Choisissez vos dates</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque tempore dolores assumenda fuga maxime qui impedit consequatur ipsam facere sit! Consequatur, sunt illo? Iusto blanditiis, accusamus nobis tenetur voluptates exercitationem.</p>
+    </div>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <a href="https://g1.duniter.fr/api/#/v1/payment/G2CBgZBPLe6FSFUgpx2Jf1Aqsgta6iib3vmDRA1yLiqU?name=http:%2F%2Flocalhost:3000&amount=1&comment=REFERENCE&redirect_url=http:%2F%2Flocalhost:3000%2Fflats%2F54%252F%23%252Fapp%252Fhome%3Fservice%3Dpayment%26cancel&demo=true" class="btn btn-success">
+    Payer avec mon compte Césium
+    </a>
+   </div>
+
 </div>
+
 
 
 
