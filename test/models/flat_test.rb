@@ -12,6 +12,7 @@
 #  image_data      :text
 #  latitude        :float
 #  longitude       :float
+#  nb_beds         :integer
 #  nb_of_bathrooms :integer
 #  nb_of_bookings  :integer          default(0), not null
 #  nb_of_reviews   :integer          default(0), not null
