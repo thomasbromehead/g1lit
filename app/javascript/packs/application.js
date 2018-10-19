@@ -25,6 +25,9 @@ initUpdateNavbarOnScroll();
 import { pickadate } from '../components/pickadate';
 pickadate();
 
+import drift from '../components/zoom';
+drift();
+
 
 import sweetAlertOnClick from "../components/sweetalert";
 // sweetAlertOnClick();

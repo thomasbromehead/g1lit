@@ -8,10 +8,14 @@
     <div class="carousel__panorama">
       <% @flat_pics.each_with_index do |photo, index| %>
         <div id="item<%= index+1 %>">
-          <%= cl_image_tag photo.strip, width:800, height:800, crop: :fill%>
+          <%= cl_image_tag photo.strip, width:800, height:800, crop: :fill, class:"zoomable"%>
         </div>
       <% end %>
     </div>
+</div>
+
+<div class="container-fluid">
+  <p id="zoomPane"></p>
 </div>
 
 
