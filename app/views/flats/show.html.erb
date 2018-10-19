@@ -4,13 +4,21 @@
 </div>
 
 <div class="container-fluid text-center">
-<!--
-<% @flat_pics.each do |photo| %>
-  <%= cl_image_tag photo.strip, width:700, height:700, crop: :fit %>
-<% end %>
--->
- <%= cl_image_tag @flat_pics.first, width:900, height:900, crop: :fit %>
- </div>
+
+    <div class="carousel__panorama">
+      <% @flat_pics.each_with_index do |photo, index| %>
+        <div id="item<%= index+1 %>">
+          <%= cl_image_tag photo.strip, width:800, height:800, crop: :fill, class:"zoomable"%>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+<div class="container-fluid">
+  <p id="zoomPane"></p>
+</div>
+
+
 
 
   <div class="container">

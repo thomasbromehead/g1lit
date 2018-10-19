@@ -159,3 +159,78 @@ p.card__header{
  padding: 1em;
  margin:20px 20px;
 }
+
+// Carousel styling
+
+.carousel{
+  position: relative;
+}
+
+.carousel__container{
+  transition: transform 0.3s;
+  transform: translate3d(0,0,0);
+  background: rgba(71, 92, 94, 0.49);
+}
+.carousel__container::after{
+  clear: both;
+  content: '';
+  display: table;
+
+}
+.carousel__item{
+  float: left;
+}
+
+.carousel__next, .carousel__prev{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #FFF url("assets/../Buttons/right.svg") center center no-repeat;
+  background-size:80px;
+  border-radius: 50%;
+  top: 50%;
+  right: -20px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.2);
+  }
+}
+
+.carousel__prev{
+  background-image: url("assets/../Buttons/left.svg");
+  // right: auto;
+  left: 0;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.carousel__pagination{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  // Little trick to center the div
+  transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 800px){
+  .carousel__pagination{
+    display: none;
+  }
+}
+
+.carousel__pagination__button{
+  background-color: #FFF;
+  border: 1px solid rebeccapurple;
+  border-radius: 50%;
+  width: 15px;
+  height:15px;
+  display: inline-block;
+  margin: 0 3px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.carousel__pagination__button--active, .carousel__pagination__button:hover {
+   transform: scale(1.4);
+}

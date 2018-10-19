@@ -2,16 +2,8 @@
 const searchButton = document.getElementById('home-search-btn');
 
 // Do this to protect the webpack compilation, otherwise it will look for a searchbutton and try to find its class attribute everywhere, sometimes breaking up the pipeline.
-function isHovered(elem){
-  elem.addEventListener("mouseover", () => {
-    console.log("hovering");
-    return true
-  })
-  console.log("not hovering");
-  return false
-}
 
-isHovered(searchButton);
+
 
   if(searchButton){
     const classes = searchButton.getAttribute('class');
@@ -30,5 +22,6 @@ isHovered(searchButton);
       }
     }
   }
+
 
 
