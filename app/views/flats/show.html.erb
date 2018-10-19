@@ -8,7 +8,7 @@
     <div class="carousel__panorama">
       <% @flat_pics.each_with_index do |photo, index| %>
         <div id="item<%= index+1 %>">
-          <%= cl_image_tag photo.strip, width:700, height:700, crop: :fill%>
+          <%= cl_image_tag photo.strip, width:800, height:800, crop: :fill%>
         </div>
       <% end %>
     </div>

@@ -167,6 +167,10 @@ p.card__header{
 }
 
 .carousel__container{
+  transition: transform 0.3s;
+  transform: translate3d(0,0,0);
+}
+.carousel__container::after{
   clear: both;
   content: '';
   display: table;

@@ -5,17 +5,21 @@ class Carousel{
      * @param {Object} options 
      * @param {Object} options.slidesToScroll Scroll pace, number of slides by which we want to scroll
      * @param {Object} options.visibleSlides Nb of slides that should be visible at once
+     * @param {boolean} options.loop Set to true if you want infinite loop
      */
+
   constructor (element, options = {}) {
       this.element = element;
       this.options = Object.assign({},{
         slidesToScroll: 1,
-        visibleSlides: 1
+        visibleSlides: 1,
+        loop: false
       }, options)
       //Convert Nodelist into array and exclude last item which is being appended by the function. We only want the children at runtime prior to function execution
       let children = [].slice.call(element.children);
       // Replaces : this.children = element.children;
       this.currentSlide = 0;
+      this.isMobile = false;
       this.root = this.createDivWithClass('carousel');
       this.container = this.createDivWithClass('carousel__container');
       this.root.appendChild(this.container);
@@ -28,6 +32,8 @@ class Carousel{
       })
       this.setStyle()
       this.createNavigation()
+      this.onWindowResize();
+      window.addEventListener('resize', this.onWindowResize.bind(this))
     }
     /**
      * 
@@ -44,9 +50,9 @@ class Carousel{
        * Applies correct dimensions to the carousel, carousel container and children
        */
     setStyle(){
-      let ratio = this.items.length / this.options.visibleSlides;
+      let ratio = this.items.length / this.visibleSlides;
       this.container.style.width = (ratio * 100) + "%";
-      this.items.forEach(item =>  item.style.width = (( 100 / this.options.visibleSlides)/ratio) + "%" )
+      this.items.forEach(item =>  item.style.width = (( 100 / this.visibleSlides)/ratio) + "%" )
       console.log(this.items)
     }
 
@@ -61,28 +67,62 @@ class Carousel{
     }
 
     next(){
-      this.gotoSlide(this.currentSlide + this.options.slidesToScroll)
+      this.gotoSlide(this.currentSlide + this.slidesToScroll)
       console.log(this.currentSlide);
     }
 
     prev(){
-      this.gotoSlide(this.currentSlide - this.options.slidesToScroll)
+      this.gotoSlide(this.currentSlide - this.slidesToScroll)
+      // Current Slide can be negative
+      console.log(this.currentSlide);
     }
 
     gotoSlide(index){
       // Determine the % by which to scroll on the X axis with a 3D translate, negative value to go right.
       const translationX = index * -100/this.items.length
+      // Go back to last slide if clicking on previous from the first
+    if (index < 0 ){
+      index = this.items.length - this.options.visibleSlides;
+    } else if ( index >= this.items.length || this.items[this.currentSlide + this.visibleSlides] === "undefined"){
+      index = -1
+    }
       this.container.style.transform = `translate3d(${translationX}%,0,0)`
       this.currentSlide = index;
     }
+
+    /**
+     * @returns {number}
+     */
+
+    get slidesToScroll(){
+      return this.isMobile ? 1 : this.options.slidesToScroll
+    }
+
+    /** 
+     * @returns {number}
+     */
+    get visibleSlides(){
+      return this.isMobile ? 1 : this.options.visibleSlides
+    }
+
+    onWindowResize(){
+      const mobile = window.outerWidth < 800
+      console.log(mobile)
+      console.log(window.outerWidth)
+      // We bound the this to the Carousel object, hence why we can call this.isMobile here.
+      if (mobile !== this.isMobile){
+        this.isMobile = mobile
+        this.setStyle()
+      }
+    }
+
   }
 
   const carouselHolder = document.querySelector('.carousel__panorama');
   if (carouselHolder){
     console.log(carouselHolder);
     new Carousel(carouselHolder, {
-      visibleSlides: 3,
-      slidesToScroll: 1
+      visibleSlides: 2
     })
   }
 
