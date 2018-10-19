@@ -229,14 +229,8 @@ p.card__header{
   margin: 0 3px;
   transition: transform 0.3s;
   cursor: pointer;
-  &:active{
-    transform: scale(1.4);
-  }
-  &:hover{
-    transform: scale(1.4);
-  }
 }
 
-// .carousel__pagination__button--active, .carousel__pagination__button:hover {
-//   transform: scale(1.4);
-// }
+.carousel__pagination__button--active, .carousel__pagination__button:hover {
+   transform: scale(1.4);
+}
