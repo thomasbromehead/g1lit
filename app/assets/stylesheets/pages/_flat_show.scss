@@ -169,6 +169,7 @@ p.card__header{
 .carousel__container{
   transition: transform 0.3s;
   transform: translate3d(0,0,0);
+  background: rgba(71, 92, 94, 0.49);
 }
 .carousel__container::after{
   clear: both;
@@ -190,6 +191,7 @@ p.card__header{
   top: 50%;
   right: -20px;
   transition: transform 0.3s;
+  cursor: pointer;
   &:hover{
     transform: scale(1.2);
   }
@@ -200,4 +202,41 @@ p.card__header{
   // right: auto;
   left: 0;
   background-size: cover;
+  cursor: pointer;
 }
+
+.carousel__pagination{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  // Little trick to center the div
+  transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 800px){
+  .carousel__pagination{
+    display: none;
+  }
+}
+
+.carousel__pagination__button{
+  background-color: #FFF;
+  border: 1px solid rebeccapurple;
+  border-radius: 50%;
+  width: 15px;
+  height:15px;
+  display: inline-block;
+  margin: 0 3px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  &:active{
+    transform: scale(1.4);
+  }
+  &:hover{
+    transform: scale(1.4);
+  }
+}
+
+// .carousel__pagination__button--active, .carousel__pagination__button:hover {
+//   transform: scale(1.4);
+// }

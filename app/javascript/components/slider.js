@@ -3,9 +3,10 @@ class Carousel{
     /**
      * @param {HTMLElement} element 
      * @param {Object} options 
-     * @param {Object} options.slidesToScroll Scroll pace, number of slides by which we want to scroll
-     * @param {Object} options.visibleSlides Nb of slides that should be visible at once
-     * @param {boolean} options.loop Set to true if you want infinite loop
+     * @param {Object} [options.slidesToScroll = 1] Scroll pace, number of slides by which we want to scroll
+     * @param {Object} [options.visibleSlides = 2] Nb of slides that should be visible at once
+     * @param {boolean} [options.loop = false] Set to true if you want infinite loop
+     * @param {boolean} [options.pagination = false] Paginate and jump to slide
      */
 
   constructor (element, options = {}) {
@@ -13,7 +14,8 @@ class Carousel{
       this.options = Object.assign({},{
         slidesToScroll: 1,
         visibleSlides: 1,
-        loop: false
+        loop: false,
+        pagination: false
       }, options)
       //Convert Nodelist into array and exclude last item which is being appended by the function. We only want the children at runtime prior to function execution
       let children = [].slice.call(element.children);
@@ -21,6 +23,7 @@ class Carousel{
       this.currentSlide = 0;
       this.isMobile = false;
       this.root = this.createDivWithClass('carousel');
+      this.root.setAttribute('tabIndex', 0);
       this.container = this.createDivWithClass('carousel__container');
       this.root.appendChild(this.container);
       this.element.appendChild(this.root);
@@ -32,8 +35,16 @@ class Carousel{
       })
       this.setStyle()
       this.createNavigation()
-      this.onWindowResize();
+      this.onWindowResize()
+      this.createPagination() 
       window.addEventListener('resize', this.onWindowResize.bind(this))
+      this.root.addEventListener('keyup', e => {
+        if (e.key === "ArrowRight" || e.key === "Right"){
+          this.next()
+        } else if (e.key === "ArrowLeft" || e.key === "Left"){
+          this.prev()
+        }
+      })
     }
     /**
      * 
@@ -90,6 +101,18 @@ class Carousel{
       this.currentSlide = index;
     }
 
+    createPagination(){
+      const pagination = this.createDivWithClass('carousel__pagination');
+      const buttons= []
+      this.root.appendChild(pagination)
+      for (let i = 0; i < this.items.length; i = i + this.options.slidesToScroll){
+        const button = this.createDivWithClass('carousel__pagination__button')
+        button.addEventListener('click', () => { this.gotoSlide(i) })
+        button.addEventListener('click', button => button.classList.add('active'))
+        pagination.appendChild(button)
+        buttons.push(button)
+      }
+    }
     /**
      * @returns {number}
      */
