@@ -15,13 +15,17 @@ class Carousel{
       //Convert Nodelist into array and exclude last item which is being appended by the function. We only want the children at runtime prior to function execution
       this.children = [].slice.call(element.children);
       // Replaces : this.children = element.children;
-      console.log(this.children);
+      const ratio = this.children.length / this.options.visibleSlides;
       let root = this.createDivWithClass('carousel');
       let container = this.createDivWithClass('carousel__container');
+      container.style.width = ( ratio*100 ) + "%";
       root.appendChild(container);
       this.element.appendChild(root);
       this.children.forEach( (child) => {
-        container.appendChild(child);
+        let item = this.createDivWithClass('carousel__item');
+        item.style.width = (( 100 / this.options.visibleSlides)/ratio) + "%"
+        item.appendChild(child);
+        container.appendChild(item);
       })
     }
     /**
@@ -40,7 +44,7 @@ class Carousel{
   if (carouselHolder){
     console.log(carouselHolder);
     new Carousel(carouselHolder, {
-      visibleSlides: 2,
+      visibleSlides: 3,
       slidesToScroll: 2
     })
   }

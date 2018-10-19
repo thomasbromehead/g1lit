@@ -159,3 +159,20 @@ p.card__header{
  padding: 1em;
  margin:20px 20px;
 }
+
+// Carousel styling
+
+.carousel{
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel__container{
+  clear: both;
+  content: '';
+  display: table;
+
+}
+.carousel__item{
+  float: left;
+}
