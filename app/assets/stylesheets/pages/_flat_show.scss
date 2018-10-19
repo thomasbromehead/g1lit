@@ -164,7 +164,6 @@ p.card__header{
 
 .carousel{
   position: relative;
-  overflow: hidden;
 }
 
 .carousel__container{
@@ -175,4 +174,26 @@ p.card__header{
 }
 .carousel__item{
   float: left;
+}
+
+.carousel__next, .carousel__prev{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #FFF url("assets/../Buttons/right.svg") center center no-repeat;
+  background-size:80px;
+  border-radius: 50%;
+  top: 50%;
+  right: -20px;
+  transition: transform 0.3s;
+  &:hover{
+    transform: scale(1.2);
+  }
+}
+
+.carousel__prev{
+  background-image: url("assets/../Buttons/left.svg");
+  // right: auto;
+  left: 0;
+  background-size: cover;
 }
