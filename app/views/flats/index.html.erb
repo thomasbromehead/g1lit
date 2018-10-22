@@ -3,22 +3,49 @@
 
 
 <div class="main">
-  <h1>Les logements disponibles</h1>
-  <div id="results-container">
+  <h1 id="index-h1">Les logements disponibles</h1>
+  <div id="results-container--index">
 
-    <div id="results">
+    <div id="results"> 
         <% @flats.each_with_index do |flat, index| %>
-           <div class="flat-card" id="<%= index %>">
-            <div id="flat-slider">
-              <p>Some pics here</p>
-              <hr class="hr">
+           <div class="flat-card--index" id="<%= index %>">
+            <div id="flat-slider--index">
+              <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                  <ul class="glide__slides">
+                    <% flat.image_data.split(',').length.times do %>
+                      <% flat.image_data.split(',').each do |photo| %>
+                      <li class="glide__slide"><%= cl_image_tag photo.strip, width: 300, height: 250, crop: :fill, radius: 5 %></li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+
+
+              <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><span class="fingers">👈🏻</span></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><span class="fingers">👉🏻</span></button>
+              </div>
+
+              </div>
             </div>
-            <div class="flat-description">
-              <h2><%= flat.title %></h2>
+            <div class="flat-description--index" id="<%= index %>">
+              <h2><strong><%= flat.title %></strong></h2>
               <h3><%= flat.description.truncate(100) %></h3>
-              <div id="flat-tags">
-                <span class="flat-info"><%= flat.price_per_night %> DU/nuit</span>
-                <span class="flat-info"><%= flat.category%></span>
+              <div id="flat-tags--index">
+                <span class="flat-info--index"><%= flat.price_per_night %> DU/nuit</span>
+                <span class="flat-info--index"><%= flat.category%></span>
+              </div>
+              <div class="flat-owner">
+                  <div class="avatar">
+                    <%= cl_image_tag flat.owner.avatar_data, height:50, gravity: :face, radius: :max%>
+                  </div>
+                  <div class="pseudo">
+                    <%= flat.owner.first_name  %>
+                  </div>
+                  <div class="discover">
+                    <%= link_to "Voir la fiche", flat_path(flat), class: "discover-button" %>
+                  </div>
               </div>
             </div>
           </div>
@@ -38,6 +65,7 @@
     <div id="map" data-markers="<%= @markers.to_json %>">
     <!-- Map goes in here -->
     </div>
+
     <div id='geocoder' class='geocoder'></div>
 
   </div>

@@ -39,11 +39,10 @@ class Flat < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  
-
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :flat_reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
+
 
   validates :title, presence: true, length: { maximum: 200, too_long: "Merci de choisir un titre concis de moins de 200 caractères, ex: Adorable petite chaumière normande au bord de l'eau" }
   validates :description, presence: true

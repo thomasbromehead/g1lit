@@ -1,6 +1,7 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 const mapContainer = document.getElementById('map');
+console.log(mapContainer);
 
 
 window.mapContainer = mapContainer ;
@@ -12,11 +13,6 @@ if(mapContainer){
   })
 
 
-// const georesults = results.forEach(result => {
-//   console.log(Object.value(result.lat))
-// })
-
-// Recursively build a geojson object from our results array
 
   const feat = []
   if(mapContainer){
@@ -97,7 +93,8 @@ if(mapContainer){
   }
 
 
-  const flatCard = document.querySelectorAll('.flat-card');
+  const flatCard = document.querySelectorAll('.flat-description--index');
+  console.log(flatCard)
 
 
     // console.log(element[i].properties.category);  

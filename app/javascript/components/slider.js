@@ -23,7 +23,10 @@ class Carousel{
         visibleSlides: 1,
         loop: false,
         pagination: false,
-        infinite: false
+        containWidth: false,
+        containSliderWidth: false,
+        infinite: false,
+        overflow: "hidden"
       }, options)
       if (this.options.loop && this.options.infinite) {
         throw new Error('Un carousel ne peut être à la fois en boucle et en infinie')
@@ -35,7 +38,6 @@ class Carousel{
       this.moveCallbacks = []
       this.isMobile = false
       this.root = this.createDivWithClass('carousel')
-      this.root.setAttribute('tabIndex', 0)
       this.container = this.createDivWithClass('carousel__container')
       this.root.appendChild(this.container)
       this.element.appendChild(this.root)
@@ -89,8 +91,13 @@ class Carousel{
        */
     setStyle(){
       let ratio = this.items.length / this.visibleSlides
-      this.container.style.width = (ratio * 100) + "%"
-      this.items.forEach(item =>  item.style.width = (( 100 / this.visibleSlides)/ratio) + "%" )
+      debugger;
+      this.container.style.width = this.options.containWidth ? "100%" : (ratio * 100) + "%"
+      if(this.options.overflow === "hidden"){
+        this.container.style.overflow = "hidden"
+      }
+      this.container.style
+      this.items.forEach(item =>  item.style.width = this.options.containSliderWidth ? "100%" : (( 100 / this.visibleSlides)/ratio) + "%" )
     }
 
     createNavigation(){
@@ -218,11 +225,8 @@ class Carousel{
   if (carouselHolder){
     console.log(carouselHolder)
     new Carousel(carouselHolder, {
-      visibleSlides: 2,
-      infinite: true
+      visibleSlides: 1,
+      pagination: true
     })
   }
-
-
-
-
+  
