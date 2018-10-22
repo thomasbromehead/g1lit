@@ -19,7 +19,6 @@ class FlatsController < ApplicationController
         category: flat.category
       }
 
-
     end
   end
 
