@@ -23,7 +23,10 @@
 
 class FlatReview < ApplicationRecord
   belongs_to :flat, counter_cache: true
+  belongs_to :customer, class_name: "User"
+
 
   validates :content, presence: :true, length: { minimum: 2, too_short: "Votre commentaire doit faire au moins 50 caractères" }
+
   
 end
