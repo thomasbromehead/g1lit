@@ -105,7 +105,7 @@ if(mapContainer){
     // Add markers to the map at all points
 
   for(flat of flatCard){
-    flat.addEventListener('click', function(e){
+    flat.addEventListener('click', function(){
       const clickedId = this.id;
       console.log(clickedId);
       const clickedListing = flats.features[clickedId]
@@ -119,6 +119,7 @@ if(mapContainer){
       }
       this.classList.add('active');
     })
+
   }
 
   flats.features.forEach(function(marker, i) {

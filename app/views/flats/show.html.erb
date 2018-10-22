@@ -43,8 +43,8 @@
             </div>
           </div>
           <% else %>
-          <div class="caracteristic__header">
-          <p class="card__header">Animaux</p>
+          <div class="caracteristics__header">
+            <p class="card__header">Animaux</p>
           </div>
           <div class="card__body">
             <p>Désolé, pas d'animaux chez moi.</p>
@@ -69,9 +69,10 @@
           </div>
         </div>
 
+      <% if @flat.nb_beds %>
         <div class="caracteristics__card">
           <div class="caracteristics__header">
-          <p class="card__header">Lits</p>
+            <p class="card__header">Lits</p>
           </div>
           <div class="card__body text-center">
             <% unless @flat.nb_beds > 4 %>
@@ -81,6 +82,10 @@
             <% else %>
                 <p><%= @flat.nb_beds %></p>
             <% end %>
+            <% else %>
+              <p>Autant de place que vous voudrez!</p>
+        <% end %>
+          
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+var debounce = require('lodash/debounce');
+console.log(debounce)
 
 const searchButton = document.getElementById('home-search-btn');
 
@@ -23,5 +25,20 @@ const searchButton = document.getElementById('home-search-btn');
     }
   }
 
+  // Need to find out how to transition on SVGs
 
+  // const cards = document.querySelectorAll('.flat-card--index')
 
+  // if(cards){
+  //   (function(){
+  //     console.log(cards)
+  //     cards.forEach(card => card.addEventListener('mouseover', debounce(() => {
+  //       const cardId = card.getAttribute('id')
+  //       console.log(cardId)
+  //       const marker = document.getElementById(`marker-${cardId}`)
+  //       console.log(marker);
+  //       marker.style.height = "200px"
+  //     }, 200))
+  //     )}
+  //   )();
+  //   }
