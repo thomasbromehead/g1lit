@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_183052) do
+ActiveRecord::Schema.define(version: 2018_10_22_210047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_183052) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "star_rating"
     t.index ["flat_id"], name: "index_flat_reviews_on_flat_id"
     t.index ["user_id"], name: "index_flat_reviews_on_user_id"
   end
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_183052) do
     t.string "first_name"
     t.string "pseudo_g1"
     t.string "pubkey"
+    t.string "avatar_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,6 +1,7 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 const mapContainer = document.getElementById('map');
+console.log(mapContainer);
 
 
 window.mapContainer = mapContainer ;
@@ -12,11 +13,6 @@ if(mapContainer){
   })
 
 
-// const georesults = results.forEach(result => {
-//   console.log(Object.value(result.lat))
-// })
-
-// Recursively build a geojson object from our results array
 
   const feat = []
   if(mapContainer){
@@ -97,7 +93,8 @@ if(mapContainer){
   }
 
 
-  const flatCard = document.querySelectorAll('.flat-card');
+  const flatCard = document.querySelectorAll('.flat-description--index');
+  console.log(flatCard)
 
 
     // console.log(element[i].properties.category);  
@@ -108,7 +105,7 @@ if(mapContainer){
     // Add markers to the map at all points
 
   for(flat of flatCard){
-    flat.addEventListener('click', function(e){
+    flat.addEventListener('click', function(){
       const clickedId = this.id;
       console.log(clickedId);
       const clickedListing = flats.features[clickedId]
@@ -122,6 +119,7 @@ if(mapContainer){
       }
       this.classList.add('active');
     })
+
   }
 
   flats.features.forEach(function(marker, i) {

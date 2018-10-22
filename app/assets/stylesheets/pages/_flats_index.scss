@@ -1,4 +1,4 @@
-#results-container{
+#results-container--index{
   height: 90vh;
   max-width: 98%;
   display: flex;
@@ -19,27 +19,48 @@
   margin-right:1em;
 }
 
-.flat-card{
+#index-h1{
+  margin:10px;
+}
+
+.flat-card--index{
   border: 1px solid rgba(121, 121, 121, 0.2);
-  border-radius:2px;
+  border-radius:5px;
+  box-sizing: border-box;
   display:flex;
-  margin-bottom:0.4em;
-  padding:0.3em 0;
+  margin-bottom:1em;
+  padding:0.3em;
+  height: 250px;
+  cursor: pointer;
+  overflow:hidden;
+  transition: border 300ms, box-shadow 300ms ease-in-out; 
+  &:hover{
+    border: 1px solid  rgba(121, 121, 121, 0.7);
+    box-shadow: 3px 8px 10px rgba(169, 219, 228, 0.5);
+  }
 }
 
-.flat-card.active{
-  background-color:rgba(252, 232, 237,0.4);
+// .fingers{
+//   &:hover{
+//     transform: scale(1.3)
+//   }
+// }
+
+.flat-description--index.active{
+  background-color: rgba(169, 219, 228, 0.3);
 }
 
-#flat-slider{
+#flat-slider--index{
   flex:1 1 50%;
+  max-width:300px;
 }
 
-.flat-description{
+.flat-description--index{
   flex: 2 2 50%;
   display:flex;
   flex-direction: column;
   padding-left:0.5em;
+  position:relative;
 }
 
 #map{
@@ -49,33 +70,19 @@
   height:100%;
 }
 
-// .app{
-// height: 100vh;
-// display: flex;
-// flex-direction: column;
-// justify-content: space-between;
-// margin: auto;
-// }
 
-// .main {
-//   display: block;
-//   flex-grow: 1;
-//   flex-shrink: 1;
-//   overflow: auto;
-// }
-
-.flat-info{
+.flat-info--index{
   border:1px solid lightcoral;
   padding:0.5em;
-  margin: 0.2em 0.5em;
+  margin: 0.5em 0.5em;
   border-radius: 5px;
-  font-size:0.7em;
+  font-size:0.8em;
 
 }
 
-#flat-tags{
+#flat-tags--index{
   display:flex;
-  font-size:0.7em;
+  font-size:0.8em;
   text-align:center;
 }
 
@@ -88,7 +95,7 @@ hr.hr {
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
 }
 
-@media screen and (max-width:700px) and (orientation:portrait){
+@media screen and (max-width:900px) and (orientation:portrait){
   #map{
     display:none;
   }
@@ -96,6 +103,31 @@ hr.hr {
   #results{
     width:95%;
   }
+}
+
+.flat-owner{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.avatar{
+margin-right: 1.5em;
+margin-left: 1em;
+}
+
+.pseudo{
+  text-transform: capitalize;
+  font-size:0.8em;
+
+}
+
+.discover{
+  margin-left:auto;
+  margin-right:1em;
 }
 
 

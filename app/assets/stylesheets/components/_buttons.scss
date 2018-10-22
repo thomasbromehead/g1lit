@@ -1,0 +1,21 @@
+.discover-button{
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(2, 179, 228);
+  padding:5px;
+  text-decoration: none;
+  font-size: 0.8em;
+  transition: box-shadow 300ms ease-in, transform 300ms ease-in;
+  &:hover{
+    text-decoration:none;
+    box-shadow: 5px 5px 20px hsla(212, 60%, 57%, 0.8);
+    margin-top:-100px;
+    transform: scale(1.5);
+  }
+}
+
+a.discover-button{
+  text-decoration: none;
+  color: white;
+}
+

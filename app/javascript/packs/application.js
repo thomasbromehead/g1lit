@@ -20,13 +20,14 @@ initUpdateNavbarOnScroll();
 // import { hello } from "../components/hello";
 // hello();
 
-
+import glideSlider from '../components/glide';
+glideSlider();
 
 import { pickadate } from '../components/pickadate';
 pickadate();
 
-import drift from '../components/zoom';
-drift();
+// import drift from '../components/zoom';
+// drift();
 
 
 import sweetAlertOnClick from "../components/sweetalert";

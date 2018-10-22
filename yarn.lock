@@ -18,6 +18,11 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@glidejs/glide@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.2.3.tgz#93ba9e0282fcdba072f9e0275250b888d475119b"
+  integrity sha512-eypBdSz4S+/Fj81c/VrLmFCZF7TBAcE90cvRQVxcM6KTeKxEHPLluwp+CpdLpzw2qyCpNT/wDpjw8CHNY9aHLA==
+
 "@mapbox/geojson-area@0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@mapbox/geojson-area/-/geojson-area-0.2.2.tgz#18d7814aa36bf23fbbcc379f8e26a22927debf10"

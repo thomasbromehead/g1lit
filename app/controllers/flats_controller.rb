@@ -2,9 +2,10 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-     @flats = Flat.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil)
+     @flats = Flat.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
+     @flat_owners = Flat.includes(:owner)
     # @flats = Flat.paginate(page: params[:page], per_page:5)
-    @markers = @flats.map do |flat|
+      @markers = @flats.map do |flat|
       {
         lat: flat.latitude,
         long: flat.longitude,
@@ -17,6 +18,8 @@ class FlatsController < ApplicationController
         street: flat.street,
         category: flat.category
       }
+
+
     end
   end
 

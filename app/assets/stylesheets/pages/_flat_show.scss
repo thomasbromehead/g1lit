@@ -213,11 +213,11 @@ p.card__header{
   transform: translateX(-50%);
 }
 
-@media only screen and (max-width: 800px){
-  .carousel__pagination{
-    display: none;
-  }
-}
+// @media only screen and (max-width: 800px){
+//   .carousel__pagination{
+//     display: none;
+//   }
+// }
 
 .carousel__pagination__button{
   background-color: #FFF;

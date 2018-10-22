@@ -2,12 +2,13 @@
 #
 # Table name: flat_reviews
 #
-#  id         :bigint(8)        not null, primary key
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  flat_id    :bigint(8)
-#  user_id    :bigint(8)
+#  id          :bigint(8)        not null, primary key
+#  content     :text
+#  star_rating :float
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  flat_id     :bigint(8)
+#  user_id     :bigint(8)
 #
 # Indexes
 #
