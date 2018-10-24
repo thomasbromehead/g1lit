@@ -1,5 +1,5 @@
 
-<div class="navbar-wagon--home">
+<div class="navbar-wagon--sitewide">
   <!-- Logo -->
   <%= link_to root_path do %>
     <%= image_tag "Logo/logo1", {size:"100x70"}%>
@@ -11,14 +11,14 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Créer mon logement", "#", class: "navbar-wagon-item navbar-wagon-link btn-cta-create" %>
+      <%= link_to "Créer mon logement", new_flat_path, class: "navbar-wagon-item navbar-wagon-link btn-cta-create" %>
       <%= link_to "Chercher", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag "IMG-20181020-WA0000.jpg", radius: :max,  gravity: :face,height: 50, width: 50, class:"dropdown-toggle",id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#", id: "hello" do %>

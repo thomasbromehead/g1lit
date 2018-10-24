@@ -6,8 +6,8 @@ import "../components/aguilar";
 import '../components/slider';
 
 
-import initUpdateNavbarOnScroll from '../components/navbar';
-initUpdateNavbarOnScroll();
+// import initUpdateNavbarOnScroll from '../components/navbar';
+// initUpdateNavbarOnScroll();
 
 
 // import test from '../components/slider'

@@ -35,7 +35,11 @@ d88E`"888E`    88888      888R   ''888E`   8888
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body class="app">
-    <%= render 'shared/navbar' %>
+    <% if current_page?(root_path) %>
+      <%= render 'shared/navbar' %>
+    <% else %>
+      <%= render 'shared/navbar_sitewide' %>
+    <% end %>
     <%= render "shared/flash" %>
 
     <%= yield %>
