@@ -19,6 +19,24 @@
 
 <div id="libre">
     <h2 id="loger" class="home-h2s">Se loger en monnaie libre, ça veut dire quoi? 🧐</h2>
+    <%= link_to "Je connais déjà" %>
+    <%= link_to "C'est quoi la monnaie libre" %>
+</div>
+
+<div class="container">
+  <h2>Les Six derniers logements </h2>
+  <div id="last_six">
+    <% @last_six.each do |flat| %>
+      <div class="home-card">
+        <div class="home-card--image">
+        <%= image_tag "chalet", height:200 %>
+        <span class="home-card--price"><%= flat.price_per_night %>DU/nuit</span>
+        
+        </div>
+        <%= flat.city %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div id="explication">

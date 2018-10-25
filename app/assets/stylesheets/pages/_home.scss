@@ -170,5 +170,45 @@
 
 }
 
+#last_six{
+  height: 400
+  px;
+  padding: 2em;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap:wrap;
+  // width:90%;
+  margin:0 auto;
+  border: 2px solid green;
+  overflow:hidden;
+
+}
+
+.home-card{
+  display: flex;
+  flex-direction: column;
+  width:25%;
+  height:auto;
+  padding: 1em;
+  overflow:hidden;
+  margin-right:0.5em;
+  text-align: center;
+}
+
+.home-card--image{
+  position: relative;
+}
+
+.home-card--price{
+  position: absolute;
+  bottom: 10px;
+  left:10px;
+  color: rgba(207, 161, 22, 0.726);
+  background-color: white;
+  padding:0.3em;
+  font-size:0.8em;
+  border-radius:5px;
+}
 
 

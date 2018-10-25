@@ -16,6 +16,8 @@
   top:  !important;
   color: white;
   margin-bottom:2em;
+  font-family: "Raleway";
+  font-weight: 400;
 }
 
 .navbar-wagon--sitewide {
@@ -49,6 +51,10 @@
   border-radius: 50%;
 }
 
+.white-links a{
+  color: white !important;
+  font-weight: 600;
+}
 /* Right section */
 .navbar-wagon-right {
   display: flex;
@@ -60,6 +66,10 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+}
+
+.navbar-wagon--sitewide a {
+  color: white
 }
 
 /* Navbar link */
