@@ -19,6 +19,8 @@ class FlatsController < ApplicationController
         category: flat.category
       }
 
+      @equipements = @flat.equipments
+
     end
   end
 
