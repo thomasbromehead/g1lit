@@ -24,8 +24,6 @@ const bounce = () => {
     }
 }
 
-searchButton.addEventListener('mouseover', clearInterval(bounce))
-console.log("yo")
 
 export default bounce
 

@@ -24,16 +24,20 @@
 </div>
 
 <div class="container">
-  <h2>Les Six derniers logements </h2>
+  <h2 style="margin: 0.5em 0;">Les Six derniers logements </h2>
   <div id="last_six">
-    <% @last_six.each do |flat| %>
+    <% @last_six.includes(:owner).each do |flat| %>
       <div class="home-card">
         <div class="home-card--image">
-        <%= image_tag "chalet", height:200 %>
-        <span class="home-card--price"><%= flat.price_per_night %>DU/nuit</span>
-        
+          <%= link_to flat_path(flat) do %>
+            <%= cl_image_tag flat.image_data.split(',').first, height: 250, width:250, crop: :fill, radius: 5%>
+            <span class="home-card--price"><strong><%= flat.price_per_night %></strong> DU/nuit</span>
+            <%= cl_image_tag flat.owner.avatar_data, height:50, radius: :max, class:"home-card--user", format: :png %>
+          <% end %>
         </div>
-        <%= flat.city %>
+        <div class="home-card--city">
+          <%= flat.city%>
+        </div>
       </div>
     <% end %>
   </div>
