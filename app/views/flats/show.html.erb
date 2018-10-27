@@ -7,7 +7,7 @@
     <div class="carousel__panorama">
       <% @flat_pics.each_with_index do |photo, index| %>
         <div id="item<%= index+1 %>">
-          <%= cl_image_tag photo.strip, width:800, height:800, crop: :fill, class:"zoomable"%>
+          <%= cl_image_tag photo.strip, width:700, height:700, crop: :fill, class:"zoomable"%>
         </div>
       <% end %>
     </div>
@@ -108,14 +108,12 @@
             <li><%= cl_image_tag "biking", height:40, width:40 %>Vélos</li>
             <li><%= cl_image_tag "mta3d2nqqc1wvw4ve2lo", height: 40, width:40 %>Ptit-dej</li>
             <li>Ping-pong</li>
-            <%= debug @equipements %>
-            <%= debug @flat %>
-            <%= console %>
+ 
           </ul>
         </div>
         <div class="flat-description">
           <h2 class="flat-h2">Localisation</h2>
-          <p>Map here</p>
+          <div id="flat-map" data-marker="<%= @marker %>"></div>
         </div>
         <div class="flat-description">
           <h2 class="flat-h2">Commentaires</h2>

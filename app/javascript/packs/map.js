@@ -1,22 +1,76 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
-const mapContainer = document.getElementById('map');
-console.log(mapContainer);
+const mapContainer = document.getElementById('map')
+console.log(mapContainer)
 
+const flatMap = document.querySelector("#flat-map")
+console.log(flatMap)
+const flatDetails = JSON.parse(flatMap.dataset.marker)
+console.log(flatDetails)
 
-window.mapContainer = mapContainer ;
+mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
+
+if(flatMap){
+  const feat = {
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [
+        flatDetails.long,
+        flatDetails.lat
+      ]
+    },
+    properties: {
+      category: flatDetails.category
+    }
+  }
+  const map2 = new mapboxgl.Map({
+    container: flatMap,
+    style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
+    center: feat.geometry.coordinates,
+    zoom:7.5
+  });
+
+  (function(){
+    const el = document.createElement('div')
+    el.className = 'marker';
+    el.style.backgroundImage = "url('/assets/markers/marker-appart.png')";
+    el.style.backgroundSize = "cover";
+    el.style.backgroundRepeat = "none";
+    el.style.height = "60px";
+    el.style.width = "60px";
+    console.log(map2);
+    console.log(el)
+    new mapboxgl.Marker(el)
+    .setLngLat(feat.geometry.coordinates)
+    .addTo(map2)
+  })();
+
+    map2.on('load', function(){
+    map2.addSource("places",{
+        type:'geojson',
+        data: feat
+    });
+    map2.addLayer({
+      id: 'locations',
+      type: 'symbol',
+      // Add a GeoJSON source containing place coordinates and information.
+      source: {
+        type: 'geojson',
+        data: feat
+      },
+    });
+  });
+  map2.addControl(new mapboxgl.NavigationControl());
+  map2.addControl(new mapboxgl.FullscreenControl());
+}
 
 if(mapContainer){
-  mapContainer.addEventListener('hover', function(){
-    console.log(this.map.getZoom());
-    console.log('hovering');
-  })
-
-
-
+ 
   const feat = []
   if(mapContainer){
     const results = JSON.parse(mapContainer.dataset.markers);
+    console.log(results)
     results.forEach(flat => {
     feat.push({
           type:"Feature",
@@ -38,11 +92,12 @@ if(mapContainer){
           }
         })
     })
+    console.log(feat)
   }
 
   const flats = Object.assign({type:"FeatureCollection",
   features:feat})
-  mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
+
 
 
   const map = new mapboxgl.Map({
@@ -55,7 +110,7 @@ if(mapContainer){
   window.map = map;
 
 
-  map.on('load', function(e){
+  map.on('load', function(){
     map.addSource("places",{
         type:'geojson',
         data: flats
@@ -195,6 +250,7 @@ if(mapContainer){
     zoom:10,
   }));
 
+
   // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
   map.addControl(new mapboxgl.NavigationControl());
@@ -202,36 +258,3 @@ if(mapContainer){
 
 }
 
-// const results = [{
-//   address: "3 avenue longue",
-//   city: "Saint-Junien"
-//   },
-//   {
-//   address:"4 petite avenue",
-//   city: "Lens"
-//   }]
-
-// function toGeoJson(data){
-//   if(data.length == 1){
-//     return {
-//       type:"FeatureCollection",
-//         features:[
-//           {
-//             type:"Feature",
-//             geometry:{
-//               type:"Point",
-//               coordinates: [data[0].long, data[0].lat]
-//             },
-//             properties: {
-//               address: data[0].address,
-//               city: data[0].city,
-//               country: data[0].country,
-//               postalCode:data[0].postalCode
-//             }
-//           }
-//         ]
-//       }
-//     } else {
-      
-//     }
-// }
