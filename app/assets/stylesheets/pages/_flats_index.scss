@@ -4,16 +4,11 @@
   display: flex;
   margin:0.2em auto;
   h2{
-    font-size:16px;
-    margin:0;
+    font-size:1.3em;
+    margin-bottom:0.5em;
   }
-  h3{
-    font-size:14px;
-    margin-top:1em;
-  }
+
 }
-
-
 
 #results{
   flex: 1 1 55%;
@@ -57,7 +52,7 @@
   flex:1 3;
   flex-basis: 40%;
   max-width:300px;
-  border: 2px solid red;
+  align-self:center;
 }
 
 .flat-description--index{
@@ -67,7 +62,14 @@
   flex-direction: column;
   padding-left:0.5em;
   position:relative;
-  border:2px solid green;
+}
+
+.flat-description--index p{
+  font-size:1em;
+}
+.flat-description--index h2{
+  font-size:1.3em;
+  margin-bottom:1em;
 }
 
 #map{
@@ -110,6 +112,31 @@ hr.hr {
   #results{
     width:95%;
   }
+
+  .avatar{
+    margin-left: 0.3em;
+    margin-right: 0.7em;
+    background: blue;
+  }
+
+  #index-h1{
+    font-size:2em;
+    text-align: center;
+  }
+
+  .flat-card--index{
+    height: fit-content;
+    min-height:250px;
+  }
+
+  .flat-description--index p{
+    font-size:1em;
+  }
+
+  #results-container--index h2{
+    font-size:1.3em;
+    margin-bottom:0.5em
+  }
 }
 
 .flat-owner{
@@ -121,10 +148,9 @@ hr.hr {
   width: 100%;
 }
 
-.avatar{
-margin-right: 1.5em;
-margin-left: 1em;
-}
+// .avatar{
+// margin-right: 1.5em;
+// }
 
 .pseudo{
   text-transform: capitalize;

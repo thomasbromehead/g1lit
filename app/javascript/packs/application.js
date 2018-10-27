@@ -15,6 +15,9 @@ bounce();
 // import test from '../components/slider'
 // test();
 
+import mapFlat from "../components/flat-map"
+mapFlat();
+
 // import fileUpload from '../components/uppy';
 // fileUpload();
 

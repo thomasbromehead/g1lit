@@ -19,7 +19,6 @@ gem 'foreman'
 gem 'devise'
 gem 'aws-sdk'
 gem 'mini_magick'
-gem 'faker', '~> 1.6', '>= 1.6.6'
 gem "shrine", "~> 2.11"
 gem 'shrine-url'
 gem "aws-sdk-s3", "~> 1.2", require: false
@@ -37,6 +36,8 @@ group :development do
   gem 'annotate'
   gem 'bullet'
   gem 'oink'
+  gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem 'rack-mini-profiler'
 end
 
 group :test do 

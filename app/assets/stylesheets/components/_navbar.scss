@@ -20,6 +20,11 @@
   font-weight: 400;
 }
 
+// .navbar-wagon--home :nth-child(2), .navbar-wagon--home :nth-child(3){
+//   color: white;
+
+// }
+
 .navbar-wagon--sitewide {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   height: 70px;
@@ -69,7 +74,8 @@
 }
 
 .navbar-wagon--sitewide a {
-  color: white
+  color: black;
+  opacity:0.8;
 }
 
 /* Navbar link */

@@ -30,7 +30,7 @@ class FlatsController < ApplicationController
       long: @flat.longitude,
       category: @flat.category
     })
-    
+    @reviews = Flat.includes(:flat_reviews)
 
   end
 

@@ -52,6 +52,10 @@
           </div>
         <% end %>
 
+        
+        <% if @flat.category == "camping-car" || @flat.category == "caravane" || @flat.category == "terrain"%>
+        
+        <% else %>
         <div class="caracteristics__card">
           <div class="caracteristics__header">
             <p class="card__header">Chambres</p>
@@ -69,24 +73,9 @@
             <p><%= @flat.nb_of_bathrooms %></p>
           </div>
         </div>
-
-      <% if @flat.nb_beds %>
-        <div class="caracteristics__card">
-          <div class="caracteristics__header">
-            <p class="card__header">Lits</p>
-          </div>
-          <div class="card__body text-center">
-            <% unless @flat.nb_beds > 4 %>
-              <% @flat.nb_beds.times do %>
-                <span id="bed"> 🛌 </span>
-              <% end %>
-            <% else %>
-                <p><%= @flat.nb_beds %></p>
-            <% end %>
-            <% else %>
-              <p>Autant de place que vous voudrez!</p>
-        <% end %>
           
+        <% end %>
+        
           </div>
         </div>
       </div>
@@ -108,6 +97,7 @@
             <li><%= cl_image_tag "biking", height:40, width:40 %>Vélos</li>
             <li><%= cl_image_tag "mta3d2nqqc1wvw4ve2lo", height: 40, width:40 %>Ptit-dej</li>
             <li>Ping-pong</li>
+            <%= @reviews %>
  
           </ul>
         </div>
@@ -116,8 +106,18 @@
           <div id="flat-map" data-marker="<%= @marker %>"></div>
         </div>
         <div class="flat-description">
-          <h2 class="flat-h2">Commentaires</h2>
-          <p>Comments here</p>
+          <h2 class="flat-h2">Les avis</h2>
+          
+          <% if @flat.nb_of_reviews == 0  %>
+            <p>Ce logement n'a pas encore été noté, soyez le premier a laisser un avis</p>
+            <%= render "shared/new_flat_review", local: [@flat, @flat_review] %>
+          <% else %>
+           <h3> Ce logement a reçu <%= @flat.nb_of_reviews %> avis</h3>
+            <%= @reviews.each do |review| %>
+              <p>I'm a review</p>
+            <% end %>
+          <% end %>
+          
         </div>
       </div>
     <div class="col-xs-12 col-md-4"> 

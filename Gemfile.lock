@@ -672,7 +672,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.2)
     crass (1.0.4)
     devise (4.5.0)
       bcrypt (~> 3.0)
@@ -760,8 +759,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
-    rack-protection (2.0.4)
-      rack
+    rack-mini-profiler (1.0.0)
+      rack (>= 1.2.0)
     rack-proxy (0.6.4)
       rack
     rack-test (1.1.0)
@@ -802,8 +801,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    roda (3.12.0)
-      rack
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -844,12 +841,6 @@ GEM
       down (~> 4.4)
       http (~> 3.2)
       shrine (>= 2.0)
-    sidekiq (5.2.2)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
-    sidekiq-failures (1.0.0)
-      sidekiq (>= 4.0.0)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -876,9 +867,6 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     uniform_notifier (1.11.0)
-    uppy-s3_multipart (0.1.0)
-      aws-sdk-s3 (~> 1.0)
-      roda (>= 2.27, < 4)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -925,6 +913,7 @@ DEPENDENCIES
   pg (~> 0.21)
   pry-rails
   puma
+  rack-mini-profiler
   rails (= 5.2.1)
   redis
   rspec-rails (~> 3.8)
@@ -932,13 +921,10 @@ DEPENDENCIES
   shrine (~> 2.11)
   shrine-memory
   shrine-url
-  sidekiq
-  sidekiq-failures (~> 1.0)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
-  uppy-s3_multipart
   web-console (>= 3.3.0)
   webpacker
   will_paginate (~> 3.1.0)
