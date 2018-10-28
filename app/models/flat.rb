@@ -9,6 +9,7 @@
 #  city            :string
 #  country         :string
 #  description     :text
+#  equipments      :text
 #  image_data      :text
 #  latitude        :float
 #  longitude       :float

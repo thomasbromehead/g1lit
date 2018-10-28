@@ -2,15 +2,12 @@
   height: 90vh;
   max-width: 98%;
   display: flex;
-  margin:0 auto;
+  margin:0.2em auto;
   h2{
-    font-size:16px;
-    margin:0;
+    font-size:1.3em;
+    margin-bottom:0.5em;
   }
-  h3{
-    font-size:14px;
-    margin-top:1em;
-  }
+
 }
 
 #results{
@@ -20,7 +17,7 @@
 }
 
 #index-h1{
-  margin:10px;
+  margin-top:100px;
 }
 
 .flat-card--index{
@@ -32,6 +29,7 @@
   padding:0.3em;
   height: 250px;
   cursor: pointer;
+  flex-basis:50%;
   overflow:hidden;
   transition: border 300ms, box-shadow 300ms ease-in-out; 
   &:hover{
@@ -51,16 +49,27 @@
 }
 
 #flat-slider--index{
-  flex:1 1 50%;
+  flex:1 3;
+  flex-basis: 40%;
   max-width:300px;
+  align-self:center;
 }
 
 .flat-description--index{
-  flex: 2 2 50%;
+  flex: 1 1;
+  flex-basis: 60%;
   display:flex;
   flex-direction: column;
   padding-left:0.5em;
   position:relative;
+}
+
+.flat-description--index p{
+  font-size:1em;
+}
+.flat-description--index h2{
+  font-size:1.3em;
+  margin-bottom:1em;
 }
 
 #map{
@@ -95,13 +104,38 @@ hr.hr {
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
 }
 
-@media screen and (max-width:900px) and (orientation:portrait){
+@media screen and (max-width:1000px) and (orientation:portrait){
   #map{
     display:none;
   }
 
   #results{
     width:95%;
+  }
+
+  .avatar{
+    margin-left: 0.3em;
+    margin-right: 0.7em;
+    background: blue;
+  }
+
+  #index-h1{
+    font-size:2em;
+    text-align: center;
+  }
+
+  .flat-card--index{
+    height: fit-content;
+    min-height:250px;
+  }
+
+  .flat-description--index p{
+    font-size:1em;
+  }
+
+  #results-container--index h2{
+    font-size:1.3em;
+    margin-bottom:0.5em
   }
 }
 
@@ -114,10 +148,9 @@ hr.hr {
   width: 100%;
 }
 
-.avatar{
-margin-right: 1.5em;
-margin-left: 1em;
-}
+// .avatar{
+// margin-right: 1.5em;
+// }
 
 .pseudo{
   text-transform: capitalize;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_22_210047) do
+ActiveRecord::Schema.define(version: 2018_10_26_175244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_210047) do
     t.string "country"
     t.string "city"
     t.integer "nb_beds"
+    t.text "equipments"
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
@@ -105,6 +106,8 @@ ActiveRecord::Schema.define(version: 2018_10_22_210047) do
     t.boolean "read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -145,5 +148,6 @@ ActiveRecord::Schema.define(version: 2018_10_22_210047) do
   add_foreign_key "flat_reviews", "flats"
   add_foreign_key "flat_reviews", "users"
   add_foreign_key "flats", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "user_reviews", "users"
 end

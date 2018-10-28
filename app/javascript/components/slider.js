@@ -91,7 +91,6 @@ class Carousel{
        */
     setStyle(){
       let ratio = this.items.length / this.visibleSlides
-      debugger;
       this.container.style.width = this.options.containWidth ? "100%" : (ratio * 100) + "%"
       if(this.options.overflow === "hidden"){
         this.container.style.overflow = "hidden"
@@ -225,7 +224,7 @@ class Carousel{
   if (carouselHolder){
     console.log(carouselHolder)
     new Carousel(carouselHolder, {
-      visibleSlides: 1,
+      visibleSlides: 2,
       pagination: true
     })
   }

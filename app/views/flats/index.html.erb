@@ -1,11 +1,10 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+<%= content_for :title, "Se loger en monnaie libre, tous les logements" %>
 
-
-<div class="main">
   <h1 id="index-h1">Les logements disponibles</h1>
-  <div id="results-container--index">
 
+  <div id="results-container--index">
     <div id="results"> 
         <% @flats.each_with_index do |flat, index| %>
            <div class="flat-card--index" id="<%= index %>">
@@ -15,7 +14,7 @@
                   <ul class="glide__slides">
                     <% flat.image_data.split(',').length.times do %>
                       <% flat.image_data.split(',').each do |photo| %>
-                      <li class="glide__slide"><%= cl_image_tag photo.strip, width: 300, height: 250, crop: :fill, radius: 5 %></li>
+                      <li class="glide__slide"><%= cl_image_tag photo.strip, width: 300, height: 250, crop: :fill, radius: 5, g: :auto, f: :auto%></li>
                       <% end %>
                     <% end %>
                   </ul>
@@ -31,18 +30,13 @@
             </div>
             <div class="flat-description--index" id="<%= index %>">
               <h2><strong><%= flat.title %></strong></h2>
-              <h3><%= flat.description.truncate(100) %></h3>
+              <p><%= flat.description.truncate(100) %></p>
               <div id="flat-tags--index">
                 <span class="flat-info--index"><%= flat.price_per_night %> DU/nuit</span>
                 <span class="flat-info--index"><%= flat.category%></span>
               </div>
               <div class="flat-owner">
-                  <div class="avatar">
-                    <%= cl_image_tag flat.owner.avatar_data, height:50, gravity: :face, radius: :max%>
-                  </div>
-                  <div class="pseudo">
-                    <%= flat.owner.first_name  %>
-                  </div>
+
                   <div class="discover">
                     <%= link_to "Voir la fiche", flat_path(flat), class: "discover-button" %>
                   </div>
@@ -60,12 +54,10 @@
           <%= will_paginate @flats, :container => false %>
         </div>
 
-      </div>
-
+    </div>
     <div id="map" data-markers="<%= @markers.to_json %>">
     <!-- Map goes in here -->
     </div>
 
     <div id='geocoder' class='geocoder'></div>
-
-  </div>
+</div>

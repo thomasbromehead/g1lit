@@ -4,11 +4,10 @@
 </div>
 
 <div class="container-fluid text-center">
-
     <div class="carousel__panorama">
       <% @flat_pics.each_with_index do |photo, index| %>
         <div id="item<%= index+1 %>">
-          <%= cl_image_tag photo.strip, width:800, height:800, crop: :fill, class:"zoomable"%>
+          <%= cl_image_tag photo.strip, width:700, height:700, crop: :fill, class:"zoomable"%>
         </div>
       <% end %>
     </div>
@@ -43,14 +42,20 @@
             </div>
           </div>
           <% else %>
-          <div class="caracteristics__header">
-            <p class="card__header">Animaux</p>
+          <div class="caracteristics__card">
+            <div class="caracteristics__header">
+              <p class="card__header">Animaux</p>
+            </div>
+            <div class="card__body">
+              <p>Désolé, pas d'animaux chez moi.</p>
           </div>
-          <div class="card__body">
-            <p>Désolé, pas d'animaux chez moi.</p>
           </div>
         <% end %>
 
+        
+        <% if @flat.category == "camping-car" || @flat.category == "caravane" || @flat.category == "terrain"%>
+        
+        <% else %>
         <div class="caracteristics__card">
           <div class="caracteristics__header">
             <p class="card__header">Chambres</p>
@@ -68,67 +73,65 @@
             <p><%= @flat.nb_of_bathrooms %></p>
           </div>
         </div>
-
-      <% if @flat.nb_beds %>
-        <div class="caracteristics__card">
-          <div class="caracteristics__header">
-            <p class="card__header">Lits</p>
-          </div>
-          <div class="card__body text-center">
-            <% unless @flat.nb_beds > 4 %>
-              <% @flat.nb_beds.times do %>
-                <span id="bed"> 🛌 </span>
-              <% end %>
-            <% else %>
-                <p><%= @flat.nb_beds %></p>
-            <% end %>
-            <% else %>
-              <p>Autant de place que vous voudrez!</p>
-        <% end %>
           
+        <% end %>
+        
           </div>
         </div>
       </div>
 </div>
 
-<div class="container-fluid g1bg text-center">
-<!-- start of left-portion-->
-  <div class="row">
-    <div class="col-xs-12 col-md-8 text-center">
-      <div class="flat-description">
-        <h2 class="flat-h2">Description</h2>
-        <p><%= @flat.description %></p>
+<div class="container-fluid g1bg">
+  <div class="container text-center">
+  <!-- start of left-portion-->
+    <div class="row">
+      <div class="col-xs-12 col-md-8 text-center">
+        <div class="flat-description">
+          <h2 class="flat-h2">Description</h2>
+          <p><%= @flat.description %></p>
+        </div>
+        <div class="flat-description">
+          <h2 class="flat-h2">Equipements</h2>
+          <ul class="list-inline">
+            <li><%= cl_image_tag "l79k8dkbuffimtaivx7n", height: 20, width:20 %> wifi</li>
+            <li><%= cl_image_tag "biking", height:40, width:40 %>Vélos</li>
+            <li><%= cl_image_tag "mta3d2nqqc1wvw4ve2lo", height: 40, width:40 %>Ptit-dej</li>
+            <li>Ping-pong</li>
+            <%= @reviews %>
+ 
+          </ul>
+        </div>
+        <div class="flat-description">
+          <h2 class="flat-h2">Localisation</h2>
+          <div id="flat-map" data-marker="<%= @marker %>"></div>
+        </div>
+        <div class="flat-description">
+          <h2 class="flat-h2">Les avis</h2>
+          
+          <% if @flat.nb_of_reviews == 0  %>
+            <p>Ce logement n'a pas encore été noté, soyez le premier a laisser un avis</p>
+            <%= render "shared/new_flat_review", local: [@flat, @flat_review] %>
+          <% else %>
+           <h3> Ce logement a reçu <%= @flat.nb_of_reviews %> avis</h3>
+            <%= @reviews.each do |review| %>
+              <p>I'm a review</p>
+            <% end %>
+          <% end %>
+          
+        </div>
       </div>
-      <div class="flat-description">
-        <h2 class="flat-h2">Equipements</h2>
-        <ul class="list-inline">
-          <li>wifi</li>
-          <li>chauffage</li>
-          <li>petit-dej</li>
-          <li>table de ping-pong</li>
-        </ul>
-      </div>
-      <div class="flat-description">
-        <h2 class="flat-h2">Localisation</h2>
-        <p>Map here</p>
-      </div>
-      <div class="flat-description">
-        <h2 class="flat-h2">Commentaires</h2>
-        <p>Comments here</p>
+    <div class="col-xs-12 col-md-4"> 
+      <div class="datepickr">
+        <h3>Choisissez vos dates</h3>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque tempore dolores assumenda fuga maxime qui impedit consequatur ipsam facere sit! Consequatur, sunt illo? Iusto blanditiis, accusamus nobis tenetur voluptates exercitationem.</p>
       </div>
     </div>
-  <div class="col-xs-12 col-md-4"> 
-    <div class="datepickr">
-      <h3>Choisissez vos dates</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque tempore dolores assumenda fuga maxime qui impedit consequatur ipsam facere sit! Consequatur, sunt illo? Iusto blanditiis, accusamus nobis tenetur voluptates exercitationem.</p>
+    <div class="col-xs-6 col-md-4">
+      <a href="https://g1.duniter.fr/api/#/v1/payment/G2CBgZBPLe6FSFUgpx2Jf1Aqsgta6iib3vmDRA1yLiqU?name=http:%2F%2Flocalhost:3000&amount=1&comment=REFERENCE&redirect_url=http:%2F%2Flocalhost:3000%2Fflats%2F54%252F%23%252Fapp%252Fhome%3Fservice%3Dpayment%26cancel&demo=true" class="btn btn-success">
+      Payer avec mon compte Césium
+      </a>
     </div>
   </div>
-  <div class="col-xs-6 col-md-4">
-    <a href="https://g1.duniter.fr/api/#/v1/payment/G2CBgZBPLe6FSFUgpx2Jf1Aqsgta6iib3vmDRA1yLiqU?name=http:%2F%2Flocalhost:3000&amount=1&comment=REFERENCE&redirect_url=http:%2F%2Flocalhost:3000%2Fflats%2F54%252F%23%252Fapp%252Fhome%3Fservice%3Dpayment%26cancel&demo=true" class="btn btn-success">
-    Payer avec mon compte Césium
-    </a>
-   </div>
-
 </div>
 
 

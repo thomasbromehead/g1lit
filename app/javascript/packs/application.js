@@ -6,12 +6,17 @@ import "../components/aguilar";
 import '../components/slider';
 
 
-import initUpdateNavbarOnScroll from '../components/navbar';
-initUpdateNavbarOnScroll();
+// import initUpdateNavbarOnScroll from '../components/navbar';
+// initUpdateNavbarOnScroll();
 
+import bounce from "../components/aguilar"
+bounce();
 
 // import test from '../components/slider'
 // test();
+
+import mapFlat from "../components/flat-map"
+mapFlat();
 
 // import fileUpload from '../components/uppy';
 // fileUpload();

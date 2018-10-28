@@ -51,3 +51,14 @@ $border-radius-small: 2px;
 }
 
 // Override other variables below!
+.container{
+  text-align:center;
+  margin: 0 auto;
+}
+
+.container-fluid, .container{
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+

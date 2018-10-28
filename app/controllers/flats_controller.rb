@@ -25,6 +25,12 @@ class FlatsController < ApplicationController
   def show
     @flat_pics = @flat.image_data.split(',')
     @user = current_user
+    @marker = JSON.generate({
+      lat: @flat.latitude,
+      long: @flat.longitude,
+      category: @flat.category
+    })
+    @reviews = Flat.includes(:flat_reviews)
 
   end
 

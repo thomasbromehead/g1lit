@@ -18,32 +18,37 @@ Message.destroy_all
 puts "Deleting messages"
 UserReview.destroy_all
 puts "Deleting User Reviews of Customers"
+User.destroy_all
+puts "Destroying users"
 
-20.times do |user|
+23.times do |user|
   name= Faker::Name.first_name
   email= Faker::Internet.email
   password= "azerty"
   avatar = [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
-  "11.jpg",
-  "12.jpg",
-  "13.jpg",
-  "14.jpg",
-  "15.jpg",
-  "16.jpg",
-  "17.jpg",
-  "18.jpg",
-  "19.jpg",
-  "20.jpg"
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "andre",
+  "matt",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "tom",
+  "joan"
 ]
   q = avatar.sample
   avatar.delete_at(avatar.index(q))
@@ -67,7 +72,10 @@ flats = [
   zip_code:"15230",
   user_id: 1,
   image_data: "fsp5earkizotlmmslfld.jpg, q0aguq3ndti5qgkypbgp.jpg, sm6dse8hdmrhlkotjyrb.jpg, eqomiqawbufisqtiyd1t.jpg, facade.jpg",
-  nb_beds: 3
+  nb_beds: 3,
+  nb_rooms: 3,
+  nb_of_bathrooms:2,
+  smoking: true
   },
   {title: "Appartement de caractère dans monument historique",
   description: "Joli appartement dans un village Mayennais de charme avec canapé-lit et possibilité d'avoir ma chambresi je ne suis pas présente.",
@@ -79,7 +87,10 @@ flats = [
   zip_code:"53400",
   user_id: 2,
   image_data: "garden4.jpg, chalet4.jpg, cuisine.jpg , bedroom9.jpg, cam.jpg",
-  nb_beds: 4
+  nb_beds: 4,
+  nb_rooms: 2,
+  smoking: true,
+  nb_of_bathrooms: 2
   }, 
   {title:"Terrain avec étang proche de Saint-Etienne",
   description: "Grand terrain plat chez moi. Etang avec petite barque, possibilité de pécher, possibilité de prendre une douche à la maison",
@@ -102,7 +113,9 @@ flats = [
   zip_code:"56860",
   user_id: 4,
   image_data: "hanson-lu-481132-unsplash.jpg, outside.jpg, kitchen6.jpg, rober.jpg, sdb1.jpg, rob.jpg, kitchen2.jpg",
-  nb_beds:4
+  nb_beds:4,
+  smoking: true,
+  nb_of_bathrooms: 3,
   },
   {title:"Caravane dans ma forêt personnelle",
   description:"Située dans les Landes, à Soustons, grande caravane avec auvent, petite piscine etc",category:"caravane",
@@ -114,7 +127,9 @@ flats = [
   user_id: 5,
   image_data: "vidar-nordli-mathisen-683072-unsplash.jpg, riccardo-mion-645217-unsplash.jpg,fyf5b8zmlt3nxdyuugng.jpg,
   ",
-  nb_beds: 6
+  nb_beds: 6,
+  smoking: false,
+  nb_of_bathrooms:2
   },
   {title:"Chambre dans ma maison à proximité de Toulouse",
   description:"Grande Chambre dans ma maison personnelle à Colomiers, proche de Toulouse. Maison avec piscine, salle  de bains privative, wifi etc. Je peux vous servir un bon ptit dej!",
@@ -126,7 +141,9 @@ flats = [
   zip_code:"31770",
   user_id: 1,
   image_data: "montagne.jpg, kitchen2.jpg, londres.jpg, matograine.jpg, chlqtvgopj4lgxq7q9e4.jpg, terrasse.jpg",
-  nb_beds: 1
+  nb_beds: 1,
+  smoking: false,
+  nb_of_bathrooms:1
   },
 ]
 

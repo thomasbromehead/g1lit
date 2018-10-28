@@ -1,12 +1,12 @@
 
-<div class="navbar-wagon--home">
+<div class="navbar-wagon--sitewide">
   <!-- Logo -->
   <%= link_to root_path do %>
     <%= image_tag "Logo/logo1", {size:"100x70"}%>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm white-links">
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
   
     <% if user_signed_in? %>
 
@@ -18,7 +18,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag "IMG-20181020-WA0000.jpg", radius: :max,  gravity: :face,height: 50, width: 50, class:"dropdown-toggle",id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#", id: "hello" do %>

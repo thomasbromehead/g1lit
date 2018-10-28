@@ -1,22 +1,15 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
-const mapContainer = document.getElementById('map');
-console.log(mapContainer);
+const mapContainer = document.getElementById('map')
+console.log(mapContainer)
 
-
-window.mapContainer = mapContainer ;
+mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
 
 if(mapContainer){
-  mapContainer.addEventListener('hover', function(){
-    console.log(this.map.getZoom());
-    console.log('hovering');
-  })
-
-
-
   const feat = []
   if(mapContainer){
     const results = JSON.parse(mapContainer.dataset.markers);
+    console.log(results)
     results.forEach(flat => {
     feat.push({
           type:"Feature",
@@ -38,11 +31,12 @@ if(mapContainer){
           }
         })
     })
+    console.log(feat)
   }
 
   const flats = Object.assign({type:"FeatureCollection",
   features:feat})
-  mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
+
 
 
   const map = new mapboxgl.Map({
@@ -55,7 +49,7 @@ if(mapContainer){
   window.map = map;
 
 
-  map.on('load', function(e){
+  map.on('load', function(){
     map.addSource("places",{
         type:'geojson',
         data: flats
@@ -195,6 +189,7 @@ if(mapContainer){
     zoom:10,
   }));
 
+
   // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
   map.addControl(new mapboxgl.NavigationControl());
@@ -202,36 +197,3 @@ if(mapContainer){
 
 }
 
-// const results = [{
-//   address: "3 avenue longue",
-//   city: "Saint-Junien"
-//   },
-//   {
-//   address:"4 petite avenue",
-//   city: "Lens"
-//   }]
-
-// function toGeoJson(data){
-//   if(data.length == 1){
-//     return {
-//       type:"FeatureCollection",
-//         features:[
-//           {
-//             type:"Feature",
-//             geometry:{
-//               type:"Point",
-//               coordinates: [data[0].long, data[0].lat]
-//             },
-//             properties: {
-//               address: data[0].address,
-//               city: data[0].city,
-//               country: data[0].country,
-//               postalCode:data[0].postalCode
-//             }
-//           }
-//         ]
-//       }
-//     } else {
-      
-//     }
-// }

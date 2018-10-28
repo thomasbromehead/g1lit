@@ -2,7 +2,7 @@
 <div class="new_flat_form_bg" style="background-image:url('<%= image_path "Patterns/trianglify.svg" %>'); background-repeat: no-repeat; background-size:cover;">
   <div class="new_flat_form text-center">
     <%= simple_form_for @flat do |f| %>
-       <% if flat.errors.any? %>
+       <% if @flat.errors.any? %>
         <div class="errors">
           <h2><%= pluralize(flat.errors.count, 'erreur') %> <%= flat.errors.count == 1 ? "a" : "ont"%> empêché de créer votre logement</h2>
           <ul>
@@ -22,7 +22,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.input :category, as: :select, collection: ["maison", "appartement"], class: "form-control", label: "Catégorie"%>
+        <%= f.input :category, as: :select, collection: ["maison", "appartement","terrain", "camping-car", "caravane"], class: "form-control", label: "Catégorie"%>
       </div>
 
       <div class="form-group">

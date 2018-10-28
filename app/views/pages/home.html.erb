@@ -19,6 +19,31 @@
 
 <div id="libre">
     <h2 id="loger" class="home-h2s">Se loger en monnaie libre, ça veut dire quoi? 🧐</h2>
+    <%= link_to "Je connais déjà" %>
+    <%= link_to "C'est quoi la monnaie libre" %>
+</div>
+
+<div class="container">
+  <h2 style="margin: 0.5em 0;">Les 6 derniers logements </h2>
+  <div id="last_six">
+    <% @last_six.includes(:owner).each do |flat| %>
+      <div class="home-card">
+        <div class="home-card--image">
+          <%= link_to flat_path(flat) do %>
+            <%= cl_image_tag flat.image_data.split(',').first, height: 250, width:250, crop: :fill, radius: 5%>
+            <span class="home-card--price"><strong><%= flat.price_per_night %></strong> DU/nuit</span>
+            <div class="home-card--user" style="background-image: url('https://res.cloudinary.com/dsmlpg8oe/image/upload/w_50,h_50/<%= flat.owner.avatar_data %>.png')">
+            </div>
+ 
+          <% end %>
+        </div>
+        <div class="home-card--city">
+          <%= flat.city%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "Les voir tous", flats_path, class: "see-all" %>
 </div>
 
 <div id="explication">
