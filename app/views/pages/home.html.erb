@@ -23,7 +23,7 @@
     <%= link_to "C'est quoi la monnaie libre" %>
 </div>
 
-<div class="container">
+<div class="container six-card">
   <h2 style="margin: 0.5em 0;">Les 6 derniers logements </h2>
   <div id="last_six">
     <% @last_six.includes(:owner).each do |flat| %>
@@ -95,10 +95,36 @@
     </div>
   </div>
   <div class="rating-home">
-    <p>et si possible, je laisse un avis, la communauté en a besoin!
+    <p>et si possible, je laisse un avis, la communauté en a besoin! <span id="wink">😉</span>
     </p>
-      <%= cl_image_tag "noun_rating_292015_0283b3.png", width: 200, fetch_format: :auto, fit: :fill %>
+      <%= cl_image_tag "noun_ratings_2015181.png", width: 200, fetch_format: :auto, quality: :auto %>
   </div>
+    <div id="appli">
+      <h5>Utilisez Césium pour réserver depuis le site</h5>
+      <%= link_to "https://cesium.duniter.io/#/app/home", target: :blank do %>
+        <%= cl_image_tag "cesium", height:100, crop: :fit, fetch_format: :auto, quality: :auto %>
+      <% end %>
+      <hr class="style-two">
+      <p>ou avec vos wallets </p>
+      <div id="wallets">
+        <%= link_to "https://git.duniter.org/clients/python/sakia", target: :blank do %>
+          <%= cl_image_tag "sakia", height:100, crop: :fit, fetch_format: :auto, quality: :auto %>
+          <p>Sakia</p>
+        <% end %>
+        <%= link_to "https://silkaj.duniter.org/", target: :blank do %>
+          <%= cl_image_tag "LOGO_SILKAJ_Silkajdef", height:100, crop: :fit, fetch_format: :auto, quality: :auto %>
+          <p>Silkaj</p>
+        <% end %>
+      </div>
+ 
+    </div>
+    <div id="apps">
+      <%= cl_image_tag "play_store", width:150, crop: :fit, fetch_format: :auto, quality: :auto  %>
+      <%= cl_image_tag "app_store", width:150, crop: :fit, fetch_format: :auto, quality: :auto  %>
+    </div>
+
+    <%= cl_image_tag "imac-ipad", height:600, fetch_format: :auto, crop: :fit, quality: :auto, id: "mockup"  %>
+
 </div>
 
 <div class="g1lit-parallax" style="background-image:url('https://res.cloudinary.com/dsmlpg8oe/image/upload/h_400,q_auto,f_auto,c_fill/v1540911582/21124_g1lit_A_03_mockup.jpg')">

@@ -178,7 +178,10 @@
   justify-content: center;
   align-items: center;
   flex-wrap:wrap;
+}
 
+.six-card{
+  padding-bottom: 20px;
 }
 
 .home-card{
@@ -235,7 +238,10 @@
 }
 
 .comment{
-  padding:100px 0;
+  padding:80px 0;
+  height: 1300px;
+  background-color: #fff;
+  position: relative;
 }
 
 // Step Boxes
@@ -250,14 +256,16 @@
   flex-direction: column;
   flex-basis: 25%;
   height: fit-content;
-  font-family: "Raleway"
+  font-family: "Raleway";
+  align-items: center;
+  height:350px;
 }
 
 .step-icon{
   width: 100%;
   margin-bottom: 20px;
 }
-
+ 
 .step-title{
   margin-bottom: 20px;
  }
@@ -265,12 +273,70 @@
 .step-content{
   font-size: 18px;
   padding: 0 10px;
+  width:80%;
+  text-align: center;
+  justify-self: end;
 }
+
+.rating-home{
+  font-family: "Raleway";
+  font-size:1.3em;
+}
+
+#wink{
+  font-size:1.2em;
+}
+
+#mockup{
+  position: absolute;
+  bottom: -59px;
+}
+
+#appli{
+  display: inline;
+  height:fit-content;
+  position:absolute;
+  left:6em;
+  width:35%;
+  bottom:11%;
+  p{
+    font-family: 'Raleway';
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+#wallets{
+  display: flex;
+  justify-content: space-around;
+}
+
+#apps{
+  position: absolute;
+  bottom: 4%;
+  left:6em;
+  display:flex;
+  justify-content: center;
+  width: 35%;
+  :first-child{
+    margin-right:10px;
+  }
+}
+
+
+.style-two{
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
 
 .g1lit-parallax{
   background-position: bottom;
   background-attachment: fixed;
-  height: 300px;
+  height: 400px;
 }
 
 
