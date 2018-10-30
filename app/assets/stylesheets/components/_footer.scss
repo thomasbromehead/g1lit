@@ -1,14 +1,16 @@
-footer{
-  display:flex;
-  height:fit-content;
-  background: burlywood;
-  padding:2em;
-  justify-content: space-between;
-  font-size:0.8em;
-  bottom: 0 !important;
-  margin-top: 50px;
-}
-
 #duniter-links li{ 
   list-style: none;
+}
+
+#fluid-footer-container{
+  width:100%;
+  background: rgb(250, 250, 252);
+  border: 2px solid red;
+  height:fit-content;
+}
+
+#footer-content{
+  margin: 50px auto;
+  display:flex;
+  justify-content: space-between;
 }

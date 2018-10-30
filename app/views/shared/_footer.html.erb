@@ -1,8 +1,10 @@
-<div class="container-fluid">
-  <footer>
+<div id="fluid-footer-container">
+  <div class="container" id="footer-content">
     <div id="a-propos">
+      <%= cl_image_tag "logo1.png", height: 100, crop: :fit, fetch_format: :auto %>
       <p><em>A propos</em></p>
     </div>
+
     <div id="duniter-links">
       <ul>
         <li>La théorie relative de la monnaie</li>
@@ -13,10 +15,9 @@
         <li>Forum Monnaie Libre</li>
       </ul>
     </div>
-      <div id="id">
-        Made with ❤️ for freedom by <br> Thomas Bromehead in 2018.
-      </div>
-    </div>
 
-  </footer>
+    <div id="love">
+        Créé avec passion pour la liberté par <br> Thomas Bromehead en 2018.
+    </div>
+  </div>
 </div>

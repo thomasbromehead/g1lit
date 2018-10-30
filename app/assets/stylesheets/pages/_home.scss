@@ -11,10 +11,9 @@
 
 }
 
-
 .home-inputs{
-  padding:0.3em;
-  border-radius:5px;
+  padding:0.5em;
+  border-radius:20px;
   margin-right:0.3em;
 }
 
@@ -178,9 +177,10 @@
   justify-content: center;
   align-items: center;
   flex-wrap:wrap;
-  // margin:  auto;
-  overflow:hidden;
+}
 
+.six-card{
+  padding-bottom: 20px;
 }
 
 .home-card{
@@ -196,6 +196,10 @@
   border-radius:5px;
   align-items: center;
   padding-top:10px;
+  transition: margin-top 0.3s ease;
+  &:hover{
+    margin-top:-60px;
+  }
 }
 
 .home-card--image{
@@ -230,6 +234,119 @@
   width:50px;
   background-size:cover;
   z-index:5
+}
+
+.comment{
+  padding:80px 0;
+  height: 1300px;
+  background-color: #fff;
+  position: relative;
+  text-align: center;
+  h2{
+    position: relative;
+  }
+}
+
+#underline{
+  position: absolute;
+  top:10;
+  left:35%;
+  // right:50%;
+}
+
+// Step Boxes
+.step-boxes{
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.step-box{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
+  height: fit-content;
+  font-family: "Raleway";
+  align-items: center;
+  height:350px;
+}
+
+.step-icon{
+  width: 100%;
+  margin-bottom: 20px;
+}
+ 
+.step-title{
+  margin-bottom: 20px;
+ }
+
+.step-content{
+  font-size: 18px;
+  padding: 0 10px;
+  width:80%;
+  text-align: center;
+  justify-self: end;
+}
+
+.rating-home{
+  font-family: "Raleway";
+  font-size:1.3em;
+}
+
+#wink{
+  font-size:1.2em;
+}
+
+#mockup{
+  position: absolute;
+  bottom: -59px;
+}
+
+#appli{
+  display: inline;
+  height:fit-content;
+  position:absolute;
+  left:6em;
+  width:35%;
+  bottom:11%;
+  p{
+    font-family: 'Raleway';
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+#wallets{
+  display: flex;
+  justify-content: space-around;
+}
+
+#apps{
+  position: absolute;
+  bottom: 4%;
+  left:6em;
+  display:flex;
+  justify-content: center;
+  width: 35%;
+  :first-child{
+    margin-right:10px;
+  }
+}
+
+
+.style-two{
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+
+.g1lit-parallax{
+  background-position: bottom;
+  background-attachment: fixed;
+  height: 400px;
 }
 
 

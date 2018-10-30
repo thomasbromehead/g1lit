@@ -42,8 +42,8 @@ if(mapContainer){
   const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
-  center: [2.3488, 48.8534],
-  zoom:4.5
+  center: [2.3488, 45.8534],
+  zoom:5.5
   });
 
   window.map = map;

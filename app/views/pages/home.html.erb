@@ -6,24 +6,25 @@
 
 
     <h1 id="home-h1">Chez qui vous amèneront vos <span id="g1">ğ1</span> ?</h1>
-    <form action="/flats" id="home-form">
-      <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
-      <input type="text" class="home-inputs dates" id="start" placeholder="Arrivée" name="start-date">
-      <input type="text" class="home-inputs dates" id="end" placeholder="Départ" name="end-date">
-      <input type="submit", value="Chercher!", class="home-inputs slideUp" id="home-search-btn">
-    </form>
-
+    <div class="container">
+      <form action="/flats" id="home-form" >
+        <input type="text" class="home-inputs"id="home-city-search" placeholder="Lyon, Honfleur, Douarnenez", name="city">
+        <input type="text" class="home-inputs dates" id="start" placeholder="Arrivée" name="start-date">
+        <input type="text" class="home-inputs dates" id="end" placeholder="Départ" name="end-date">
+        <input type="submit", value="Chercher!", class="home-inputs slideUp" id="home-search-btn">
+      </form>
+    </div>
   </div>
 
 </div>
 
 <div id="libre">
-    <h2 id="loger" class="home-h2s">Se loger en monnaie libre, ça veut dire quoi? 🧐</h2>
+    <h2 id="loger" class="home-h2s">La monnaie libre, c'est quoi? 🧐</h2>
     <%= link_to "Je connais déjà" %>
     <%= link_to "C'est quoi la monnaie libre" %>
 </div>
 
-<div class="container">
+<div class="container six-card">
   <h2 style="margin: 0.5em 0;">Les 6 derniers logements </h2>
   <div id="last_six">
     <% @last_six.includes(:owner).each do |flat| %>
@@ -38,7 +39,7 @@
           <% end %>
         </div>
         <div class="home-card--city">
-          <%= flat.city%>
+          <%= flat.city%> - <%= departement(flat)%>
         </div>
       </div>
     <% end %>
@@ -46,29 +47,90 @@
   <%= link_to "Les voir tous", flats_path, class: "see-all" %>
 </div>
 
-<div id="explication">
-  <div id="un">
-    <div class="left">
+<div class="container-fluid text-center comment">
+  <h2>Comment ça marche?</h2>
+  <%= cl_image_tag "Welcome_to_Vectr_4", width: 500, id:"underline" %>
+  <div class="step-boxes">
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_account_490v",  height: 130, crop: :scale%>      
+      </div>
+      <div class="step-title">
+        <h3>Je crée mon compte</h3>
+      </div>
+      <div class="step-content">
+      <p>Si je suis membre de la Ğ1, j'ai juste à renseigner mon pseudo Duniter et ma clé publique sera automatiquement renseignée.</p>
+      </div>
     </div>
-    <div class="right">
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_destanation1_h3vq", height: 130, crop: :fill%>
+      </div>
+      <div class="step-title">
+        <h3>Je cherche un logement</h3>
+      </div>
+      <div class="step-content">
+      <p>Je peux filtrer par type de logement: terrain, maison, appartement ou même par équipements: piscine, barbecue etc.</p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_confirmed_81ex.svg", height: 130, crop: :fill %>
+      </div>
+      <div class="step-title">
+        <h3>Je paie directement le propriétaire</h3>
+      </div>
+      <div class="step-content">
+        <p>Avec mon compte Césium depuis mon ordinateur ou en scannant le code QR avec mon smartphone ou ma tablette.</p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_hang_out_h9ud.svg", height: 130, crop: :fill %>
+      </div>
+      <div class="step-title">
+        <h3>J'en profite!</h3>
+      </div>
+      <div class="step-content">
+        <p> Je fais de belles rencontres, le tout en monnaie libre, respecteuse de l'homme et créé de manière juste, que rêver de mieux?</p>
+      </div>
     </div>
   </div>
-  <div id="deux">
-    <div class="left">
-    </div>
-    <div class="right">
-    </div>
+  <div class="rating-home">
+    <p>et si possible, je laisse un avis, la communauté en a besoin! <span id="wink">😉</span>
+    </p>
+      <%= cl_image_tag "noun_ratings_2015181.png", width: 200, fetch_format: :auto, quality: :auto %>
   </div>
-  <div id="trois">
-    <div class="left">
+    <div id="appli">
+      <h5>Utilisez Césium pour réserver depuis le site</h5>
+      <%= link_to "https://cesium.duniter.io/#/app/home", target: :blank do %>
+        <%= cl_image_tag "cesium", height:100, crop: :fit, fetch_format: :auto, quality: :auto %>
+      <% end %>
+      <hr class="style-two">
+      <p>ou avec vos wallets </p>
+      <div id="wallets">
+        <%= link_to "https://git.duniter.org/clients/python/sakia", target: :blank do %>
+          <%= cl_image_tag "sakia", height:100, crop: :fit, fetch_format: :auto, quality: :auto %>
+          <p>Sakia</p>
+        <% end %>
+        <%= link_to "https://silkaj.duniter.org/", target: :blank do %>
+          <%= cl_image_tag "LOGO_SILKAJ_Silkajdef", height:100, crop: :fit, fetch_format: :auto, quality: :auto %>
+          <p>Silkaj</p>
+        <% end %>
+      </div>
+ 
     </div>
-    <div class="right">
+    <div id="apps">
+      <%= cl_image_tag "play_store", width:150, crop: :fit, fetch_format: :auto, quality: :auto  %>
+      <%= cl_image_tag "app_store", width:150, crop: :fit, fetch_format: :auto, quality: :auto  %>
     </div>
-  </div>
+
+    <%= cl_image_tag "imac-ipad", height:600, fetch_format: :auto, crop: :fit, quality: :auto, id: "mockup"  %>
+
 </div>
 
-
-  
+<div class="g1lit-parallax" style="background-image:url('https://res.cloudinary.com/dsmlpg8oe/image/upload/h_400,q_auto,f_auto,c_fill/v1540911582/21124_g1lit_A_03_mockup.jpg')">
+</div>
 
 
 
