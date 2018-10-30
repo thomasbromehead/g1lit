@@ -18,7 +18,7 @@
 </div>
 
 <div id="libre">
-    <h2 id="loger" class="home-h2s">Se loger en monnaie libre, ça veut dire quoi? 🧐</h2>
+    <h2 id="loger" class="home-h2s">La monnaie libre, c'est quoi? 🧐</h2>
     <%= link_to "Je connais déjà" %>
     <%= link_to "C'est quoi la monnaie libre" %>
 </div>
@@ -46,11 +46,62 @@
   <%= link_to "Les voir tous", flats_path, class: "see-all" %>
 </div>
 
+<div class="container-fluid text-center comment">
+  <h2>Comment ça marche?</h2>
+  <div class="step-boxes">
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_account_490v",  height: 130, crop: :scale%>      
+      </div>
+      <div class="step-title">
+        <h3>Je crée mon compte</h3>
+      </div>
+      <div class="step-content">
+      <p>Si je suis membre de la Ğ1, j'ai juste à renseigner mon pseudo Duniter et ma clé publique sera automatiquement renseignée.</p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_destanation1_h3vq", height: 130, crop: :fill%>
+      </div>
+      <div class="step-title">
+        <h3>Je cherche un logement</h3>
+      </div>
+      <div class="step-content">
+      <p>Je peux filtrer par type de logement: terrain, maison, appartement ou même par équipements: piscine, barbecue etc.</p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_confirmed_81ex.svg", height: 130, crop: :fill %>
+      </div>
+      <div class="step-title">
+        <h3>Je paie directement le propriétaire</h3>
+      </div>
+      <div class="step-content">
+        <p>Avec mon compte Césium depuis mon ordinateur ou en scannant le code QR avec mon smartphone ou ma tablette.</p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-icon">
+        <%= cl_image_tag "undraw_hang_out_h9ud.svg", height: 130, crop: :fill %>
+      </div>
+      <div class="step-title">
+        <h3>J'en profite!</h3>
+      </div>
+      <div class="step-content">
+        <p> Je fais de belles rencontres, le tout en monnaie libre, respecteuse de l'homme et crée de manière juste, que rêver de mieux?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
 <div id="explication">
   <div id="un">
     <div class="left">
     <%= formatDate(Time.now) %>
-
     </div>
     <div class="right">
     </div>
@@ -68,6 +119,7 @@
     </div>
   </div>
 </div>
+-->
 
 
   

@@ -234,4 +234,37 @@
   z-index:5
 }
 
+.comment{
+  padding:100px 0;
+}
+
+// Step Boxes
+.step-boxes{
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.step-box{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
+  height: fit-content;
+  font-family: "Raleway"
+}
+
+.step-icon{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.step-title{
+  margin-bottom: 20px;
+ }
+
+.step-content{
+  font-size: 18px;
+  padding: 0 10px;
+}
+
 
