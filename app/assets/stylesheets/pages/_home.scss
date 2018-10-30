@@ -178,8 +178,6 @@
   justify-content: center;
   align-items: center;
   flex-wrap:wrap;
-  // margin:  auto;
-  overflow:hidden;
 
 }
 
@@ -196,6 +194,10 @@
   border-radius:5px;
   align-items: center;
   padding-top:10px;
+  transition: margin-top 0.3s ease;
+  &:hover{
+    margin-top:-60px;
+  }
 }
 
 .home-card--image{
