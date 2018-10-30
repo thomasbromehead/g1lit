@@ -241,6 +241,17 @@
   height: 1300px;
   background-color: #fff;
   position: relative;
+  text-align: center;
+  h2{
+    position: relative;
+  }
+}
+
+#underline{
+  position: absolute;
+  top:10;
+  left:35%;
+  // right:50%;
 }
 
 // Step Boxes
