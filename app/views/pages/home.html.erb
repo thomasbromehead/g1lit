@@ -38,7 +38,7 @@
           <% end %>
         </div>
         <div class="home-card--city">
-          <%= flat.city%>
+          <%= flat.city%> - <%= departement(flat)%>
         </div>
       </div>
     <% end %>
@@ -49,6 +49,8 @@
 <div id="explication">
   <div id="un">
     <div class="left">
+    <%= formatDate(Time.now) %>
+
     </div>
     <div class="right">
     </div>
