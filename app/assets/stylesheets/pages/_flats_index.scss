@@ -14,11 +14,17 @@
   flex: 1 1 55%;
   overflow:scroll;
   margin-right:1em;
+
 }
 
 #index-h1{
   margin-top:100px;
 }
+
+#results-container--index{
+  margin-bottom: 100px;
+}
+
 
 .flat-card--index{
   border: 1px solid rgba(121, 121, 121, 0.2);
@@ -127,6 +133,7 @@ hr.hr {
   .flat-card--index{
     height: fit-content;
     min-height:250px;
+
   }
 
   .flat-description--index p{
