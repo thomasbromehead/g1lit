@@ -10,7 +10,7 @@ import '../components/slider';
 // initUpdateNavbarOnScroll();
 
 import bounce from "../components/aguilar"
-bounce();
+bounce(); 
 
 // import test from '../components/slider'
 // test();

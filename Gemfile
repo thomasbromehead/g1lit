@@ -28,7 +28,8 @@ gem 'cloudinary'
 gem 'attachinary'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
-
+gem "searchkick"
+gem "sidekiq"
 
 
 group :development do

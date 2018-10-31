@@ -45,6 +45,8 @@ class Flat < ApplicationRecord
   has_many :bookings, dependent: :destroy
 
 
+  searchkick locations: [:location]
+
   validates :title, presence: true, length: { maximum: 200, too_long: "Merci de choisir un titre concis de moins de 200 caractères, ex: Adorable petite chaumière normande au bord de l'eau" }
   validates :description, presence: true
   validates :category, presence: true
@@ -62,6 +64,10 @@ class Flat < ApplicationRecord
 
   def address_changed?
     street_changed? || city_changed? || zip_code_changed? || country_changed?
+  end
+
+  def search_data
+    attributes.merge(location: {lat: latitude, lon: longitude})
   end
 
 end

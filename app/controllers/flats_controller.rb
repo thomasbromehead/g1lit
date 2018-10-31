@@ -2,10 +2,27 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-     @flats = Flat.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
+      if params[:city]
+      lat = deconstruct(params[:city]).dig('lat')
+      lng = deconstruct(params[:city]).dig('lng')
+      @flats = Flat.search("*", where: {
+        location: 
+          {
+            near:
+            {
+              lat: lat,
+              lon: lng
+            },
+            within: "#{params[:distance]}"
+          }
+      })
+     else
+      @flats = Flat.all
+     end
+
      @flat_owners = Flat.includes(:owner)
     # @flats = Flat.paginate(page: params[:page], per_page:5)
-      @markers = @flats.map do |flat|
+      @markers = Flat.all.map do |flat|
       {
         lat: flat.latitude,
         long: flat.longitude,
@@ -18,7 +35,7 @@ class FlatsController < ApplicationController
         street: flat.street,
         category: flat.category
       }
-
+      # @flats = @flats.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
     end
   end
 
@@ -76,6 +93,13 @@ class FlatsController < ApplicationController
 
   def flat_params
     params.require(:flat).permit(:title, :category, :description, :price_per_night, :nb_of_bathrooms, :nb_rooms, photos: [])
+  end
+
+  def deconstruct(city)
+    # Use this one if you want a box area
+    # Geocoder.search(city).first.data.dig('geometry').first.flatten[1]
+    # Use this for city's exact location
+      Geocoder.search(city).first.data.dig('geometry','location')
   end
 end
 
