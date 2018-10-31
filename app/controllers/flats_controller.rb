@@ -2,7 +2,7 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-      if params[:city]
+      if params[:city] != ""
       lat = deconstruct(params[:city]).dig('lat')
       lng = deconstruct(params[:city]).dig('lng')
       @flats = Flat.search("*", where: {
@@ -16,8 +16,9 @@ class FlatsController < ApplicationController
             within: "#{params[:distance]}"
           }
       })
+      @flats = @flats.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
      else
-      @flats = Flat.all
+      @flats = Flat.all.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
      end
 
      @flat_owners = Flat.includes(:owner)
@@ -35,7 +36,6 @@ class FlatsController < ApplicationController
         street: flat.street,
         category: flat.category
       }
-      # @flats = @flats.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
     end
   end
 

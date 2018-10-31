@@ -34,7 +34,7 @@
           <%= link_to flat_path(flat) do %>
             <%= cl_image_tag flat.image_data.split(',').first, height: 250, width:250, crop: :fill, radius: 5%>
             <span class="home-card--price"><strong><%= flat.price_per_night %></strong> DU/nuit</span>
-            <div class="home-card--user" style="background-image: url('https://res.cloudinary.com/dsmlpg8oe/image/upload/w_50,h_50/<%= flat.owner.avatar_data %>.png')">
+            <div class="home-card--user" style="background-image: url('https://res.cloudinary.com/dsmlpg8oe/image/upload/w_50,h_50,f_auto,q_auto/<%= flat.owner.avatar_data %>.png')">
             </div>
  
           <% end %>

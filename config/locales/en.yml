@@ -47,7 +47,7 @@ en:
       single_page_html:
           zero:  "Aucun %{model} trouvé"
           one:   "<b>1</b> seul %{model} trouvé"
-          other: "Voici les <b>all&nbsp;%{count}</b> %{model} trouvés"
+          other: "Voici les <b>%{count}</b> %{model} trouvés"
 
       multi_page: "%{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Voici les %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> sur <b>%{count}</b> logements au total"
