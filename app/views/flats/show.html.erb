@@ -110,10 +110,10 @@
           
           <% if @flat.nb_of_reviews == 0  %>
             <p>Ce logement n'a pas encore été noté, soyez le premier a laisser un avis</p>
-            <%= render "shared/new_flat_review", locals: [@flat, @reviews] %>
           <% else %>
            <h3> Ce logement a reçu <%= @flat.nb_of_reviews %> avis</h3>
-            <%= render partial: "shared/review", collection: [@flat, @reviews], cached: true %>
+           <%= @flat.flat_reviews.each do |review| %>
+            <%= render "flat_reviews/show", review: review, cached: true %>
           <% end %>
           
         </div>

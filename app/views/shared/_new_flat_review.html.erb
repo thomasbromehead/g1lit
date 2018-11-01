@@ -1,6 +1,4 @@
-
-<%= form_with model: @flat do |f| %>
-  <%= f.label(:content, "Ajouter un avis") %>
-  <%= f.text_field(:content) %>
-  <%= f.submit "Envoyer" %>
+<%= simple_form_for [flat, review] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
 <% end %>

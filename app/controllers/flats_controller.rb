@@ -47,6 +47,7 @@ class FlatsController < ApplicationController
       category: @flat.category
     })
     @reviews = Flat.includes(:flat_reviews)
+    @review = FlatReview.new
 
   end
 
