@@ -23,19 +23,19 @@ class FlatsController < ApplicationController
 
     # @flats = Flat.paginate(page: params[:page], per_page:5)
       @markers = Flat.all.map do |flat|
-      {
-        lat: flat.latitude,
-        long: flat.longitude,
-        price_per_night: flat.price_per_night,
-        id: flat.id,
-        address: flat.street,
-        postalCode: flat.zip_code,
-        country: flat.country,
-        city: flat.city,
-        street: flat.street,
-        category: flat.category
-      }
-    end
+        {
+          lat: flat.latitude,
+          long: flat.longitude,
+          price_per_night: flat.price_per_night,
+          id: flat.id,
+          address: flat.street,
+          postalCode: flat.zip_code,
+          country: flat.country,
+          city: flat.city,
+          street: flat.street,
+          category: flat.category
+        }
+     end
   end
 
   def show
@@ -46,9 +46,8 @@ class FlatsController < ApplicationController
       long: @flat.longitude,
       category: @flat.category
     })
-    @reviews = Flat.includes(:flat_reviews)
     @review = FlatReview.new
-
+    @flat = Flat.find(params[:id])
   end
 
   def new

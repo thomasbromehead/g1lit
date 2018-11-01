@@ -17,9 +17,7 @@
 #                           DELETE /users(.:format)                                                                         devise/registrations#destroy
 #                           POST   /users(.:format)                                                                         devise/registrations#create
 #                      root GET    /                                                                                        pages#home
-#              flat_reviews GET    /flats/:flat_id/reviews(.:format)                                                        reviews#index
-#                           POST   /flats/:flat_id/reviews(.:format)                                                        reviews#create
-#           new_flat_review GET    /flats/:flat_id/reviews/new(.:format)                                                    reviews#new
+#              flat_reviews POST   /flats/:flat_id/reviews(.:format)                                                        reviews#create
 #                 top_flats GET    /flats/top(.:format)                                                                     flats#top
 #                 hote_flat GET    /flats/:id/hote(.:format)                                                                flats#proprio
 #                     flats GET    /flats(.:format)                                                                         flats#index
@@ -30,6 +28,7 @@
 #                           PATCH  /flats/:id(.:format)                                                                     flats#update
 #                           PUT    /flats/:id(.:format)                                                                     flats#update
 #                           DELETE /flats/:id(.:format)                                                                     flats#destroy
+#               attachinary        /attachinary                                                                             Attachinary::Engine
 #               edit_review GET    /reviews/:id/edit(.:format)                                                              reviews#edit
 #                    review PATCH  /reviews/:id(.:format)                                                                   reviews#update
 #                           PUT    /reviews/:id(.:format)                                                                   reviews#update
@@ -44,6 +43,9 @@
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
 # update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
 #      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
+# 
+# Routes for Attachinary::Engine:
+#   cors GET  /cors(.:format) attachinary/cors#show {:format=>/json/}
 
 Rails.application.routes.draw do
   devise_for :users
@@ -53,7 +55,7 @@ Rails.application.routes.draw do
 
 
   resources :flats do 
-    resources :reviews, only: [:new, :create, :index]
+    resources :reviews, only: [:create]
     collection do 
       get 'top', to: "flats#top"
     end
