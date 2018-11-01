@@ -21,7 +21,6 @@ class FlatsController < ApplicationController
       @flats = Flat.all.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
      end
 
-     @flat_owners = Flat.includes(:owner)
     # @flats = Flat.paginate(page: params[:page], per_page:5)
       @markers = Flat.all.map do |flat|
       {

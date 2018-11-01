@@ -191,7 +191,6 @@ if(mapContainer){
 
 
   // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-
   map.addControl(new mapboxgl.NavigationControl());
   map.addControl(new mapboxgl.FullscreenControl());
 

@@ -1,4 +1,5 @@
-<%= form_with  do |f| %>
+
+<%= form_with model: @flat do |f| %>
   <%= f.label(:content, "Ajouter un avis") %>
   <%= f.text_field(:content) %>
   <%= f.submit "Envoyer" %>

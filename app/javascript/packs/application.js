@@ -16,7 +16,11 @@ bounce();
 // test();
 
 import mapFlat from "../components/flat-map"
-mapFlat();
+const flatMap = document.querySelector("#flat-map")
+if(flatMap){
+  mapFlat();
+  console.log('hello from application.js')
+}
 
 // import fileUpload from '../components/uppy';
 // fileUpload();

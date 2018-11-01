@@ -29,20 +29,21 @@
   <h2 style="margin: 0.5em 0;">Les 6 derniers logements </h2>
   <div id="last_six">
     <% @last_six.includes(:owner).each do |flat| %>
-      <div class="home-card">
-        <div class="home-card--image">
-          <%= link_to flat_path(flat) do %>
-            <%= cl_image_tag flat.image_data.split(',').first, height: 250, width:250, crop: :fill, radius: 5%>
-            <span class="home-card--price"><strong><%= flat.price_per_night %></strong> DU/nuit</span>
-            <div class="home-card--user" style="background-image: url('https://res.cloudinary.com/dsmlpg8oe/image/upload/w_50,h_50,f_auto,q_auto/<%= flat.owner.avatar_data %>.png')">
-            </div>
- 
-          <% end %>
+      <%= cache flat do %>
+        <div class="home-card">
+          <div class="home-card--image">
+            <%= link_to flat_path(flat) do %>
+              <%= cl_image_tag flat.image_data.split(',').first, height: 250, width:250, crop: :fill, radius: 5%>
+              <span class="home-card--price"><strong><%= flat.price_per_night %></strong> DU/nuit</span>
+              <div class="home-card--user" style="background-image: url('https://res.cloudinary.com/dsmlpg8oe/image/upload/w_50,h_50,f_auto,q_auto/<%= flat.owner.avatar_data %>.png')">
+              </div>
+            <% end %>
+          </div>
+          <div class="home-card--city">
+            <%= flat.city%> - <%= departement(flat)%>
+          </div>
         </div>
-        <div class="home-card--city">
-          <%= flat.city%> - <%= departement(flat)%>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <%= link_to "Les voir tous", flats_path, class: "see-all" %>
