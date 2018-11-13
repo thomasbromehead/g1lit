@@ -2,8 +2,13 @@ class FlatReviewsController < ApplicationController
   before_action :set_flat
 
   def create
-
-
+    @review = FlatReview.new(review_params)
+    @review.flat = @restaurant
+    if @review.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render 'restaurants/show'
+    end
   end
 
   def index
@@ -17,7 +22,6 @@ class FlatReviewsController < ApplicationController
   def update
   end
 
-  def
 
   private
 
