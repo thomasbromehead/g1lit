@@ -37,13 +37,20 @@ if(mapContainer){
   const flats = Object.assign({type:"FeatureCollection",
   features:feat})
 
-
+  const mapCenter = document.querySelector('#results')
+  console.log(mapCenter)
+  console.log(mapCenter.dataset.center)
+  const c = JSON.parse(mapCenter.dataset.center)
+  console.log(c)
+  console.log(typeof(c))
+  const z = mapCenter.dataset.zoom
+  console.log(z)
 
   const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
-  center: [2.3488, 45.8534],
-  zoom:5.5
+  center: c,
+  zoom: z
   });
 
   window.map = map;

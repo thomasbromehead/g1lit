@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
 
   resources :flats do 
-    resources :reviews, only: [:create]
+    resources :flat_reviews, only: [:create]
     collection do 
       get 'top', to: "flats#top"
     end
@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
 
-  resources :reviews, only: [:destroy, :edit, :update]
+  resources :flat_reviews, only: [:destroy, :edit, :update]
 
   #Will nest form for creating, and updating a booking on a flat's show page
   resources :bookings, except: [:edit, :update, :new, :create] do

@@ -29,8 +29,11 @@ if(flatMap){
 // import { hello } from "../components/hello";
 // hello();
 
-import glideSlider from '../components/glide';
-glideSlider();
+if(document.getElementById('results')){
+  import glideSlider from '../components/glide';
+  glideSlider();
+})
+
 
 import { pickadate } from '../components/pickadate';
 pickadate();

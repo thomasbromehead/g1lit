@@ -5,23 +5,24 @@ class FlatsController < ApplicationController
       if params[:city] != ""
       lat = deconstruct(params[:city]).dig('lat')
       lng = deconstruct(params[:city]).dig('lng')
-      @flats = Flat.search("*", where: {
+      @flats = Flat.search("*", page: params[:page], per_page: 6, where: {
         location: 
           {
             near:
             {
               lat: lat,
               lon: lng
-            },
-            within: "#{params[:distance]}"
+            }
           }
       })
-      @flats = @flats.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
+      @center = [lng, lat]
+      @zoom = 10
      else
+      @zoom = 5.5
       @flats = Flat.all.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
+      @center = [2.3488, 45.8534]
      end
 
-    # @flats = Flat.paginate(page: params[:page], per_page:5)
       @markers = Flat.all.map do |flat|
         {
           lat: flat.latitude,
