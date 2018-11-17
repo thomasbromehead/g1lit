@@ -1,6 +1,7 @@
 
 <div class="container text-center flat-title">
   <h1><%= @flat.title %></h1>
+  <h2><%= @availables %></h2>
 </div>
 
 <div class="container-fluid text-center">
@@ -110,7 +111,11 @@
           
           <% if @flat.nb_of_reviews == 0  %>
             <p>Ce logement n'a pas encore été noté, soyez le premier a laisser un avis</p>
-           <%= render 'flat_reviews/form', flat: @flat, review: @review %>
+            <% unless !user_signed_in?%>
+              <%= render 'flat_reviews/form', flat: @flat, review: @review %>
+            <% end %>
+            
+
           <% else %>
            <h3> Ce logement a reçu <%= @flat.nb_of_reviews %> avis</h3>
             <%= @flat.flat_reviews.each do |review| %>

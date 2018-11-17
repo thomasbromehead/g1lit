@@ -3,11 +3,12 @@ class FlatReviewsController < ApplicationController
 
   def create
     @review = FlatReview.new(review_params)
-    @review.flat = @restaurant
+    @review.flat = @flat
     if @review.save
+      raise
       redirect_to restaurant_path(@restaurant)
     else
-      render 'restaurants/show'
+      redirect_to flat_path(@flat)
     end
   end
 
@@ -15,10 +16,6 @@ class FlatReviewsController < ApplicationController
     @reviews = FlatReview.find(params[:flat_id, :flat_review])
   end
   
-  def edit
-    FlatReview.find(@flat)
-  end
-
   def update
   end
 
@@ -26,7 +23,7 @@ class FlatReviewsController < ApplicationController
   private
 
   def set_flat
-    @flat = Flat.find(params[:id])
+    @flat = Flat.find(params[:flat_id])
   end
 
   def review_params

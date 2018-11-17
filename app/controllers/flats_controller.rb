@@ -47,6 +47,7 @@ class FlatsController < ApplicationController
     })
     @review = FlatReview.new
     @flat = Flat.find(params[:id])
+    @availables = Flat.where(booked: false)
   end
 
   def new
