@@ -1,5 +1,5 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
-
+var debounce = require('lodash/debounce');
 const mapContainer = document.getElementById('map')
 console.log(mapContainer)
 
@@ -133,7 +133,7 @@ if(mapContainer){
     el.style.height = "60px";
     el.style.width = "60px";
     const category = marker.properties.category;
-    console.log(map.transform.tileZoom);
+    // console.log(map.transform.tileZoom);
     switch(category){
       case "maison":
       el.style.backgroundImage = "url('/assets/markers/marker-maison.png')";
@@ -174,9 +174,10 @@ if(mapContainer){
 
   map.on('zoom', () => {
     const markers = document.querySelectorAll('.marker');
-    console.log(map.getZoom());
+    // const readZoom = () => console.log(map.getZoom());
+    // console.log(typeof(readZoom))
+    // debounce(readZoom(), 500, {leading: true});
     markers.forEach( marker => {
-      console.log(marker.style)
       if(map.getZoom() > 5 && map.getZoom() < 8  ){
         marker.style.height = "100px";
         marker.style.width= "100px";
@@ -190,11 +191,19 @@ if(mapContainer){
       });
   });
 
+
+
   map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     placeholder: "Chercher un lieu",
     zoom:10,
   }));
+
+  const homeSearch = document.getElementById('home-city-search');
+  new MapboxGeocoder({
+    el: homeSearch,
+    accessToken: mapboxgl.accessToken,
+  })
 
 
   // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));

@@ -599,9 +599,9 @@ hatch
 	animation-timing-function: ease-in-out;	
 	-webkit-animation-timing-function: ease-in-out;
 
-	transform-origin: 50% 100%;
+	/* transform-origin: 50% 100%;
 	-ms-transform-origin: 50% 100%;
-	-webkit-transform-origin: 50% 100%; 
+	-webkit-transform-origin: 50% 100%;  */
 
 	visibility: visible !important;		
 }
