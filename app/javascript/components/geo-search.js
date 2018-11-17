@@ -16,6 +16,7 @@ const geoSearch = () => {
       const searchResults = document.getElementById('search-results')
       const features = data.features
       searchResults.innerHTML = ""
+      searchResults.style.display = "block"
       const searchBox = document.querySelector('.search-container')
       const searchBoxHeight = searchBox.offsetHeight
       console.log(searchBoxHeight)
@@ -27,6 +28,12 @@ const geoSearch = () => {
         resultItem.setAttribute('class','searchItem')
         resultItem.innerText = feature.place_name
         searchResults.appendChild(resultItem)
+        resultItem.addEventListener('click', () => {
+          console.log(resultItem.innerHTML)
+          homeSearch.value = resultItem.innerText;
+          console.log(homeSearch.value)
+          searchResults.style.display = "none"
+        })
       })
       searchResults.style.setProperty("top", `${searchBoxHeight}px`)
       console.log(searchResults.style["top"])
