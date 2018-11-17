@@ -17,7 +17,7 @@
 #                           DELETE /users(.:format)                                                                         devise/registrations#destroy
 #                           POST   /users(.:format)                                                                         devise/registrations#create
 #                      root GET    /                                                                                        pages#home
-#         flat_flat_reviews POST   /flats/:flat_id/flat_reviews(.:format)                                                   flat_reviews#create
+#              flat_reviews POST   /flats/:flat_id/reviews(.:format)                                                        reviews#create
 #                 top_flats GET    /flats/top(.:format)                                                                     flats#top
 #                 hote_flat GET    /flats/:id/hote(.:format)                                                                flats#proprio
 #                     flats GET    /flats(.:format)                                                                         flats#index
@@ -29,10 +29,10 @@
 #                           PUT    /flats/:id(.:format)                                                                     flats#update
 #                           DELETE /flats/:id(.:format)                                                                     flats#destroy
 #               attachinary        /attachinary                                                                             Attachinary::Engine
-#          edit_flat_review GET    /flat_reviews/:id/edit(.:format)                                                         flat_reviews#edit
-#               flat_review PATCH  /flat_reviews/:id(.:format)                                                              flat_reviews#update
-#                           PUT    /flat_reviews/:id(.:format)                                                              flat_reviews#update
-#                           DELETE /flat_reviews/:id(.:format)                                                              flat_reviews#destroy
+#               edit_review GET    /reviews/:id/edit(.:format)                                                              reviews#edit
+#                    review PATCH  /reviews/:id(.:format)                                                                   reviews#update
+#                           PUT    /reviews/:id(.:format)                                                                   reviews#update
+#                           DELETE /reviews/:id(.:format)                                                                   reviews#destroy
 #          booking_payments POST   /bookings/:booking_id/payments(.:format)                                                 payments#create
 #                  bookings GET    /bookings(.:format)                                                                      bookings#index
 #                   booking GET    /bookings/:id(.:format)                                                                  bookings#show
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
 
   resources :flats do 
-    resources :flat_reviews, only: [:create]
+    resources :reviews, only: [:create]
     collection do 
       get 'top', to: "flats#top"
     end
@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
 
-  resources :flat_reviews, only: [:destroy, :edit, :update]
+  resources :reviews, only: [:destroy, :edit, :update]
 
   #Will nest form for creating, and updating a booking on a flat's show page
   resources :bookings, except: [:edit, :update, :new, :create] do

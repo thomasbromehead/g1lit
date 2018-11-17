@@ -34,7 +34,6 @@
               <div id="flat-tags--index">
                 <span class="flat-info--index"><%= flat.price_per_night %> DU/nuit</span>
                 <span class="flat-info--index"><%= flat.category%></span>
-                <%= @center %>
               </div>
               <div class="flat-owner">
 
@@ -56,7 +55,7 @@
         </div>
 
     </div>
-    <div id="map" data-markers="<%= @markers.to_json %>" data-center="<%= @center.to_json%>" >
+    <div id="map" data-markers="<%= @markers.to_json %>">
     <!-- Map goes in here -->
     </div>
 

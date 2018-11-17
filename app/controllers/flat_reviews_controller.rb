@@ -2,6 +2,7 @@ class FlatReviewsController < ApplicationController
   before_action :set_flat
 
   def create
+<<<<<<< HEAD
     @review = FlatReview.new(review_params)
     @review.flat = @flat
     if @review.save
@@ -10,6 +11,10 @@ class FlatReviewsController < ApplicationController
     else
       redirect_to flat_path(@flat)
     end
+=======
+
+
+>>>>>>> parent of 18c245b... <fix> Fixed Reviews Route names to Flat_reviews :ambulance:
   end
 
   def index
@@ -19,6 +24,7 @@ class FlatReviewsController < ApplicationController
   def update
   end
 
+  def
 
   private
 

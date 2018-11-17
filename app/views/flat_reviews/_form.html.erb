@@ -1,15 +1,4 @@
 
-
-<hr>
-je suis la
-<hr>
-<%= @flat %>
-<hr>
-<%= review %>
-<hr>
-
-
-
 <%= simple_form_for([ @flat, review ]) do |form| %>
   <%= form.input :content, as: :text %>
   <%= form.button :submit %>
