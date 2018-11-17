@@ -10,6 +10,25 @@
   justify-content: center;
 }
 
+ul#search-results{
+  position: absolute;
+  width: 800px;
+  list-style: none;
+  height:fit-content;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(91,91,173,1) 0%, rgba(0,212,255,1) 71%);
+}
+
+.searchItem{
+  width:100%;
+  color:white;
+  font-size:16px;
+  font-family: "Raleway";
+  &:last-child{
+    margin-bottom:0.5em;
+  }
+}
+
 .home-inputs{
   padding:0.5em;
   border-radius:20px;
@@ -26,14 +45,13 @@
 }
 
 #home-city-search{
-  flex: 1 1 50%;
+  flex: 1 1 70%;
 }
 
 
 #home-form{
   width:80%;
   display:flex;
-  justify-content: space-around;
   text-align: center;
 }
 
@@ -75,6 +93,7 @@
   flex-direction:column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 span#search-hint{
