@@ -50,9 +50,15 @@ if(cards){
   cardHover(cards);
 }
 
+const homeSearch = document.getElementById('home-city-search');
 import geoSearch from "../components/geo-search";
-geoSearch();
+if(homeSearch){
+  geoSearch();
+}
 
 import sweetAlertOnClick from "../components/sweetalert";
 // sweetAlertOnClick();
+
+import dragMap from "../components/ajaxsearch";
+dragMap();
 

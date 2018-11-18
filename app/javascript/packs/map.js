@@ -72,6 +72,10 @@ if(mapContainer){
     });
   });
 
+  map.on('dragend', function(){
+    console.log("finished dragging")
+  })
+
   function flyToStore(currentFeature) {
     map.flyTo({
       center: currentFeature.geometry.coordinates,
@@ -190,6 +194,8 @@ if(mapContainer){
         }
       });
   });
+
+
 
 
 
