@@ -8,7 +8,9 @@ class FlatReviewsController < ApplicationController
   def create
     @flat_review = FlatReview.new(review_params)
     @flat_review.flat = @flat
+    @flat_review.user_id = current_user.id
     if @flat_review.save
+      #wont happen because form_with submits in AJAX
       flash[:notice] = "Votre avis a bien été publié 💌"
       redirect_to flat_path(@flat)
     else
