@@ -1,8 +1,5 @@
 import "bootstrap";
 import "../components/aguilar";
-// import jQuery from "jquery";
-// import $ from "jquery";
-// window.$ = window.jQuery = jQuery;
 import '../components/slider';
 
 
@@ -12,6 +9,7 @@ import '../components/slider';
 import { bounce } from "../components/aguilar"
 bounce(); 
 
+
 // import test from '../components/slider'
 // test();
 
@@ -19,7 +17,6 @@ import mapFlat from "../components/flat-map"
 const flatMap = document.querySelector("#flat-map")
 if(flatMap){
   mapFlat();
-  console.log('hello from application.js')
 }
 
 // import fileUpload from '../components/uppy';
@@ -37,6 +34,7 @@ if(flatMap){
 
 import { pickadate } from '../components/pickadate';
 pickadate();
+
 
 // import drift from '../components/zoom';
 // drift();
@@ -59,6 +57,9 @@ if(homeSearch){
 import sweetAlertOnClick from "../components/sweetalert";
 // sweetAlertOnClick();
 
-import dragMap from "../components/ajaxsearch";
-dragMap();
+// import dragMap from "../components/ajaxsearch";
+// const carte = document.querySelector('.mapboxgl-canvas')
+// if(carte){
+//   dragMap();
+// }
 

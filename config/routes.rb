@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     member do 
       get "hote", to: "flats#proprio"
     end
+    resources :bookings, only: [:create]
   end
 
   mount Attachinary::Engine => "/attachinary"

@@ -2,11 +2,12 @@ class BookingsController < ApplicationController
   
 
   def create
+    @booking = Booking.new(params[:id])
   end
 
   def show
   end
-  
+
   def edit
   end
 
@@ -15,5 +16,6 @@ class BookingsController < ApplicationController
 
   def destroy
   end
+
 
 end

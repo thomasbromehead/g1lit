@@ -38,7 +38,7 @@
               <div class="flat-owner">
 
                   <div class="discover">
-                    <%= link_to "Voir la fiche", flat_path(flat), class: "discover-button" %>
+                    <%= link_to "Voir la fiche", flat_path({ id: flat.id, start_date: h(@start), end_date: h(@end)}).html_safe, class: "discover-button" %>
                   </div>
               </div>
             </div>

@@ -15,6 +15,8 @@ class FlatsController < ApplicationController
             }
           }
       })
+      @start = params['start-date'] if params["start-date"]
+      @end = params["end-date"] if params["end-date"]
       @center = [lng, lat]
       @zoom = 10
      else
@@ -47,6 +49,8 @@ class FlatsController < ApplicationController
       long: @flat.longitude,
       category: @flat.category
     })
+    @start = params["start_date"] if params["start_date"]
+    @end = params["end_date"] if params["end_date"]
     @flat_review = FlatReview.new
     @flat = Flat.find(params[:id])
     @availables = Flat.where(booked: false)

@@ -108,7 +108,6 @@
         </div>
         <div class="flat-description">
           <h2 class="flat-h2">Les avis</h2>
-          
           <% if @flat.nb_of_reviews == 0  %>
             <p>Ce logement n'a pas encore été noté, soyez le premier a laisser un avis</p>
             <% unless !user_signed_in?%>
@@ -127,9 +126,12 @@
         </div>
       </div>
     <div class="col-xs-12 col-md-4"> 
-      <div class="datepickr">
-        <h3>Choisissez vos dates</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque tempore dolores assumenda fuga maxime qui impedit consequatur ipsam facere sit! Consequatur, sunt illo? Iusto blanditiis, accusamus nobis tenetur voluptates exercitationem.</p>
+      <div class="booking-form"> 
+      <span>Choisissez les dates de votre séjour</span>
+      <label style="display:block;"for="start_date">Arrivée</label>
+      <input type="text" class="booking-start_date" name="start_date" value="<%=@start%>">
+      <label for="end_date" style="display:block;">Départ</label>
+      <input type="text" class="booking-end_date"name="end_date" value="<%= @end %>">
       </div>
     </div>
     <div class="col-xs-6 col-md-4">
@@ -149,7 +151,7 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
