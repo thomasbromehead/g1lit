@@ -63,9 +63,7 @@ class FlatsController < ApplicationController
     @user = current_user.id
     @flat = Flat.new
     @flat = Flat.new(flat_params)
-    @flat.user_id = @user_id
-    
-
+    @flat.user_id = @user_id 
     if @flat.save
       redirect_to flat_path(@flat), notice: 'Votre logement a été ajouté. Bravo! 👏'
     else

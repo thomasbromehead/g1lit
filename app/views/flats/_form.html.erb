@@ -4,12 +4,13 @@
     <%= simple_form_for @flat do |f| %>
        <% if @flat.errors.any? %>
         <div class="errors">
-          <h2><%= pluralize(@flat.errors.count, 'erreur') %> <%= @flat.errors.count == 1 ? "a" : "ont"%> empêché de créer votre logement</h2>
+          <h2><%= pluralize(@flat.errors.count, 'erreur') %> <%= @flat.errors.count == 1 ? "a" : "ont"%> empêché de <%= params[:_method] === "patch" ? "modifier" : "créer"%> votre logement</h2>
           <ul>
             <% @flat.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>
+          <p><%= params[:_method] %></p>
         </div>
       <% end %>
 
@@ -45,7 +46,7 @@
         <%= f.input :photos, as: :attachinary, class:"form-control", label:"Vos photos" %>
       </div>
 
-      <%= f.button :submit, value:"Je crée mon logement", class:"btn btn-success btn-rounded" %>
+      <%= f.button :submit, class:"btn btn-success btn-rounded" %>
 
     <% end %>
   </div>
