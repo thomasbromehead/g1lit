@@ -4,9 +4,9 @@
     <%= simple_form_for @flat do |f| %>
        <% if @flat.errors.any? %>
         <div class="errors">
-          <h2><%= pluralize(flat.errors.count, 'erreur') %> <%= flat.errors.count == 1 ? "a" : "ont"%> empêché de créer votre logement</h2>
+          <h2><%= pluralize(@flat.errors.count, 'erreur') %> <%= @flat.errors.count == 1 ? "a" : "ont"%> empêché de créer votre logement</h2>
           <ul>
-            <% flat.errors.full_messages.each do |message| %>
+            <% @flat.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>

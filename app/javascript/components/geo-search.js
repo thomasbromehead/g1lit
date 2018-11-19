@@ -5,7 +5,6 @@ const homeSearch = document.getElementById('home-city-search');
 const debounce = require('lodash/debounce');
 
 const geoSearch = () => {
-  console.log(homeSearch);
   homeSearch.addEventListener('keydown', debounce((e) => {
     const city = e.target.value
     console.log(city);
