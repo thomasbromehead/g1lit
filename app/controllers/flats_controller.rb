@@ -47,7 +47,7 @@ class FlatsController < ApplicationController
       long: @flat.longitude,
       category: @flat.category
     })
-    @review = FlatReview.new
+    @flat_review = FlatReview.new
     @flat = Flat.find(params[:id])
     @availables = Flat.where(booked: false)
   end

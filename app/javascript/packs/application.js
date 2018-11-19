@@ -15,12 +15,12 @@ bounce();
 // import test from '../components/slider'
 // test();
 
-// import mapFlat from "../components/flat-map"
-// const flatMap = document.querySelector("#flat-map")
-// if(flatMap){
-//   mapFlat();
-//   console.log('hello from application.js')
-// }
+import mapFlat from "../components/flat-map"
+const flatMap = document.querySelector("#flat-map")
+if(flatMap){
+  mapFlat();
+  console.log('hello from application.js')
+}
 
 // import fileUpload from '../components/uppy';
 // fileUpload();

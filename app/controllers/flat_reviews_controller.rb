@@ -1,16 +1,19 @@
 class FlatReviewsController < ApplicationController
   before_action :set_flat
 
+  def new
+    @flat_review = FlatReview.new
+  end
+
   def create
-    @review = FlatReview.new(review_params)
-    @review.flat = @flat
-    if @review.save
-      raise
+    @flat_review = FlatReview.new(review_params)
+    @flat_review.flat = @flat
+    if @flat_review.save
+      flash[:notice] = "Votre avis a bien été publié 💌"
       redirect_to flat_path(@flat)
     else
       redirect_to flat_path(@flat)
     end
-
   end
 
   def index
@@ -20,7 +23,6 @@ class FlatReviewsController < ApplicationController
   def update
   end
 
-  def
 
   private
 
@@ -29,6 +31,7 @@ class FlatReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:flat_review).permit(:content, :star_rating)
+    params.require(:flat_review).permit(:content)
   end
+
 end
