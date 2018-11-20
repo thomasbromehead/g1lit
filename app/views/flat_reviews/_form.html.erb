@@ -1,5 +1,5 @@
 
-<%= form_with(model: [@flat, FlatReview.new], local: true) do |form| %>
+<%= form_with(model: [@flat, FlatReview.new]) do |form| %>
   <%= form.text_field :content %>
   <%= form.submit %>
 <% end %>

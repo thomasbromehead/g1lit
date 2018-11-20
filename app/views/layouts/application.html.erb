@@ -45,6 +45,7 @@ d88E`"888E`    88888      888R   ''888E`   8888
     <%= yield %>
 
     <%= render 'shared/footer' %>
+    <%= debug(params) %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= cloudinary_js_config %>

@@ -1,4 +1,3 @@
-import { link } from 'fs';
 
 const homeSearch = document.getElementById('home-city-search');
 

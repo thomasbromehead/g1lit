@@ -51,6 +51,7 @@ if(cards){
 const homeSearch = document.getElementById('home-city-search');
 import geoSearch from "../components/geo-search";
 if(homeSearch){
+  console.log("home search")
   geoSearch();
 }
 
