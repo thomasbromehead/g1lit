@@ -4,4 +4,6 @@
 <br>
 <br>
 <h1 class="text-center">Modifier mon logement</h1>
-<%= render "form", flat:@flat %>
+<%= render "form", flat: @flat %>
+
+<!-- Consider using (@flat.new_record? ? "" : "") for our submit button-->
