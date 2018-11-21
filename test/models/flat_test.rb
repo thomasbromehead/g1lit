@@ -42,4 +42,25 @@ class FlatTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+  
+  def setup
+    @user = User.create first_name:"Thomas", email: "test@test.fr", password: "azerty"
+    @flat = Flat.create(title: "Superbe appartement à Lyon", description: "lorem ipsum dolorat sactus epsum ibidum", user_id: 4, category: "appartement")
+    puts @flat
+  end
+
+  test "The user should be valid" do
+    assert @user.valid?
+  end
+
+  test "The Flat should have been created successfully" do
+    assert @flat.valid?
+  end
+
+  test "The Flat should have a title" do
+    @flat.title = ""
+    assert_not @flat.valid?
+  end
+
 end
