@@ -47,7 +47,7 @@ class Flat < ApplicationRecord
 
   searchkick locations: [:location]
 
-  validates :title, presence: true, length: { maximum: 200, too_long: "Merci de choisir un titre concis de moins de 200 caractères, ex: Adorable petite chaumière normande au bord de l'eau" }
+  validates :title, presence: true, length: { maximum: 100, too_long: "Merci de choisir un titre concis de moins de 200 caractères, ex: Adorable petite chaumière normande au bord de l'eau" }
   validates :description, presence: true
   CATEGORIES = %w(maison appartement terrain camping-car caravane chambre\ en\ appartement chambre\ en\ maison)
   validates :category, presence: true, inclusion: {in: CATEGORIES}
