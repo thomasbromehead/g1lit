@@ -42,10 +42,9 @@ class FlatTest < ActiveSupport::TestCase
 
   # Flat Unit Tests
 
-  
   def setup
-    @user = User.new first_name:"Thomas", email: "test@test.fr", password: "azerty"
-    @flat = Flat.new(title: "Superbe appartement à Lyon", description: "lorem ipsum dolorat sactus epsum ibidum", user_id: 4, category: "appartement")
+    @user = User.create first_name:"Thomas", email: "test@test.fr", password: "azerty"
+    @flat = Flat.new(title: "Superbe appartement à Lyon", description: "lorem ipsum dolorat sactus epsum ibidum", user_id: @user.id, category: "appartement")
     # puts @flat
   end
 
