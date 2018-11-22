@@ -58,9 +58,9 @@ if(homeSearch){
 import sweetAlertOnClick from "../components/sweetalert";
 // sweetAlertOnClick();
 
-// import dragMap from "../components/ajaxsearch";
-// const carte = document.querySelector('.mapboxgl-canvas')
-// if(carte){
-//   dragMap();
-// }
+import dragMap from "../components/ajaxsearch";
+const carte = document.querySelector('.mapboxgl-canvas')
+if(carte){
+  dragMap();
+}
 

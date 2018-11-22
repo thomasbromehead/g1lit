@@ -171,7 +171,9 @@ if(mapContainer){
       var listing = document.getElementById(i);
       console.log(listing);
       listing.classList.add('active');
-    });   
+    })
+    el.addEventListener('hover', function(e){
+    })  
   });
 
   map.on('zoom', () => {

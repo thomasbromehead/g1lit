@@ -4,6 +4,9 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
 
   # Have to modify this, id not being passed in properly.
 
+  def setup
+  end
+
 
   test "get new flat form and create flat" do
     get new_flat_path

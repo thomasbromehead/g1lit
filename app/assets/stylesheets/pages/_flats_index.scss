@@ -42,6 +42,9 @@
     border: 1px solid  rgba(121, 121, 121, 0.7);
     box-shadow: 3px 8px 10px rgba(169, 219, 228, 0.5);
   }
+  &:active{
+    border:5px solid red;
+  }
 }
 
 // .fingers{
