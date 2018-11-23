@@ -1,5 +1,5 @@
 class FlatReviewsController < ApplicationController
-  before_action :set_flat, except: :destroy
+  before_action :set_flat, except: [:destroy, :update]
 
   def new
     @flat_review = FlatReview.new
