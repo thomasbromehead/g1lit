@@ -64,11 +64,10 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: [:create]
   end
+  resources :flat_reviews, only: [:destroy, :edit, :update]
 
   mount Attachinary::Engine => "/attachinary"
 
-
-  resources :flat_reviews, only: [:destroy, :edit, :update]
 
   #Will nest form for creating, and updating a booking on a flat's show page
   resources :bookings, except: [:edit, :update, :new, :create] do

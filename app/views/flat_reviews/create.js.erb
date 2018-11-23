@@ -1,0 +1,29 @@
+const flatReviews = document.getElementById('flat-reviews');
+
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('review-form');
+  newReviewForm.innerHTML = innerHTML;
+  console.log(newReviewForm.innerHTML)
+}
+
+function addReview(reviewHTML) {
+  const reviews = document.getElementById('flat-reviews');
+  console.log(reviews.children.length)
+  reviews.insertAdjacentHTML('beforeend', reviewHTML);
+
+}
+
+function updateReviewsCount(){
+  const reviews = document.getElementById('flat-reviews');
+  const reviewsCount = document.getElementById('flat-reviews-count');
+  reviewsCount.innerText = ""
+  reviewsCount.innerText = reviews.children.length
+}
+
+<% if @flat_review.errors.any? %>
+  refreshForm('<%= j render "flat_reviews/form", flat: @flat %>');
+<% else %>
+  addReview('<%= j render "flat_reviews/flat-reviews"%>');
+  refreshForm('<%= j render "flat_reviews/form", flat: @flat %>');
+  updateReviewsCount();
+<% end %>

@@ -1,5 +1,5 @@
 class FlatReviewsController < ApplicationController
-  before_action :set_flat
+  before_action :set_flat, except: :destroy
 
   def new
     @flat_review = FlatReview.new
@@ -11,10 +11,16 @@ class FlatReviewsController < ApplicationController
     @flat_review.user_id = current_user.id
     if @flat_review.save
       #wont happen because form_with submits in AJAX
-      flash[:notice] = "Votre avis a bien été publié 💌"
-      redirect_to flat_path(@flat)
+      flash.now[:notice] = "Votre avis a bien été publié 💌"
+      respond_to do |format|
+        format.html { redirect_to flat_path(@flat) }
+        format.js 
+      end
     else
-      redirect_to flat_path(@flat)
+      respond_to do |format|
+        format.html { redirect_to flat_path(@flat) }
+        format.js
+      end
     end
   end
 
@@ -25,6 +31,11 @@ class FlatReviewsController < ApplicationController
   def update
   end
 
+  def destroy
+    flat_review = FlatReview.find(params[:id])
+    FlatReview.delete(flat_review)
+    redirect_back(fallback_location: root_path)
+  end
 
   private
 

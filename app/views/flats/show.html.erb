@@ -92,10 +92,14 @@
         <div class="flat-description">
           <h2 class="flat-h2">Equipements</h2>
           <ul class="list-inline">
-            <li><%= cl_image_tag "l79k8dkbuffimtaivx7n", height: 20, width:20 %> wifi</li>
-            <li><%= cl_image_tag "biking", height:40, width:40 %>Vélos</li>
-            <li><%= cl_image_tag "mta3d2nqqc1wvw4ve2lo", height: 40, width:40 %>Ptit-dej</li>
-            <li>Ping-Pong</li>
+            <li><%= image_tag "icons/wifi", size: "40x40" %> wifi</li>
+            <li><%= image_tag "icons/breakfast", size: "50x50" %>Ptit-dej</li>
+            <li><%= image_tag "icons/ping-pong", size: "50x50" %>Ping-Pong</li>
+            <li><%= image_tag "icons/bbq", size: "50x50" %>Barbecue</li>
+            <li><%= image_tag "icons/spa", size: "50x50" %>Spa</li>
+            <li><%= image_tag "icons/treadmill", size: "50x50" %>Tapis de course</li>
+            <li><%= image_tag "icons/pool", size: "50x50" %>Piscine</li>
+
           </ul>
         </div>
         <div class="flat-description">
@@ -110,20 +114,12 @@
               <%= render 'flat_reviews/form', flat: @flat %>
             <% end %>
           <% else %>
-           <h3 style="margin-bottom: 20px;"> Ce logement a reçu <%= @flat.nb_of_reviews %> avis</h3>
+           <h3 style="margin-bottom: 20px;"> Ce logement a reçu <span id="flat-reviews-count"><%= @flat.nb_of_reviews %></span> avis</h3>
             <% unless !user_signed_in?%>
                 <%= render 'flat_reviews/form', flat: @flat %>
               <% end %>
-           <% @flat.flat_reviews.each do |review| %>
-            <div class="flat-reviews--show">
-              <div class="avis--user">
-                <span class="avis--avatar"><%= cl_image_tag user_avatar(review.user_id), size:"50x50", radius: :max, quality: :auto, fetch: :auto %></span>
-                <span class="avis--pseudo"><%= user_pseudo(review.user_id) %></span>
-              </div>
-              <p class="avis--content"><%= review.content %></p>
-                <span class="avis--created">Avis laissé il y a <%=time_ago_in_words(review.created_at)%></span>
-            </div>
-            <% end %>
+            <%= render partial: "flat_reviews/flat-reviews" %>
+            <%= @reviews %>
           <% end %>
           
         </div>
