@@ -1,0 +1,48 @@
+    <div id="results"  data-center = "<%=@center.to_json%>" data-zoom = "<%= @zoom %>" > 
+        <% @flats.each_with_index do |flat, index| %>
+           <div class="flat-card--index" id="<%= index %>">
+            <div id="flat-slider--index">
+              <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                  <ul class="glide__slides">
+                    <% flat.image_data.split(',').length.times do %>
+                      <% flat.image_data.split(',').each do |photo| %>
+                      <li class="glide__slide"><%= cl_image_tag photo.strip, width: 300, height: 250, crop: :fill, radius: 5, g: :auto, f: :auto%></li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+
+
+              <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><span class="fingers">👈🏻</span></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><span class="fingers">👉🏻</span></button>
+              </div>
+
+              </div>
+            </div>
+            <div class="flat-description--index" id="<%= index %>">
+              <h2><strong><%= flat.title %></strong></h2>
+              <p><%= flat.description.truncate(100) %></p>
+              <div id="flat-tags--index">
+                <span class="flat-info--index"><%= flat.price_per_night %> DU/nuit</span>
+                <span class="flat-info--index"><%= flat.category%></span>
+              </div>
+              <div class="flat-owner">
+
+                  <div class="discover">
+                    <%= link_to "Voir la fiche", flat_path({ id: flat.id, start_date: h(@start), end_date: h(@end)}).html_safe, class: "discover-button" %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <div class="flickr_pagination">
+        <div class="page_info">
+          <%= page_entries_info @flats %>
+          <br>
+          <br>
+        </div>
+        <%= will_paginate @flats, remote: true %>
+      </div>
+  </div>

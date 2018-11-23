@@ -39,7 +39,47 @@
 require 'test_helper'
 
 class FlatTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  # Flat Unit Tests
+
+  def setup
+    @user = User.create first_name:"Thomas", email: "test@test.fr", password: "azerty"
+    @flat = Flat.new(title: "Superbe appartement à Lyon", description: "lorem ipsum dolorat sactus epsum ibidum", user_id: @user.id, category: "appartement")
+    # puts @flat
+  end
+
+  test "The user should be valid" do
+    puts "---test 1 ----"
+    assert @user.valid?
+  end
+
+
+  test "The Flat should have been created successfully" do
+    puts "----test 2 ----"
+    assert @flat.valid?
+  end
+
+  test "The Flat should have a title" do
+    puts "-----test 3------"
+    @flat.title = ""
+    assert_not @flat.valid?
+  end
+
+  test "Flat title should be unique" do
+    @flat.save
+    flat2 = Flat.new(title: "Superbe appartement à Lyon" )
+    assert_not flat2.valid?
+  end
+
+  test "Title should not be too long" do
+    @flat.title = "a" * 101
+    assert_not @flat.valid?
+  end
+
+  test "Name should not be too short" do
+    @flat.title = "abcde"
+    assert_not @flat.valid?
+  end
+
+
 end

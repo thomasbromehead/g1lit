@@ -24,23 +24,13 @@ const bounce = () => {
     }
 }
 
+const cardHover = (cards) => {
+      cards.forEach(card => card.addEventListener('mouseover', debounce(() => {
+        const cardId = card.getAttribute('id')
+        debounce(() => console.log(cardId), 500);
+        const marker = document.getElementById(`marker-${cardId}`)
+        marker.classList.toggle('hatch');
+      }, 200))
+    )};
 
-export default bounce
-
-  // Need to find out how to transition on SVGs
-
-  // const cards = document.querySelectorAll('.flat-card--index')
-
-  // if(cards){
-  //   (function(){
-  //     console.log(cards)
-  //     cards.forEach(card => card.addEventListener('mouseover', debounce(() => {
-  //       const cardId = card.getAttribute('id')
-  //       console.log(cardId)
-  //       const marker = document.getElementById(`marker-${cardId}`)
-  //       console.log(marker);
-  //       marker.style.height = "200px"
-  //     }, 200))
-  //     )}
-  //   )();
-  //   }
+export { bounce, cardHover };

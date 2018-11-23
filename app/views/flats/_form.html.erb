@@ -1,53 +1,62 @@
 
-<div class="new_flat_form_bg" style="background-image:url('<%= image_path "Patterns/trianglify.svg" %>'); background-repeat: no-repeat; background-size:cover;">
-  <div class="new_flat_form text-center">
+
+  <div class="new_flat_form text-center col-xs-12 col-sm-8 col-md-6">
     <%= simple_form_for @flat do |f| %>
-       <% if @flat.errors.any? %>
-        <div class="errors">
-          <h2><%= pluralize(flat.errors.count, 'erreur') %> <%= flat.errors.count == 1 ? "a" : "ont"%> empêché de créer votre logement</h2>
-          <ul>
-            <% flat.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+
+      <div class="form-group">
+        <div class="col-xs-6">
+          <%= f.input :title, class: "form-control", label:"Titre" %>
         </div>
-      <% end %>
-
-      <div class="form-group">
-        <%= f.input :title, class: "form-control", label:"Titre" %>
       </div>
 
       <div class="form-group">
-        <%= f.input :description, as: :text, size:"30x5", class: "form-control", label:"Description"%>
+        <div class="col-xs-6">
+        <%= f.input :category, as: :select, collection: Flat::CATEGORIES, class: "form-control", label: "Catégorie"%>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.input :category, as: :select, collection: ["maison", "appartement","terrain", "camping-car", "caravane"], class: "form-control", label: "Catégorie"%>
+        <div class="col-xs-10 col-xs-offset-1">
+          <%= f.input :description, as: :text, size:"30x5", class: "form-control", label:"Description"%>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.input :nb_rooms,  as: :decimal, class: "form-control", label:"Nombre de chambres"%>
+        <div class="col-xs-6">
+          <%= f.input :nb_rooms,  as: :decimal, class: "form-control", label:"Nombre de chambres"%>
+        </div>
       </div>
 
       <div class="form-group">
+        <div class="col-xs-6">
         <%= f.input :nb_of_bathrooms, as: :decimal, class: "form-control", label:"Nombre de salles de bains"%>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.input :price_per_night,  as: :decimal, class: "form-control", label:"Prix par nuit"%>
+        <div class="col-xs-6">
+          <%= f.input :price_per_night,  as: :decimal, class: "form-control", label:"Prix par nuit"%>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.input :animals, as: :boolean, checked_value: true, unchecked_value: false, class: "form-control", label:"J'accepte les animaux?"%>
+        <div class="col-xs-12">
+          <%= f.input :animals, as: :boolean, checked_value: true, unchecked_value: false, class: "form-control", label:"J'accepte les animaux?"%>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.input :photos, as: :attachinary, class:"form-control", label:"Vos photos" %>
+        <div class="col-xs-12">
+          <%= f.input :photos, as: :attachinary, class:"form-control", label:"Vos photos" %>
+        </div>
       </div>
-
-      <%= f.button :submit, value:"Je crée mon logement", class:"btn btn-success btn-rounded" %>
+      
+      <div class="form-group">
+        <div class="col-xs-12">
+          <%= f.button :submit, class:"btn btn-success btn-rounded" %>
+        </div>
+      </div>
 
     <% end %>
   </div>
   <img src="" alt="" class="upload-preview">
-</div>

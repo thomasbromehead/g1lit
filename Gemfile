@@ -28,7 +28,8 @@ gem 'cloudinary'
 gem 'attachinary'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
-
+gem "searchkick"
+gem "sidekiq"
 
 
 group :development do
@@ -53,5 +54,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'awesome_print'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rails-controller-testing'
 end
 

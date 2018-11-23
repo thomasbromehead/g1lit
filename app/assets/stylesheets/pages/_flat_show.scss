@@ -162,6 +162,42 @@ p.card__header{
  margin:20px 20px;
 }
 
+.booking-form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:rgba(255, 255, 255, 0.95);
+  padding:0.5em;
+  margin-top: 2em;
+  border-radius:10px;
+  border: 1px solid rgba(181, 208, 210, 0.49);
+  box-shadow: 5px 5px 15px rgb(165, 197, 197);
+}
+
+.booking-start_date, .booking-end_date{
+  width: 50%;
+  border-radius: 5px;
+}
+.book-button{
+  color: rgba(236, 244, 245, 0.7);
+  margin-top: 1em;
+  padding: 10px 20px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(91,91,173,1) 0%, rgba(0,212,255,1) 71%);
+  font-family:'Raleway';
+  margin-bottom: 20px;
+  display: inline-block;
+  transition: transform 300ms;
+  &:hover{
+    transform: skew(2deg, 2deg);
+  }
+  &:active{
+    transform: translateY(4px);
+  }
+}
+
+
 // Carousel styling
 
 .carousel{

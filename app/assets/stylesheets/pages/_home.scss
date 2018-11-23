@@ -8,13 +8,39 @@
   position: relative;
   display:flex;
   justify-content: center;
+}
 
+ul#search-results{
+  position: absolute;
+  width: 800px;
+  list-style: none;
+  height:fit-content;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(91,91,173,1) 0%, rgba(0,212,255,1) 71%);
+  text-align:left;
+}
+
+.searchItem{
+  width:100%;
+  color:white;
+  font-size:16px;
+  font-family: "Raleway";
+  &:last-child{
+    margin-bottom:0.5em;
+  }
+  &:hover{
+    opacity:0.7;
+  }
 }
 
 .home-inputs{
   padding:0.5em;
   border-radius:20px;
   margin-right:0.3em;
+  margin-top: 1em;
+  &::placeholder{
+    font-family: "Raleway"
+  }
+
 }
 
 .dates{
@@ -22,15 +48,13 @@
 }
 
 #home-city-search{
-  flex: 1 1 50%;
+  flex: 1 1 70%;
 }
 
 
 #home-form{
-  width:100%;
+  width:80%;
   display:flex;
-  justify-content: space-around;
-  margin-top:50px;
   text-align: center;
 }
 
@@ -61,6 +85,23 @@
 #home-h1{
   color:white;
   font-size:2em;
+}
+
+.search-container{
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px 2em;
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+span#search-hint{
+  color:white;
+  font-size:1.3em; 
 }
 
 .home-h2s{

@@ -9,9 +9,15 @@
   height:fit-content;
   background:white;
   border-radius: 5px;
-  width:50%;
+  width:40%;
   padding:2em;
-  margin:0 auto;
-  
-  
+  margin:0 auto;  
+  border: 1px solid rgba(189, 21, 21, 0.5);
+  box-shadow: 2px 3px 50px rgba(189, 21, 21, 0.8);
+}
+
+@media only screen and (max-width: 900px){
+  .new_flat_form{
+    width:90%;
+  }
 }

@@ -225,7 +225,8 @@ class Carousel{
     console.log(carouselHolder)
     new Carousel(carouselHolder, {
       visibleSlides: 2,
-      pagination: true
+      pagination: true,
+      infinite:true
     })
   }
   

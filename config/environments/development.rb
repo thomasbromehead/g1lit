@@ -43,9 +43,12 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
-
     config.cache_store = :null_store
   end
+
+  #We don't want the cache to be in the RAM as implemented by memory_store, we want it in a file_store under the correct folder.
+  config.action_controller.perform_caching = true
+  config.cache_store = :file_store, Rails.root.join('tmp/cache/views')
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :cloudinary

@@ -1,12 +1,12 @@
-const flatMap = document.querySelector("#flat-map")
-console.log(flatMap)
-const flatDetails = JSON.parse(flatMap.dataset.marker)
-console.log(flatDetails)
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53cWZtc2xqIn0.935BRFEIPauYFMLB-Re4tA';
 
+
   function mapFlat(){
-    if(flatMap) {
+    const flatMap = document.getElementById('flat-map')
+    const flatDetails = JSON.parse(flatMap.dataset.marker)
+    if (flatMap){
       const feat2 = {
         type: "Feature",
         geometry: {
@@ -60,5 +60,4 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYnJvbSIsImEiOiJjam1zNHI5YWowNnN2M3FvOG53c
       map2.addControl(new mapboxgl.FullscreenControl());
     }
   }
-
  export default mapFlat;

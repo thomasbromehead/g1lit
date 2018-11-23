@@ -1,6 +1,7 @@
 
 <div class="container text-center flat-title">
   <h1><%= @flat.title %></h1>
+  <h2><%= @availables %></h2>
 </div>
 
 <div class="container-fluid text-center">
@@ -13,9 +14,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
-  <p id="zoomPane"></p>
-</div>
+
 
 
 
@@ -85,7 +84,7 @@
   <div class="container text-center">
   <!-- start of left-portion-->
     <div class="row">
-      <div class="col-xs-12 col-md-8 text-center">
+      <div class="col-xs-12 <%= user_signed_in? ? "col-md-8" : "col-md-12"%> text-center">
         <div class="flat-description">
           <h2 class="flat-h2">Description</h2>
           <p><%= @flat.description %></p>
@@ -93,12 +92,14 @@
         <div class="flat-description">
           <h2 class="flat-h2">Equipements</h2>
           <ul class="list-inline">
-            <li><%= cl_image_tag "l79k8dkbuffimtaivx7n", height: 20, width:20 %> wifi</li>
-            <li><%= cl_image_tag "biking", height:40, width:40 %>Vélos</li>
-            <li><%= cl_image_tag "mta3d2nqqc1wvw4ve2lo", height: 40, width:40 %>Ptit-dej</li>
-            <li>Ping-pong</li>
-            <%= @reviews %>
- 
+            <li><%= image_tag "icons/wifi", size: "40x40" %> wifi</li>
+            <li><%= image_tag "icons/breakfast", size: "50x50" %>Ptit-dej</li>
+            <li><%= image_tag "icons/ping-pong", size: "50x50" %>Ping-Pong</li>
+            <li><%= image_tag "icons/bbq", size: "50x50" %>Barbecue</li>
+            <li><%= image_tag "icons/spa", size: "50x50" %>Spa</li>
+            <li><%= image_tag "icons/treadmill", size: "50x50" %>Tapis de course</li>
+            <li><%= image_tag "icons/pool", size: "50x50" %>Piscine</li>
+
           </ul>
         </div>
         <div class="flat-description">
@@ -106,30 +107,74 @@
           <div id="flat-map" data-marker="<%= @marker %>"></div>
         </div>
         <div class="flat-description">
-          <h2 class="flat-h2">Les avis</h2>
-          
           <% if @flat.nb_of_reviews == 0  %>
+            <h2 class="flat-h2">Les avis</h2>
             <p>Ce logement n'a pas encore été noté, soyez le premier a laisser un avis</p>
-            <%= render "shared/new_flat_review", local: [@flat, @flat_review] %>
-          <% else %>
-           <h3> Ce logement a reçu <%= @flat.nb_of_reviews %> avis</h3>
-            <%= @reviews.each do |review| %>
-              <p>I'm a review</p>
+            <% unless !user_signed_in?%>
+              <%= render 'flat_reviews/form', flat: @flat %>
             <% end %>
+          <% else %>
+           <h3 style="margin-bottom: 20px;"> Ce logement a reçu <span id="flat-reviews-count"><%= @flat.nb_of_reviews %></span> avis</h3>
+            <% unless !user_signed_in?%>
+                <%= render 'flat_reviews/form', flat: @flat %>
+              <% end %>
+            <%= render partial: "flat_reviews/flat-reviews" %>
+            <%= @reviews %>
           <% end %>
           
         </div>
       </div>
-    <div class="col-xs-12 col-md-4"> 
-      <div class="datepickr">
-        <h3>Choisissez vos dates</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque tempore dolores assumenda fuga maxime qui impedit consequatur ipsam facere sit! Consequatur, sunt illo? Iusto blanditiis, accusamus nobis tenetur voluptates exercitationem.</p>
+      
+    <% if user_signed_in? %>
+      <div class="col-xs-12 col-md-4"> 
+        <div class="booking-form"> 
+        <span>Choisissez les dates de votre séjour</span>
+        <label style="display:block;"for="start_date" >Arrivée 🛫</label>
+        <input type="text" class="booking-start_date" name="start_date" value="<%=@start%>">
+        <label for="end_date" style="display:block;">Départ 🛬</label>
+        <input type="text" class="booking-end_date"name="end_date" value="<%= @end %>">
+        <button type="button" class="book-button" data-toggle="modal" data-target="#exampleModal">
+        Réserver ce logement 
+        </button>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-6 col-md-4">
-      <a href="https://g1.duniter.fr/api/#/v1/payment/G2CBgZBPLe6FSFUgpx2Jf1Aqsgta6iib3vmDRA1yLiqU?name=http:%2F%2Flocalhost:3000&amount=1&comment=REFERENCE&redirect_url=http:%2F%2Flocalhost:3000%2Fflats%2F54%252F%23%252Fapp%252Fhome%3Fservice%3Dpayment%26cancel&demo=true" class="btn btn-success">
-      Payer avec mon compte Césium
-      </a>
+    <% end %>
+            <!-- Button trigger modal -->
+
+<!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Détails de la réservation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table>
+                  <thead>
+                    <td>Arrivée</td>
+                    <td>Départ</td>
+                    <td>Nombre de nuits</td>
+                    <td>Prix</td>
+                  </thead>
+                  <tbody>
+                    <td><%= @start %></td>
+                    <td><%= @end %></td>
+                    <td><%= DateTime.now %></td>
+                  </tbody>
+                </table>   
+                <%= link_to "Payer avec mon compte Césium", "https://g1.duniter.fr/api/#/v1/payment/:pubkey?amount=Montant"  %>             
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Confimer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
   </div>
 </div>

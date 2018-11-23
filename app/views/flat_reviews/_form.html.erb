@@ -1,0 +1,9 @@
+<div id="review-form">
+  <%= form_with(model: [flat, FlatReview.new]) do |form| %>
+    <%= form.text_field :content %>
+    <%= form.submit "Laisser mon avis" %>
+  <% end %>
+</div>
+
+
+

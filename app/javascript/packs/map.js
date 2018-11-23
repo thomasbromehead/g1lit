@@ -1,5 +1,5 @@
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
-
+var debounce = require('lodash/debounce');
 const mapContainer = document.getElementById('map')
 console.log(mapContainer)
 
@@ -37,13 +37,20 @@ if(mapContainer){
   const flats = Object.assign({type:"FeatureCollection",
   features:feat})
 
-
+  const mapCenter = document.querySelector('#results')
+  console.log(mapCenter)
+  console.log(mapCenter.dataset.center)
+  const c = JSON.parse(mapCenter.dataset.center)
+  console.log(c)
+  console.log(typeof(c))
+  const z = mapCenter.dataset.zoom
+  console.log(z)
 
   const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/tombrom/cjn0pbzh851xg2sqqk9rhb44j',
-  center: [2.3488, 45.8534],
-  zoom:5.5
+  center: c,
+  zoom: z
   });
 
   window.map = map;
@@ -64,6 +71,8 @@ if(mapContainer){
       },
     });
   });
+
+ 
 
   function flyToStore(currentFeature) {
     map.flyTo({
@@ -126,7 +135,7 @@ if(mapContainer){
     el.style.height = "60px";
     el.style.width = "60px";
     const category = marker.properties.category;
-    console.log(map.transform.tileZoom);
+    // console.log(map.transform.tileZoom);
     switch(category){
       case "maison":
       el.style.backgroundImage = "url('/assets/markers/marker-maison.png')";
@@ -162,14 +171,17 @@ if(mapContainer){
       var listing = document.getElementById(i);
       console.log(listing);
       listing.classList.add('active');
-    });   
+    })
+    el.addEventListener('hover', function(e){
+    })  
   });
 
   map.on('zoom', () => {
     const markers = document.querySelectorAll('.marker');
-    console.log(map.getZoom());
+    // const readZoom = () => console.log(map.getZoom());
+    // console.log(typeof(readZoom))
+    // debounce(readZoom(), 500, {leading: true});
     markers.forEach( marker => {
-      console.log(marker.style)
       if(map.getZoom() > 5 && map.getZoom() < 8  ){
         marker.style.height = "100px";
         marker.style.width= "100px";
@@ -183,15 +195,24 @@ if(mapContainer){
       });
   });
 
+
+
+
+
   map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     placeholder: "Chercher un lieu",
     zoom:10,
   }));
 
+  const homeSearch = document.getElementById('home-city-search');
+  new MapboxGeocoder({
+    el: homeSearch,
+    accessToken: mapboxgl.accessToken,
+  })
+
 
   // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-
   map.addControl(new mapboxgl.NavigationControl());
   map.addControl(new mapboxgl.FullscreenControl());
 

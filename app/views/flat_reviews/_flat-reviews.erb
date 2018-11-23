@@ -1,0 +1,14 @@
+    <div id="flat-reviews">
+      <% @flat.flat_reviews.each do |review| %>
+            <div class="flat-reviews--show">
+              <div class="avis--user">
+                <span class="avis--avatar"><%= cl_image_tag user_avatar(review.user_id), size:"50x50", radius: :max, quality: :auto, fetch: :auto %></span>
+                <span class="avis--pseudo"><%= user_pseudo(review.user_id) %></span>
+              </div>
+              <p class="avis--content"><%= review.content %></p>
+                <%= review.id %>
+                <span><%= link_to "Supprimer", flat_review_path(review), method: :delete  %></span>
+                <span class="avis--created">Avis laissé il y a <%=time_ago_in_words(review.created_at)%></span>
+            </div>
+        <% end %>
+      </div>  
