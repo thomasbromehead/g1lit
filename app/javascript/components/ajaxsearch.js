@@ -8,16 +8,15 @@ document.addEventListener('DOMContentLoaded', function(){
     map.on('dragend', (e) => {
       console.log("finished dragging")
       // console.log(map.getCenter())
-      console.log(map.getZoom())
-      map.getBounds()
       const NE = JSON.stringify(map.getBounds()._ne)
       const SW = JSON.stringify(map.getBounds()._sw)
       console.log(NE,SW)
-      console.log(fetch(formatUrl('http://localhost:3000/flats', {
+      fetch(formatUrl('http://localhost:3000/flats', {
         ne: NE,
         sw: SW
       })
-      ))
+      )
+      debugger;
     })
     map.on('zoom', () => {
       console.log(map.getZoom())

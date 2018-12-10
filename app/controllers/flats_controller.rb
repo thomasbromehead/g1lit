@@ -11,6 +11,7 @@ class FlatsController < ApplicationController
       sw_long = southwest["lng"]
       ne_lat = northeast["lat"]
       ne_lng = northeast["lng"]
+      raise
       # @flats = Flat.search("*", page: params[:page], per_page: 6, where: {location: {{ top_right:
       #       {lat: ne_lat, lon: ne_lng}, 
       #       bottom_left: 
@@ -32,11 +33,12 @@ class FlatsController < ApplicationController
       end
       respond_to do |format|
         format.html { render plain: "how are you"}
-        format.js { render plain: "he"}
+        format.js  
       end
+
     elsif params[:city] != ""
-      lat = deconstruct(params[:city]).dig('lat')
-      lng = deconstruct(params[:city]).dig('lng')
+      lat = deconstruct(params[:city]).dig('lat') unless request.filtered_parameters["ne"]
+      lng = deconstruct(params[:city]).dig('lng' )unless request.filtered_parameters["ne"]
       @flats = Flat.search("*", page: params[:page], per_page: 6, where: {
         location: 
           {
@@ -47,6 +49,7 @@ class FlatsController < ApplicationController
             }
           }
       })
+      params.inspect
       @start = params['start-date'] if params["start-date"]
       @end = params["end-date"] if params["end-date"]
       @center = [lng, lat]
@@ -65,9 +68,10 @@ class FlatsController < ApplicationController
           category: flat.category
         }
       end
-      # respond_to do |format|
-      #   format.html { render "flats/index"}
-      # end
+      raise
+      respond_to do |format|
+        format.html { render "flats/index"}
+      end
       
     else
         @zoom = 5.5
