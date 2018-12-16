@@ -14,9 +14,13 @@ document.addEventListener('DOMContentLoaded', function(){
       fetch(formatUrl('http://localhost:3000/flats', {
         ne: NE,
         sw: SW
+      }, {
+        method: 'GET',
+        headers: {
+          "Content-Type": 'text/javascript'
+        }
       })
-      )
-      debugger;
+      ).then(response => console.log(response))
     })
     map.on('zoom', () => {
       console.log(map.getZoom())

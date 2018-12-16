@@ -4,19 +4,20 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    if request.filtered_parameters["ne"] && request.filtered_parameters["sw"] && params["city"] == ""
+    if request.filtered_parameters["ne"] && request.filtered_parameters["sw"] && params[:city].nil?
+      puts('--------')
+      puts('AJAX SEARCH')
+      puts('------')
+      puts
       northeast = JSON.parse(params[:ne])
       southwest = JSON.parse(params[:sw])
       sw_lat = southwest["lat"]
       sw_long = southwest["lng"]
       ne_lat = northeast["lat"]
       ne_lng = northeast["lng"]
-      raise
-      # @flats = Flat.search("*", page: params[:page], per_page: 6, where: {location: {{ top_right:
-      #       {lat: ne_lat, lon: ne_lng}, 
-      #       bottom_left: 
-      #       { lat: sw_lat, lon: sw_lng }}}
-      # })
+      @flats = Flat.search "*", where: {location: {top_left: {lat: ne_lat, lon: ne_lng}, bottom_right: {lat: sw_lat, lon: sw_long}}}
+      puts("Northeast Longitude: #{ne_lng}, Southwest Longitude: #{sw_long}")
+      puts("Flats.length: #{@flats.length}")
       @markers = Flat.all.map do |flat|
         {
           lat: flat.latitude,
@@ -31,12 +32,12 @@ class FlatsController < ApplicationController
           category: flat.category
         }
       end
-      respond_to do |format|
-        format.html { render plain: "how are you"}
-        format.js  
-      end
+      return 
 
-    elsif params[:city] != ""
+    elsif params[:city] != "" && !params[:city].nil? 
+      puts('--------')
+      puts('City provided')
+      puts('------------')
       lat = deconstruct(params[:city]).dig('lat') unless request.filtered_parameters["ne"]
       lng = deconstruct(params[:city]).dig('lng' )unless request.filtered_parameters["ne"]
       @flats = Flat.search("*", page: params[:page], per_page: 6, where: {
@@ -49,7 +50,6 @@ class FlatsController < ApplicationController
             }
           }
       })
-      params.inspect
       @start = params['start-date'] if params["start-date"]
       @end = params["end-date"] if params["end-date"]
       @center = [lng, lat]
@@ -75,6 +75,9 @@ class FlatsController < ApplicationController
       
     else
         @zoom = 5.5
+        puts('--------')
+        puts('no city provided')
+        puts('--------')
         @flats = Flat.all.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
         @center = [2.3488, 45.8534]
         @markers = Flat.all.map do |flat|
@@ -93,7 +96,6 @@ class FlatsController < ApplicationController
         end
         respond_to do |format|
           format.html { render "index"}
-          format.js
         end
      end
   end

@@ -6,9 +6,7 @@
 
 <div id="results-container--index">
     <%= render partial: "flat-list" %>
-    <!--
-    <%=  debug(params) %>  
-    -->
+
     <div id="map" data-markers="<%= @markers.to_json %>">
     <!-- Map goes in here -->
     </div>
