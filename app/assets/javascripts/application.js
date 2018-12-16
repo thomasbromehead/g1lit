@@ -1,4 +1,5 @@
 //= require rails-ujs
+// app/assets/javascript/application.js
 //= require activestorage
 //= require jquery.iframe-transport
 //= require jquery-fileupload
