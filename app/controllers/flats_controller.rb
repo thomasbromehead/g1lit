@@ -13,11 +13,12 @@ class FlatsController < ApplicationController
       northeast = JSON.parse(params[:ne])
       southwest = JSON.parse(params[:sw])
       sw_lat = southwest["lat"]
-      sw_long = southwest["lng"]
+      sw_lng = southwest["lng"]
       ne_lat = northeast["lat"]
       ne_lng = northeast["lng"]
-      @flats = Flat.search "*", where: {location: {top_left: {lat: ne_lat, lon: ne_lng}, bottom_right: {lat: sw_lat, lon: sw_long}}}
-      puts("Northeast Longitude: #{ne_lng}, Southwest Longitude: #{sw_long}")
+
+      @flats = Flat.search "*", where: {location: {top_left: {lat: ne_lat, lon: ne_lng}, bottom_right: {lat: sw_lat, lon: sw_lng}}}
+      puts("Northeast Longitude: #{ne_lng}, Southwest Longitude: #{sw_lng}")
       puts("Flats.length: #{@flats.length}")
       @markers = Flat.all.map do |flat|
         {
@@ -34,8 +35,8 @@ class FlatsController < ApplicationController
         }
       end
       respond_to do |format|
+        puts 'entering the respond_to'
         format.js { }
-        format.html { }
       end
 
     elsif params[:city] != "" && !params[:city].nil? 

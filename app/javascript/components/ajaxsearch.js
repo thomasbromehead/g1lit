@@ -1,10 +1,10 @@
 var _ = require('lodash/');
+const flatsList = document.querySelector('#flat-listings')
 
 document.addEventListener('DOMContentLoaded', function(){
   const carte = document.querySelector('.mapboxgl-canvas')
   const formatUrl = (urlStr, params) => urlStr + '?' + new URLSearchParams(_.pickBy(params, _.negate(_.isNil))).toString();
   const dragMap = () => {
-    console.log(carte);
     map.on('dragend', (e) => {
       console.log("finished dragging")
       // console.log(map.getCenter())
@@ -20,8 +20,17 @@ document.addEventListener('DOMContentLoaded', function(){
           'Accept': 'application/javascript'
         }
       })
-      .then(res => res.text())
-      .then(text => console.log(text))
+      .then((res) => {
+        let response2 = res.clone()
+        console.log('response2=', response2)
+        const listings = document.getElementById('flat-listings')
+        window.listings = listings
+        return eval(res.text())
+      })
+      .then((response) => {
+        console.log('response', response)
+        eval(response)
+      })
     })
     map.on('zoom', () => {
       console.log(map.getZoom())

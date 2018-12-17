@@ -1,5 +1,4 @@
-    <div id="results"  data-center = "<%=@center.to_json%>" data-zoom = "<%= @zoom %>" > 
-    <p>  Flats found: <%= @flats %></p>
+    <p>  Flats found: <%= @flats.count %></p>
       <%= @flats %>
         <% @flats.each_with_index do |flat, index| %>
            <div class="flat-card--index" id="<%= index %>">
@@ -45,6 +44,6 @@
           <br>
           <br>
         </div>
-        <%= will_paginate @flats, remote: true %>
+        <%= will_paginate @flats%>
       </div>
-  </div>
+

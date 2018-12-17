@@ -37,7 +37,7 @@ if(mapContainer){
   const flats = Object.assign({type:"FeatureCollection",
   features:feat})
 
-  const mapCenter = document.querySelector('#results')
+  const mapCenter = document.querySelector('#flat-listings')
   console.log(mapCenter)
   console.log(mapCenter.dataset.center)
   const c = JSON.parse(mapCenter.dataset.center)

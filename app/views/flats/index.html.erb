@@ -5,7 +5,9 @@
   <h1 id="index-h1">Les logements disponibles</h1>
 
 <div id="results-container--index">
+  <div id="flat-listings"  data-center = "<%=@center.to_json%>" data-zoom = "<%= @zoom %>" data-flats="<%= @flats %>" > 
     <%= render partial: "flat-list" %>
+  </div>
 
     <div id="map" data-markers="<%= @markers.to_json %>">
     <!-- Map goes in here -->

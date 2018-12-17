@@ -1,5 +1,4 @@
-flatsList = document.getElementById("results")
-console.log(flatsList)
-flatsList.innerHTML = ''
-flatsList.innerHTML = "<%= j render 'flat-list' %>"
 
+console.log(document.readyState)
+console.log('listings from index js erb', window.listings)
+listings.innerHTML = "<%= j render 'flat-list' %>"
