@@ -5,10 +5,13 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
   # Have to modify this, id not being passed in properly.
 
   def setup
+    @user = User.create(first_name: "Thomas", email: "test@test.fr", password: "azerty")
+
   end
 
 
   test "get new flat form and create flat" do
+    sign_in_as(@user, "azerty")
     get new_flat_path
     assert_template 'flats/new'
     assert_difference 'Flat.count', 1 do
@@ -20,6 +23,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
   end  
 
   test "invalid flat submission results in failure" do
+    sign_in_as(@user, "password")
     get new_flat_path
     assert_template 'flats/new'
     assert_no_difference 'Flat.count' do

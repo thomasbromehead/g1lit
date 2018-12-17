@@ -2,20 +2,24 @@ require "json"
 
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :index
 
   def index
-    if request.filtered_parameters["ne"] && request.filtered_parameters["sw"] && params["city"] == ""
+    if request.filtered_parameters["ne"] && request.filtered_parameters["sw"] && params[:city].nil?
+      puts('--------')
+      puts('AJAX SEARCH')
+      puts('------')
+      puts
       northeast = JSON.parse(params[:ne])
       southwest = JSON.parse(params[:sw])
       sw_lat = southwest["lat"]
-      sw_long = southwest["lng"]
+      sw_lng = southwest["lng"]
       ne_lat = northeast["lat"]
       ne_lng = northeast["lng"]
-      # @flats = Flat.search("*", page: params[:page], per_page: 6, where: {location: {{ top_right:
-      #       {lat: ne_lat, lon: ne_lng}, 
-      #       bottom_left: 
-      #       { lat: sw_lat, lon: sw_lng }}}
-      # })
+
+      @flats = Flat.search "*", where: {location: {top_left: {lat: ne_lat, lon: ne_lng}, bottom_right: {lat: sw_lat, lon: sw_lng}}}
+      puts("Northeast Longitude: #{ne_lng}, Southwest Longitude: #{sw_lng}")
+      puts("Flats.length: #{@flats.length}")
       @markers = Flat.all.map do |flat|
         {
           lat: flat.latitude,
@@ -31,12 +35,16 @@ class FlatsController < ApplicationController
         }
       end
       respond_to do |format|
-        format.html { render plain: "how are you"}
-        format.js { render plain: "he"}
+        puts 'entering the respond_to'
+        format.js { }
       end
-    elsif params[:city] != ""
-      lat = deconstruct(params[:city]).dig('lat')
-      lng = deconstruct(params[:city]).dig('lng')
+
+    elsif params[:city] != "" && !params[:city].nil? 
+      puts('--------')
+      puts('City provided')
+      puts('------------')
+      lat = deconstruct(params[:city]).dig('lat') unless request.filtered_parameters["ne"]
+      lng = deconstruct(params[:city]).dig('lng' )unless request.filtered_parameters["ne"]
       @flats = Flat.search("*", page: params[:page], per_page: 6, where: {
         location: 
           {
@@ -65,12 +73,16 @@ class FlatsController < ApplicationController
           category: flat.category
         }
       end
-      # respond_to do |format|
-      #   format.html { render "flats/index"}
-      # end
+      raise
+      respond_to do |format|
+        format.html { render "flats/index"}
+      end
       
     else
         @zoom = 5.5
+        puts('--------')
+        puts('no city provided')
+        puts('--------')
         @flats = Flat.all.paginate(page: params[:page], per_page:8).where.not(latitude: nil, longitude: nil).includes(:owner)
         @center = [2.3488, 45.8534]
         @markers = Flat.all.map do |flat|
@@ -89,7 +101,6 @@ class FlatsController < ApplicationController
         end
         respond_to do |format|
           format.html { render "index"}
-          format.js
         end
      end
   end

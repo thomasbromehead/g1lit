@@ -33,6 +33,8 @@ d88E`"888E`    88888      888R   ''888E`   8888
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+</head>
   </head>
   <body class="app">
     <% if current_page?(root_path) %>
@@ -51,7 +53,5 @@ d88E`"888E`    88888      888R   ''888E`   8888
     <%= javascript_pack_tag 'application' %>
     <%= cloudinary_js_config %>
     <%= javascript_pack_tag 'map' %>
-
-
   </body>
 </html>
