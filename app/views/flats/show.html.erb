@@ -118,10 +118,10 @@
             <% unless !user_signed_in?%>
                 <%= render 'flat_reviews/form', flat: @flat %>
               <% end %>
-            <%= render partial: "flat_reviews/flat-reviews" %>
-            <%= @reviews %>
+            <div id="flat-reviews">
+              <%= render partial: "flat_reviews/flat-reviews" %>
+            </div>
           <% end %>
-          
         </div>
       </div>
       

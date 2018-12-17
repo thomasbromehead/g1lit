@@ -1,3 +1,4 @@
-const resultsContainer = document.getElementById('results')
-console.log("hello from indexjs")
-resultsContainer.replaceWith("<% j render partial: "list" %>)
+
+console.log(document.readyState)
+console.log('listings from index js erb', window.listings)
+listings.innerHTML = "<%= j render 'flat-list' %>"
