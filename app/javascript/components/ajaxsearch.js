@@ -11,16 +11,17 @@ document.addEventListener('DOMContentLoaded', function(){
       const NE = JSON.stringify(map.getBounds()._ne)
       const SW = JSON.stringify(map.getBounds()._sw)
       console.log(NE,SW)
-      fetch(formatUrl('http://localhost:3000/flats', {
+      fetch(formatUrl('/flats', {
         ne: NE,
         sw: SW
-      }, {
+      }), {
         method: 'GET',
         headers: {
-          "Content-Type": 'text/javascript'
+          'Accept': 'application/javascript'
         }
       })
-      ).then(response => console.log(response))
+      .then(res => res.text())
+      .then(text => console.log(text))
     })
     map.on('zoom', () => {
       console.log(map.getZoom())

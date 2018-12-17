@@ -1,2 +1,5 @@
 flatsList = document.getElementById("results")
 console.log(flatsList)
+flatsList.innerHTML = ''
+flatsList.innerHTML = "<%= j render 'flat-list' %>"
+

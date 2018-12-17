@@ -2,6 +2,7 @@ require "json"
 
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :index
 
   def index
     if request.filtered_parameters["ne"] && request.filtered_parameters["sw"] && params[:city].nil?
@@ -32,7 +33,10 @@ class FlatsController < ApplicationController
           category: flat.category
         }
       end
-      return 
+      respond_to do |format|
+        format.js { }
+        format.html { }
+      end
 
     elsif params[:city] != "" && !params[:city].nil? 
       puts('--------')

@@ -1,4 +1,6 @@
     <div id="results"  data-center = "<%=@center.to_json%>" data-zoom = "<%= @zoom %>" > 
+    <p>  Flats found: <%= @flats %></p>
+      <%= @flats %>
         <% @flats.each_with_index do |flat, index| %>
            <div class="flat-card--index" id="<%= index %>">
             <div id="flat-slider--index">
